@@ -1,0 +1,6 @@
+Los parametros que se le pasen al script han de separarse el uno del otro con espacios en blanco.
+Se pueden introducir tantos como quiera. El unico limite esta en la longitud de la linea de comandos (127 caracteres).
+Para identificar los parametros dentro del fichero BAT se utilizan 10 simbolos que son %n donde n es un numero del 0 al 9. Al comando de llamada en si se le atribuye %0
+Hay una orden llamada SHIFT. Cuando un script encuentra una linea SHIFT mueve toda la numeracion de los parametros uno hacia la derecha.
+Con SHIFT /n solo se mueven los parametros a partir de la posicion n.
+

@@ -1,0 +1,17 @@
+1.1 CIFRADO
+Crear archivo de prueba y cifrarlo con el atributo E.
+	Caracteristicas del interface para distinguir los archivos cifrados de los que no lo son. (explorador de archivos)
+	Gestion de este atributo desde el entorno de texto (Cypher)
+Comprobaciones a hacer:
+	Acceso al archivo con otro usuario distinto al que ha creado y encriptado el archivo pero con permisos a todos los sistemas de archivo.
+	Un archivo cifrado si se copia o mueve a una unidad externa, pierde su cifrado.
+	El atributo de compresion no es compatible con el de cifrado.
+	Acceso al archivo desde otro S.O.
+		Acceder, copiar, borrar
+	Si comprimimos el archivo en forma ZIP, ?Que pasa con el cifrado?
+
+1.2 INGEGRIDAD
+Utilidad del sistema operativo windows SFC.
+Utilidad del sistema operativo linux rkhunter
+Descripcion de las opciones de la utilidad, sintaxis....
+Comprobar funcionamiento. Generara un .doc de resultados. (interesante generar algun fallo)

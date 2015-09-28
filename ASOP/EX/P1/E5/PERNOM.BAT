@@ -1,0 +1,5 @@
+@ ECHO OFF
+
+REN %1 ~TEMP
+REN %2 %1
+REN ~TEMP %2

@@ -1,0 +1,25 @@
+@ ECHO OFF
+REM Crea un fichero bat ASIXTREE que contstruya en el directorio actual una estructura de arbol con carpetas para cada asignatura del CFGS de ASIX, agrupadas por curso.
+
+REM Directorio del Grau Superior
+MD CFGS
+
+REM Primero de ASIX
+MD CFGS\1ASIX
+MD CFGS\1ASIX\ISO
+MD CFGS\1ASIX\GBD
+MD CFGS\1ASIX\FOL
+MD CFGS\1ASIX\PAX
+MD CFGS\1ASIX\LLMA
+MD CFGS\1ASIX\FHAR
+MD CFGS\1ASIX\EXT1
+
+REM Segundo de ASIX
+MD CFGS\2ASIX
+MD CFGS\2ASIX\ASOP
+MD CFGS\2ASIX\IAW
+MD CFGS\2ASIX\SGDB
+MD CFGS\2ASIX\SXIN
+MD CFGS\2ASIX\SAD
+MD CFGS\2ASIX\EIE
+MD CFGS\2ASIX\EXT7

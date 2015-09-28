@@ -1,0 +1,4 @@
+Disenar un fichero batch FEIHO.BAT que muestre la fecha y la hora actual. ?Es posible realizar una solucion que muestre la fecha y la hora sin que el eusuario tenga que interactuar con el proceso bat para que este avance?
+	utilizar opciones de las ordenes DATE y TIME
+	utilizar pseudovariables
+	sin ninguna de las dos opciones anteriores, preparar una version que trate el mensaje de solicitud de nueva fecha y hora que aparece con las ordenes DATE y TIME sin parametrizar. Observar que esta ultima version funcionaria con cualquier version de DOS.

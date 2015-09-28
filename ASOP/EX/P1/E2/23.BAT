@@ -1,0 +1,5 @@
+@ ECHO OFF
+ECHO. | LABEL | FIND 
+
+PAUSE
+2.BAT

@@ -1,0 +1,35 @@
+Concepto de ficheros por lotes
+	En DOS se puede trabajar de 2 maneras:
+	- Modo interactivo (orden por orden)
+	- Modo BATCH (por lotes). El sistema ejecuta varias ordenes seguidas sin intervencion del usuario. Estas ordenes se encuentran contenidas en un fichero ASCII que recibe el nombre de fichero BATCH, por lotes o BAT
+	Caracteristicas de los ficheros BATCH
+	- Extension .bat
+	- Son ficheros ASCII, se pueden editar con cualquier editor
+	- No hace falta escribir la extension para ejecutarlo
+	- Puede darse el caso de que existan archivos BAT que tengan el mismo nombre que archivos EXE o COM. Tienen prioridad los EXE y los COM delante de los BAT
+	- En un proceso BAT se ejecutan las ordenes secuencialmente a menos que exista una orden que la rompa
+	- Se puede abortar la ejecucion de un script mediante CTRL^C
+	- Dentro de este fichero se puede insertar cualquier orden o programa que se puede usar desde PROMPT
+	- Existe un conjunto de ordenes de uso especifico para ficheros BATCH
+
+Ordenes para la gestion de mensajes
+	1- M. internos o comentarios
+		REM [comentario]
+	2- M. de llamada a una orden o eco
+		@ orden
+			Evita la aparicion en pantalla del mensaje de llamada de la orden a la cual precede
+		ECHO [ON/OFF]
+			Sin parametros muestra el estado actual del echo.
+			Con parametros activa o desactiva el echo
+		ECHO Mensaje
+			Muestra por pantalla (independientemente del estado del echo) el mensaje escrito.
+		ECHO.
+			Muestra por pantalla una linea en blanco
+		Observaciones: El echo afecta a los mensajes de llamada, no a los de salida.
+	3- M. de salida de una orden
+		Usamos el redireccionamento de salida para evitar los mensajes de salida. Redireccionaremos a NUL para enviar el mensaje a ningun lado.
+
+Ordenes para el control del proceso de ejecucion
+	PAUSE
+		Interrumpe la ejecucion del programa y muestra el mensaje "Pulse una tecla para continuar"
+

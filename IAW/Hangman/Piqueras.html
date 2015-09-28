@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hangman</title>
+	<meta charset='utf-8'>
+	<script type="text/javascript">
+
+//LIST OF WORDS
+words = new Array('HIERARCHICAL', 'DISCRETIZATION', 'EXPERTISE');
+
+function getWord() { //Choose a random word and return it as an array
+
+	var ran = Math.floor(Math.random()*(words.length));
+	var word = words[ran];
+	array = word.split("");
+	return array;
+
+}
+
+function prepareGame() {
+	//Global variables word, tries and mistakes
+	word = getWord();
+	tries = [];
+	mistakes = [];
+	for (var i in word){
+		tries.push("_"); //Fill the tries array with - for each letter in the word
+	}
+	printOutput();
+}
+
+function checkInput(input) { //Check if the input is a single letter (not necessary with this implementation)
+	if (input.length == 1 && input >= 'A' && input <= 'Z') {
+		checkWord(input);
+	} else {
+		alert('Mistaken input. Please enter one letter.');
+	}
+}
+
+function checkWord(letter) {  //Check if the letter is in the arrat
+	var correct = false;
+	for (var i = 0; i < word.length; i++ ){
+		if (word[i] == letter){
+			tries[i] = letter; //add the letter to the tries array
+			correct = true;
+		}
+	}
+	if (correct == false){ //add the letter to the mistakes array
+		mistakes.push(letter);
+	}
+	printOutput();
+	if (checkArray(word, tries)){ //Check if the word is complete
+		endGame(1);
+	}
+	if (mistakes.length >= 10){ //Check if you've been without tries
+		endGame(0);
+	}
+}
+
+function checkArray(x, y) { //Check if two arrays are identical
+   var equal = true; 		//True by default
+   for(var i in x) {
+      if(x[i] !== y[i]) { 		//If aren't equal, change the flag
+         equal = false;
+         break;
+      }
+   }
+   return equal;
+}
+
+function endGame(win){
+	if (win == 1){ 	//Win message if you win
+		window.alert("You win!");
+	} else {		//Lose message if you lose
+	window.alert("You lose...");
+	}
+}
+
+function printOutput() {
+	//Deals with the html part
+	document.getElementById('tries').innerHTML = "The word is: " + tries;
+	document.getElementById('mistakes').innerHTML = "You've failed the letters: " + mistakes;
+	document.getElementById('remain').innerHTML = "You've got " + (10 - mistakes.length) + " tries remaining.";
+}
+
+	</script>
+</head>
+<body>
+<div id="tries"></div><br/>
+<div id="mistakes"></div><br/>
+<div id="remain"></div><br/>
+<input type="button" value="New Game" onClick="prepareGame()"><br/>
+		<input type="button" value="A" onClick="checkInput('A')">
+		<input type="button" value="B" onClick="checkInput('B')">
+		<input type="button" value="C" onClick="checkInput('C')">
+		<input type="button" value="D" onClick="checkInput('D')">
+		<input type="button" value="E" onClick="checkInput('E')"><br/>
+		<input type="button" value="F" onClick="checkInput('F')">
+		<input type="button" value="G" onClick="checkInput('G')">
+		<input type="button" value="H" onClick="checkInput('H')">
+		<input type="button" value="I" onClick="checkInput('I')">
+		<input type="button" value="J" onClick="checkInput('J')">
+		<input type="button" value="K" onClick="checkInput('K')"><br/>
+		<input type="button" value="L" onClick="checkInput('L')">
+		<input type="button" value="M" onClick="checkInput('M')">
+		<input type="button" value="N" onClick="checkInput('N')">
+		<input type="button" value="O" onClick="checkInput('O')">
+		<input type="button" value="P" onClick="checkInput('P')"><br/>
+		<input type="button" value="Q" onClick="checkInput('Q')">
+		<input type="button" value="R" onClick="checkInput('R')">
+		<input type="button" value="S" onClick="checkInput('S')">
+		<input type="button" value="T" onClick="checkInput('T')">
+		<input type="button" value="U" onClick="checkInput('U')"><br/>
+		<input type="button" value="V" onClick="checkInput('V')">
+		<input type="button" value="W" onClick="checkInput('W')">
+		<input type="button" value="X" onClick="checkInput('X')">
+		<input type="button" value="Y" onClick="checkInput('Y')">
+		<input type="button" value="Z" onClick="checkInput('Z')">
+</body>
+<script type="text/javascript">prepareGame();//Prepares the game after the body charged</script>
+</html>
