@@ -1,3 +1,4 @@
+#INTRODUCCION
 Concepto de ficheros por lotes
 	En DOS se puede trabajar de 2 maneras:
 	- Modo interactivo (orden por orden)
@@ -12,7 +13,8 @@ Concepto de ficheros por lotes
 	- Dentro de este fichero se puede insertar cualquier orden o programa que se puede usar desde PROMPT
 	- Existe un conjunto de ordenes de uso especifico para ficheros BATCH
 
-Ordenes para la gestion de mensajes
+#ORDENES
+##Gestion de mensajes
 	1- M. internos o comentarios
 		REM [comentario]
 	2- M. de llamada a una orden o eco
@@ -29,7 +31,43 @@ Ordenes para la gestion de mensajes
 	3- M. de salida de una orden
 		Usamos el redireccionamento de salida para evitar los mensajes de salida. Redireccionaremos a NUL para enviar el mensaje a ningun lado.
 
-Ordenes para el control del proceso de ejecucion
-	PAUSE
-		Interrumpe la ejecucion del programa y muestra el mensaje "Pulse una tecla para continuar"
+##Control del proceso de ejecucion
+PAUSE
+	Interrumpe la ejecucion del programa y muestra el mensaje "Pulse una tecla para continuar"
+
+GOTO
+	GOTO etiqueta
+	Desvia el proceso de ejecucion a otra parte del fichero identificado con una etiqueta.
+	Las etiquetas empiezan con ':'
+	Ejemplo:
+		_______
+		:etiqueta1
+		_______
+		_______
+		_______
+		GOTO :etiqueta1
+		_______
+	La etiqueta despues del GOTO no tiene porque tener ':'
+	La longitud de la etiqueta puede ser de hasta 127 caracteres (incl. ':') aunque solo son significativos los 8 primeros.
+	GOTO :EOF Salta al final del batch (ultimas versiones de la consola)
+
+IF
+	IF condicion orden
+	Condicion: Existencia del fichero
+		EXIST fichero
+		NOT EXIST fichero
+	Condicion: Igualdad de cadenas
+		Cadena1==Cadena2
+		NOT Cadena1==Cadena2
+	Condicion: Codigo de salida
+		ERRORLEVEL n (donde n es un numero)
+		Comprueba el codigo de salida de la orden ejecutada previamente al if, si es mayor o igual al que se especifica en el IF, la condicion es verdadera.
+
+#PARAMETROS
+Los parametros que se le pasen al script han de separarse el uno del otro con espacios en blanco.
+Se pueden introducir tantos como quiera. El unico limite esta en la longitud de la linea de comandos (127 caracteres).
+Para identificar los parametros dentro del fichero BAT se utilizan 10 simbolos que son %n donde n es un numero del 0 al 9. Al comando de llamada en si se le atribuye %0
+Hay una orden llamada SHIFT. Cuando un script encuentra una linea SHIFT mueve toda la numeracion de los parametros uno hacia la derecha.
+Con SHIFT /n solo se mueven los parametros a partir de la posicion n.
+
 
