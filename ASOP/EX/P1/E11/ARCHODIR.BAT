@@ -1,7 +1,10 @@
 @ECHO OFF
+rem Archivo: ARCHODIR.BAT
+rem Autor: Alomsimoy
 
-IF "%1" == "" goto help
-IF "%1" == "/?" goto help
+IF "%1"=="" goto help
+if "%0"=="archodir/?" goto help
+IF "%1"=="/?" goto help
 
 :loop
 if "%1" == "" goto end

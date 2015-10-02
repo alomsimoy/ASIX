@@ -1,10 +1,11 @@
 @ ECHO OFF
+rem Fichero: TESTSO.BAT
+rem Autor: Alomsimoy
 
-if "%1" == "" goto help
-if NOT "%1" == "" goto help
+if "%1"=="" goto help
 
-if EXIST %1\Documents and settings\ goto xp
-if EXIST %1\Users\ goto w7
+if EXIST "%1\Documents and settings\" goto xp
+if EXIST "%1\Users\" goto w7
 
 echo La unidad %1 no contiene ningun SO WXP ni W7
 NEWLABEL=DATOS
