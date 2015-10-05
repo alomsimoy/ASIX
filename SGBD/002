@@ -1,0 +1,12 @@
+person.person
+crear tabla person+
+	1 campo: FullName nvarchar(250)
+	cursor que a partir de la tabla person.person, copie todos los datos de person.person a person+, concatenando el Title, FirstName y LastName
+
+create table person+
+
+
+script 3 variables
+
+cursor
+fetch into 3 variables
