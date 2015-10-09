@@ -1,7 +1,7 @@
 @ECHO OFF
 
 :COPY
-IF "%2"="" GOTO END
+IF "%2"=="" GOTO END
 COPY %2 %1
 SHIFT /2
 GOTO :COPY
