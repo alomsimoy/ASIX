@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+    </head>
+    <body>
 <?php
 
 $x = 5;
@@ -8,3 +14,5 @@ for ($j = $x; $j > 0; $j--) {
     echo "<br>";
 }
 ?>
+    </body>
+</html>

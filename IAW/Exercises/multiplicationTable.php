@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+    </head>
+    <body>
 <?php
 $tabla=7;
 for ($i = 0; $i <= 12; $i++) {
@@ -12,3 +18,5 @@ for ($i = 12; $i >= 0; $i--) {
 
 
 ?>
+    </body>
+</html>

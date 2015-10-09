@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+    </head>
+    <body>
 <?php
 $a = 27;
 $b = 3;
@@ -15,3 +21,5 @@ if ($c != 0) {
 
 echo $r;
 ?>
+    </body>
+</html>

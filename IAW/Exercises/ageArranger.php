@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+    </head>
+    <body>
 <?php
 $age = 70;
 if ( $age <= 4 ) $string = "It's a baby";
@@ -11,3 +17,5 @@ else $string = "It's an elder";
 echo $string
 
 ?>
+    </body>
+</html>

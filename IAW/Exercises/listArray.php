@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+    </head>
+    <body>
 <?php
 $list = array("Element1", "Element2", "Element3");
 
@@ -14,3 +20,5 @@ function listArray($a) {
     return $htmlList;
 }
 ?>
+    </body>
+</html>

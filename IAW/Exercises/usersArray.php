@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+    </head>
+    <body>
 <?php
 
 $users = array(
@@ -10,3 +16,5 @@ foreach ($users as $key => $value) {
     echo $key." = ".$value."<br>";
 }
 ?>
+    </body>
+</html>

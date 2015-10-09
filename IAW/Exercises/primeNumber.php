@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+    </head>
+    <body>
 <?php
 
 $number = 5;
@@ -17,3 +23,5 @@ function isPrime ($n) {
     return $prime;
 }
 ?>
+    </body>
+</html>
