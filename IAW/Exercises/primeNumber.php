@@ -24,6 +24,7 @@ function isPrime ($n) {
     }
     return true;
 }
+
 ?>
     </body>
 </html>
