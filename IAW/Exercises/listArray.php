@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> </title>
+        <title>List Array</title>
+        <meta charset='utf-8'>
     </head>
     <body>
 <?php
@@ -12,11 +13,11 @@ echo listArray($list);
 
 // Return an array as ordered list in html format
 function listArray($a) {
-    $htmlList = "<ol>";
+    $htmlList = "<ol>\n";
     foreach ($a as $e) {
-        $htmlList .= "<li>".$e."</li>";
+        $htmlList .= "<li>".$e."</li>\n";
     }
-    $htmlList .= "</ol>";
+    $htmlList .= "</ol>\n";
     return $htmlList;
 }
 ?>

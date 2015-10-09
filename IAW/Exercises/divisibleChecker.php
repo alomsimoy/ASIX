@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> </title>
+        <title>Divisible Checker</title>
+        <meta charset='utf-8'>
     </head>
     <body>
 <?php
