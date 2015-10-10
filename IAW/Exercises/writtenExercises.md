@@ -7,8 +7,8 @@ Written Exercises
 There are a lot of php alternatives as server-side language.
 We can have huge companies' solutions as Microsoft's ASP.NET or Oracle's
 Java, or we can stand to more open solutions like Ruby on Rails, Perl or Python.
-Also we can find client-side programming languages as Javascript used in servers,
-with runtimes like node.js.
+Also we can find client-side programming languages as Javascript used in 
+servers, with runtimes like node.js.
 Actually, even C could be (with a little bit of work) a server-side programming
 language.
 
@@ -42,7 +42,9 @@ language.
 > + WebDNA
 
 
-The reason that we choose php in front of the others (even when is not the best) is because (according to W3Techs.com) is the most widely used. The 81.4% of the servers are using it, way more than the 16,4% of the second (ASP.NET).
+The reason that we choose php in front of the others (even when is not the best)
+is because (according to W3Techs.com) is the most widely used. The 81.4% of the 
+servers are using it, way more than the 16,4% of the second (ASP.NET).
 
 > **Links:**
 
