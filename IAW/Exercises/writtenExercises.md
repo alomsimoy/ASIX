@@ -1,3 +1,4 @@
+
 Written Exercises
 =================
 
@@ -11,39 +12,40 @@ with runtimes like node.js.
 Actually, even C could be (with a little bit of work) a server-side programming
 language.
 
-The reason that we choose php in front of the others (even when is not the best)
-is because (according to W3Techs.com) is the most widely used. The 81.4% of the
-servers are using it, way more than the 16,4% of the second (ASP.NET).
     
-List of Wikipedia's Server-side programming languages:
-    
-    + ASP (*.asp)
-    + ActiveVFP (*.avfp)
-    + ASP.NET (*.aspx)
-    + ASP.NET MVC (*.cshtml)
-    + C (*.c, *.csp) via CGI
-    + ColdFusion Markup Language (*.cfm)
-    + Go (*.go)
-    + Groovy Server Pages (*.gsp)
-    + Hack (*.php)
-    + Haskell (*.hs) (example: Yesod)
-    + Java (*.jsp) via JavaServer Pages
-    + JavaScript using Server-side JavaScript (*.ssjs, *.js) (example: Node.js)
-    + Lasso (*.lasso)
-    + Lua (*.lp *.op *.lua)
-    + Progress WebSpeed (*.r,*.w)
-    + Pascal (*.p, *.pas, *.inc, *.px) (example: ModernPascal)
-    + Perl via the CGI.pm module (*.cgi, *.ipl, *.pl)
-    + PHP (*.php)
-    + Python (*.py) (examples: Pyramid, Flask, Django)
-    + R (*.rhtml) - (example: rApache)
-    + Ruby (*.rb, *.rbw) (example: Ruby on Rails)
-    + SMX (*.smx)
-    + Tcl (*.tcl)
-    + WebDNA (*.dna,*.tpl)
 
-Links:
+> **Wikipedia's list of server-side programming languages:**
+> 
+> + ASP
+> + ActiveVFP
+> + ASP.NET
+> + ASP.NET MVC
+> + C via CGI
+> + ColdFusion Markup Language
+> + Go
+> + Groovy Server Pages
+> + Hack
+> + Haskell (example: Yesod)
+> + Java via JavaServer Pages
+> + JavaScript using Server-side JavaScript (example: Node.js)
+> + Lasso
+> + Lua
+> + Progress WebSpeed
+> + Pascal (example: ModernPascal)
+> + Perl via the CGI.pm module
+> + PHP
+> + Python (examples: Pyramid, Flask, Django)
+> + R (example: rApache)
+> + Ruby (example: Ruby on Rails)
+> + SMX
+> + Tcl
+> + WebDNA
 
-* W3Techs.com - Overview server-side programming languages [link](http://w3techs.com/technologies/overview/programming_language/all)
 
-* Wikipedia - Server-side scripting [link](https://en.wikipedia.org/wiki/Server-side_scripting)
+The reason that we choose php in front of the others (even when is not the best) is because (according to W3Techs.com) is the most widely used. The 81.4% of the servers are using it, way more than the 16,4% of the second (ASP.NET).
+
+> **Links:**
+
+> - [W3Techs.com - Overview server-side programming languages](http://w3techs.com/technologies/overview/programming_language/all)
+
+> - [Wikipedia - Server-side scripting](https://en.wikipedia.org/wiki/Server-side_scripting)
