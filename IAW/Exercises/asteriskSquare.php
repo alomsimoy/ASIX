@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> </title>
+        <title>Asterisk Square</title>
+        <meta charset='utf-8'>
     </head>
     <body>
 <?php
