@@ -7,7 +7,7 @@ There are a lot of php alternatives as server-side language.
 We can have huge companies' solutions as Microsoft's ASP.NET or Oracle's
 Java, or we can stand to more open solutions like Ruby on Rails, Perl or Python.
 Also we can find client-side programming languages as Javascript used in servers,
-with runtimes like node.js
+with runtimes like node.js.
 Actually, even C could be (with a little bit of work) a server-side programming
 language.
 
@@ -17,30 +17,30 @@ servers are using it, way more than the 16,4% of the second (ASP.NET).
     
 List of Wikipedia's Server-side programming languages:
     
-    * ASP (*.asp)
-    * ActiveVFP (*.avfp)
-    * ASP.NET (*.aspx)
-    * ASP.NET MVC (*.cshtml)
-    * C (*.c, *.csp) via CGI
-    * ColdFusion Markup Language (*.cfm)
-    * Go (*.go)
-    * Groovy Server Pages (*.gsp)
-    * Hack (*.php)
-    * Haskell (*.hs) (example: Yesod)
-    * Java (*.jsp) via JavaServer Pages
-    * JavaScript using Server-side JavaScript (*.ssjs, *.js) (example: Node.js)
-    * Lasso (*.lasso)
-    * Lua (*.lp *.op *.lua)
-    * Progress WebSpeed (*.r,*.w)
-    * Pascal (*.p, *.pas, *.inc, *.px) (example: ModernPascal)
-    * Perl via the CGI.pm module (*.cgi, *.ipl, *.pl)
-    * PHP (*.php)
-    * Python (*.py) (examples: Pyramid, Flask, Django)
-    * R (*.rhtml) - (example: rApache)
-    * Ruby (*.rb, *.rbw) (example: Ruby on Rails)
-    * SMX (*.smx)
-    * Tcl (*.tcl)
-    * WebDNA (*.dna,*.tpl)
+    + ASP (*.asp)
+    + ActiveVFP (*.avfp)
+    + ASP.NET (*.aspx)
+    + ASP.NET MVC (*.cshtml)
+    + C (*.c, *.csp) via CGI
+    + ColdFusion Markup Language (*.cfm)
+    + Go (*.go)
+    + Groovy Server Pages (*.gsp)
+    + Hack (*.php)
+    + Haskell (*.hs) (example: Yesod)
+    + Java (*.jsp) via JavaServer Pages
+    + JavaScript using Server-side JavaScript (*.ssjs, *.js) (example: Node.js)
+    + Lasso (*.lasso)
+    + Lua (*.lp *.op *.lua)
+    + Progress WebSpeed (*.r,*.w)
+    + Pascal (*.p, *.pas, *.inc, *.px) (example: ModernPascal)
+    + Perl via the CGI.pm module (*.cgi, *.ipl, *.pl)
+    + PHP (*.php)
+    + Python (*.py) (examples: Pyramid, Flask, Django)
+    + R (*.rhtml) - (example: rApache)
+    + Ruby (*.rb, *.rbw) (example: Ruby on Rails)
+    + SMX (*.smx)
+    + Tcl (*.tcl)
+    + WebDNA (*.dna,*.tpl)
 
 Links:
 
