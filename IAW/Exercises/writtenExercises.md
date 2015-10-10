@@ -1,8 +1,7 @@
 Written Exercises
 =================
 
-## 1. Find more server-side languages, and look for advantages and disadvantages
-in front of php.
+## 1. Find more server-side languages, and look for advantages and disadvantages in front of php.
 
 There are a lot of php alternatives as server-side language.
 We can have huge companies' solutions as Microsoft's ASP.NET or Oracle's
@@ -18,32 +17,33 @@ servers are using it, way more than the 16,4% of the second (ASP.NET).
     
 List of Wikipedia's Server-side programming languages:
     
-    *ASP (*.asp)
-    *ActiveVFP (*.avfp)
-    *ASP.NET (*.aspx)
-    *ASP.NET MVC (*.cshtml)
-    *C (*.c, *.csp) via CGI
-    *ColdFusion Markup Language (*.cfm)
-    *Go (*.go)
-    *Groovy Server Pages (*.gsp)
-    *Hack (*.php)
-    *Haskell (*.hs) (example: Yesod)
-    *Java (*.jsp) via JavaServer Pages
-    *JavaScript using Server-side JavaScript (*.ssjs, *.js) (example: Node.js)
-    *Lasso (*.lasso)
-    *Lua (*.lp *.op *.lua)
-    *Progress WebSpeed (*.r,*.w)
-    *Pascal (*.p, *.pas, *.inc, *.px) (example: ModernPascal)
-    *Perl via the CGI.pm module (*.cgi, *.ipl, *.pl)
-    *PHP (*.php)
-    *Python (*.py) (examples: Pyramid, Flask, Django)
-    *R (*.rhtml) - (example: rApache)
-    *Ruby (*.rb, *.rbw) (example: Ruby on Rails)
-    *SMX (*.smx)
-    *Tcl (*.tcl)
-    *WebDNA (*.dna,*.tpl)
+    * ASP (*.asp)
+    * ActiveVFP (*.avfp)
+    * ASP.NET (*.aspx)
+    * ASP.NET MVC (*.cshtml)
+    * C (*.c, *.csp) via CGI
+    * ColdFusion Markup Language (*.cfm)
+    * Go (*.go)
+    * Groovy Server Pages (*.gsp)
+    * Hack (*.php)
+    * Haskell (*.hs) (example: Yesod)
+    * Java (*.jsp) via JavaServer Pages
+    * JavaScript using Server-side JavaScript (*.ssjs, *.js) (example: Node.js)
+    * Lasso (*.lasso)
+    * Lua (*.lp *.op *.lua)
+    * Progress WebSpeed (*.r,*.w)
+    * Pascal (*.p, *.pas, *.inc, *.px) (example: ModernPascal)
+    * Perl via the CGI.pm module (*.cgi, *.ipl, *.pl)
+    * PHP (*.php)
+    * Python (*.py) (examples: Pyramid, Flask, Django)
+    * R (*.rhtml) - (example: rApache)
+    * Ruby (*.rb, *.rbw) (example: Ruby on Rails)
+    * SMX (*.smx)
+    * Tcl (*.tcl)
+    * WebDNA (*.dna,*.tpl)
 
 Links:
 
-[link](http://w3techs.com/technologies/overview/programming_language/all)
-[link](https://en.wikipedia.org/wiki/Server-side_scripting)
+* W3Techs.com - Overview server-side programming languages [link](http://w3techs.com/technologies/overview/programming_language/all)
+
+* Wikipedia - Server-side scripting [link](https://en.wikipedia.org/wiki/Server-side_scripting)
