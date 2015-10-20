@@ -1,0 +1,53 @@
+5.-Administración del acceso:
+5.1.1.-Cuentas de usuario:
+Las cuentas de usuario representan a cada una de las personas que utilizan un equipo. Se emplean para autentificar la identidad del usuario, autorizar o no el acceso a recursos, realizar auditorias de eventos del sistema o por ejemplo inicios de sesión o el uso de archivos o otros recursos.
+5.1.2.-Cuentas de Grupo:
+Se utilizan para conceder permisos a usiarios similares y simplificar la administración de las cuentas.
+
+Una cuenta de usuario puede pertenecer a un grupo, a más de uno o a ninguno.
+
+El tipo de cuenta de usuario representa una forma sencilla de describir la pertenencia a un grupo de seguridad. En el caso de windows 7 se clasifica cada cuenta de usuario en uno de los siguientes tres grupos:
+-Administrador: Este grupo por defecto incluye la primera cuenta que se crea en el equipo, además de una cuenta de administrador que esta deshabilitada y oculta de manera predeterminada.
+Los administradores tienen control completo del sistema.
+
+-Usuario estándar: En windows XP se las llamava cuentas limitadas. En Win 7 han visto aumentados notablemente sus privilegios. Muchas tareas que en Win XP unicamente podian ejecutarlas los Administradores, ahora pueden realizarlas estos usuarios. Como cambiar la Ip.
+
+-Invitados:Los privilegios de las cuentas de este grupo son los mismos que los de las cuentas estándar pero con algunas limitaciones, por ejemplo, no se puede crear contraseña para estas.
+
+El motivo de que el Administrador en Win7 este deshabilitado es que esta tiene una capacidad exclusiva, NO esta sujeta al UAC(User Account Control). Concepto introducido en Win Vista que interviene cada vez que un usuario o un programa intenta realizar una tarea administrativa y solicita el consentimiento de un administrador antes de iniciar lo que podia ser una operación arriesgada. Todas las demas cuentas administrativas, se ejecutan en principio con privilegios de usuario estándar, a menos, que el usuario de su consentimiento para su elevación. La cuenta administrador se ejecuta siempre con todos los privilegios y nunca necesita consentimiento para la elevación.
+
+En grandes redes basadas en dominios ACTIVE DIRECTORY los grupos son una valiosísima herramienta administrativa ya que simplifican la tarea de garantizar que todos los miembros con necesidades de acceso comunes tengan privilegios idénticos, sin embargo, no es aconsejable crear o usar grupos distintos de los predefinidos en equipos independientes o basados en grupos de trabajo.
+
+a/- Panel de Control - Cuentas de Usuario
+
+b/- Opciones Avanzadas de Cuentas de Usuario (NETPLWIZ.EXE)/(Control_UserPasswords2(XP))
+
+c/- Menú contextual equipo - Administrar - Usuarios y Grupos Locales
+
+d/- Línea de Comandos
+	NET USER
+	NET LOCALGROUP
+
+
+   5.2.- Introducción al Control de Acceso de Windows
+    Todos los recursos del sistema(archivos, impresoras, etc...) cuentan con un propietario que decide quien accede o no a dicho recurso, normalmente el creador de un recurso, es el propietario, no obstante, los administradores pueden tomar posesión de un recurso que ellos no han creado.
+    Para determinar que usuarios tienen acceso a un recurso, windows asigna un SID(Security Identifier).
+    Cuando un usuario inicia sesión, el sistema primero valida el nombre de usuario y la contraseña y segundo, crea un token de acceso de seguridad formado por: |.-Nombre de Usuario
+                                                         |.-SID
+                                                         |.-Lista de Grupos
+       Cada recurso tiene una lista de control de accesos(ACL) |.-ACE Tenemos tantas ACE como usuarios tienen permiso.
+        |.-ACE
+        |.-ACE
+        |.-ACE
+
+       Todo esto se gestiona con Permisos en NTFS. ACLUI.CHM
+
+   5.3.- Privilegios: Permisos y Derechos:
+    Permiso:
+    -Es la capacidad de acceder a un objeto de una forma definida. Ej:(Escribir en un archivo NTFS, modificar una cola de impresión...)
+    -
+                       Los asigna el propietario o un administrador a través del cuadro de dialogo: propiedades del recurso
+-Se asignan a objetos.
+
+Derecho:
+-Es la capacidad de ejecutar una serie de acciones en el sistema. Ej: Configurar el reloj, instalar un driver, apagar el sistema

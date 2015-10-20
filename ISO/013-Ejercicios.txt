@@ -1,0 +1,9 @@
+Carta al banco.doc               CARTAA~1.DOC
+Carta a Cristina.doc             CARTAA~2.DOC
+Carta al banco                   CARTAA~1
+Factura.doc                      Factura.doc
+Factura.Gastos de viaje          FACTUR~1.GAS
+Factura.Gastos de viaje.Enero    FACTUR~1.ENE
+Factura.Comidas.Enero            FACTUR~2.ENE
+FS1.html                         FS1~1.HTM
+C++.exe                          C__~1.EXE

@@ -1,0 +1,66 @@
+Capturas de pantalla
+	Imágenes en general:
+		Reescalar la imágen manteniendo la proporción.
+		El texto de las imágenes debe ser legible.
+		No cortar información vital.
+	Consola de comandos:
+		Para reducir el consumo de tinta, invertir los colores.
+	Explorador de archivos:
+		Mostrar en vista detalles.
+		Mostrar el arbol en la columna izquierda.
+		Extensiones visibles.
+		Columnas configurables. Mostrar la información adecuada.
+		Puede interesar que los archivos ocultos y del sistema sean visibles.
+	Texto claro, legible y conciso:
+		Numerar pasos.
+		Parrafos cortos.
+		Utilizar viñetas.
+		Revisar lo que se escribe.
+	Alerta al copiar y pegar:
+		No hacer referencia a imágenes que no existen.
+		Cuidado con la publicidad encubierta.
+		Alerta con los numeritos de wikipedia
+
+Presentación
+	Portada:
+		Limpia.
+		Sin fondos.
+		NO usar WordArt.
+	Índice:
+		Estructurarlo.
+		Usar identación.
+		Mostrar número de página.
+		Numerar páginas
+	Contenido:
+		El enunciado debe estar presente.
+		Usar saltos de página.
+	Problemas encontrados:
+		Documentar los problemas encontrados (individualmente).
+		Usar formato en común para documentarlos.
+		Documentar también la solución (D'oh!).
+	Opinión personal:
+		Puntos de discusión.
+			Documentarlos y argumentar el porqué de las decisiones.
+	Bibliografia:
+		Mejor organizada por preguntas.
+		Distinguir libros, webs, prensa...
+
+Observaciones
+	Los nombres de los componentes del grupo únicamente deben aparecer en portada y opiniones. No en piés ni en encabezados.
+	Hay que entregar una copia en papel (Puede ser en blanco y negro)
+	Hay que conservar una copia digital.
+	Ojo a la versión de VirtualBox.
+
+Forma de entrega
+	Cada pregunta dentro de una funda de plástico.
+	Todas las fundas dentro de una carpeta normal y corriente.
+
+Medidas Anticopia
+	En las capturas de pantalla se debe ver la fecha y la hora actualizada.
+	Las capturas de pantalla de la consola debe haber una primera orden (erronea) que sea nuestro nombre.
+	Debemos señalizar aquellas partes que queremos indicar en el contexto.
+		Dichas señalizaciones, este año, serán de color naranja.
+		Rectangulos perfectos (no redondeados)
+		Numeración
+		Subrayado
+

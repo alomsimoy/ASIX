@@ -1,0 +1,118 @@
+LINUX
+Basado en UNIX
+Multiusuario
+
+TELNET 172.10.0.40
+Login: user18
+Password: user18
+
+salir:
+	logout
+	exit
+	CTRL-D
+
+prompt
+
+histórico de las órdenes previamente introducidas
+
+podemos interrumpir la ejecución de una orden mediante CTRL-C
+
+en una misma línea podemos introducir más de una orden separándolas con ";"
+	$ orden1 ; orden2; ...
+
+Podemos dividir una orden en varias líneas conectando cada línea mediante "\"
+	$ inicio_orden \
+	  sigue_la orden \
+	  final_orden
+
+estrurcura
+	$ orden 	opciones 	argumentos
+
+
+	opción:
+		código consistente en una letra precedida por un guión "-", que modifica el tipo de acción que efectuará la orden
+	argumentos:
+		objetos sobre los que actúa la orden
+
+	$ cp -i fichero1 fichero2
+
+	No todas las órdenes presentan en su sintaxis estas 3 partes.
+	El orden es:
+		Obligatorio en Unix
+		En Linux funciona cualquier combinación
+
+	Cuando se especifican varias opciones, podemos unificarlas en un solo guión o escribirlas por separado
+		$ ls -l -a
+		es lo mismo que
+		$ ls -la
+
+Órdenes
+	passwd
+		Permite modificar la contraseña de acceso al sistema.
+
+	whoami
+		Muestra el nombre del usuario asociado con la cuenta actual.
+
+	who
+		Informa acerca de los usuarios conectados en ese instante.
+		-T 		Permite consultar el estado de un terminal respecto a la capacidad de recepción de mensajes.	
+
+	uname
+		Se utiliza para obtener información acerca de nuestro sistema Unix/Linux.
+
+	date
+		Presenta en pantalla el día y la hora del sistema.
+
+	cal
+		Permite visualizar el calendario correspondiente a un determinado mes de un determinado año.
+
+	clear
+		Limpia la pantalla.
+
+	man orden
+		q 			salir de man y regresar al prompt.
+		/cadena		busca una cadena hacia delante.
+		?cadena		busca una cadena hacia atrás.
+		n 			repite la última búsqueda.
+		f 			avanzar página.
+		b 			retroceder página.
+
+	write
+		permite enviar mensajes en tiempo real a otro usuario, de forma que el mensaje enviado aparecerá inmediatamente en la pantalla del destinatario.
+			$ write usuario
+			bla, bla, ... INTRO
+			bla, bla, ... INTRO
+
+		Para terminar la conexión, se introduce CTRL-D en una línea aparte.
+		En el terminal receptor aparecerá un indicador EOF indicando tal situación.
+
+		Podemos convertir una comunicación write en bidireccional si el usuario del terminal receptor ejecuta:
+			$ write usuario_emisor
+
+		Los mensajes que van y vienen entre uno y otro aparecerán ambas pantallas. Se ha adoptado un convenio basado en el protocolo utilizado en las comunicaciones por radio:
+			-o- / -c- (over / cambio)
+			-oo- / -cc- (over and off / cambio y corto)
+
+		La comunicación se interrumpe cuando se pulsa CTRL-D en ambos terminales.
+
+	talk
+		Permite establecer una comunicación realmente bidireccional entre dos usuario.
+
+		Procedimiento:
+			Usuario emisior
+				$ talk usuario
+			Usuario receptor recibe un mensaje indicando que le estamos llamando junto a nuestro nombre. Si quiere contestar ha de teclear
+				$ talk usuario
+
+		Establecida la conexión, la pantalla queda dividida en dos partes:
+			Parte superior: aparece lo que tecleamos nosotros
+			Parte inferior: aparece lo que teclea el otro
+
+	mesg
+		permite activar y desactivar la recepción de mensajes.
+		Es util cuando deseamos no ser interrumpidos por la aparición repentina de mensajes provocados por write y talk
+			$ mesg [y|n]
+				sin arg. 	Muestra el estado actual de mesg.
+				y			Activa la recepción.
+				n 			Desactiva la recepción.
+

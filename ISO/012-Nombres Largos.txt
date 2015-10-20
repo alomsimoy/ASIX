@@ -1,0 +1,30 @@
+Un fichero es LARGO si cumple alguna de las siguientes características
+   Tiene más de 8 posiciones en el nombre
+
+   Tiene más de 3 posiciones en la extensión
+
+   contiene espacios en blanco o algun caracter no valido en nombres cortos
+      C++.c
+
+La longitud máxima de 255 carácteres.
+
+La longitud máxima de un nombre completo (incluyenod letra de unidad y ruta absoluta) de archivo o directorio que el SO puede manejar es de 260 caracteres.
+
+Carácteres prohibidos:
+   < > : " / \ | ? *
+
+   Se pueden usar espácios en blanco, poner más de un punto...
+
+Palabras reservadas:
+   CON, PRN, AUX, NUL,
+   COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9
+   LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9
+
+Podemos utilizar los nombres largos en la consola encerrando el nombre entre comillas ""
+
+Cadavez que se crea un nombre largo, windows crea automáticamente un nombre corto (8.3 alias) ya que las aplicaciones diseñadas para entornos DOS no reconocen.
+
+Para crear un nombre corto a partir de un nombre largo:
+   Ver fotocópia
+
+

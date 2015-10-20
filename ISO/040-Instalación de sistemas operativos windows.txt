@@ -1,0 +1,76 @@
+4 Instalación de sistemas operativos windows
+	4.1 Instalacion de SO
+		4.1.1 Instalacion de Windows XP / 2003 Server
+		4.1.2 Instalación de Windows 7 / 2008 Server
+		
+	4.2 Secuencia de inicio del SO
+		4.2.0 Conceptos
+			Bootmanager
+				Es un programa que cuando tengo varios sistemas operativos instalados, me muestra un menú para poder elegir el sistema operativo a iniciar. Una vez elegido el SO, se le pasa el control a otro programa llamado bootloader
+			Bootloader
+				Es el programa encargado de arrancar el sistema operativo.
+			En XP, ntldr (con la configuración de boot.ini) hace las veces de bootmanager y bootloader.
+			En W7, el bootmanager es bootmgr (con la configuración de BCD), y el bootloader es winload.exe.
+			System partition
+				Es la partición donde reside el gestor de arranque.
+			Boot partition
+				Es la partición donde reside el sistema operativo en el que iniciamos sesión.
+		4.2.1 Secuencia de inicio de Windows XP
+		4.2.2 Secuencia de inicio de Windows 7 / 2008 Server
+		4.2.3 Secuencia de inicio dual
+			4.2.3.1 WinXP + WinXP
+				Suponemos 2 particiones. La primera con WinXP y la segunda vacia.
+				La segunda instalación, sobreescribe el IPL y la tabla de particiones del MBR, el VBC del PBR de la primera partición, y el ntldr y boot.ini de la primera partición, y luego crea en la segunda partición el VBC en el PBR, y la instalación de WinXP en si. En esta instalación no hay ntldr ni boot.ini.
+
+			4.2.3.2 WinXP + Win7
+				Suponemos 2 particiones. La primera con WinXP y la segunda vacia.
+				La instalación generará un nuevo MBR (IPL + TP), y reescribe el VBC del PBR por el de Win7, para que busque bootmgr y BCD en la partición. En la segunda partición, se crea un PBR de Win7 y la instalación de Win7. En el BCD de la primera partición se registran las entradas de WinXP y de Win7.
+				Si elegimos XP en el arranque, es el bootmgr quien le da el control al ntldr, en lugar de el VBC.
+
+			4.2.3.3 Win7 + WinXP
+				Suponemos 3 particiones. La primera, System partition de Win7, la segunda, Boot partition de Win7 y la tercera vacia.
+				La instalación sobreescribe el MBR, y sobreescribe el VBC del PBR del System partition de Win7, que llamará al ntldr (con la ayuda de boot.ini), y este, no reconocerá Win7, y creará una sola entrada para WinXP, en la tercera partición.
+
+		4.2.4 Secuencia de inicio múltiple
+			4.2.4.1 WinXP + WinXP + Win7
+				Suponemos 3 particiones. La primera y la segunda con WinXP, conteniendo la primera el ntldr y el boot.ini.
+				La  instalación genera un nuevo MBR, un nuevo VBC de Win7 en el PBR de la primera partición, y creará un bootmgr con su BCD en la primera partición.
+				El bootmgr cargará winload.exe de la tercera partición si queremos iniciar Win7, y cargará el ntldr si queremos cargar alguno de los 2 WinXP. El ntldr mostrará un nuevo menú para seleccionar que WinXP seleccionar.
+
+		4.2.5 Limitaciones del gestor de inicio de microsoft (Que es una mierda)
+			MBR bootmgr
+				Modifica el IPL de microsoft por el IPL de otro fabricante que permite establecer como activa una partición en el momento del inicio.
+			bootmgr PARTITION
+				Se substituye el IPL de microsoft por otro que siempre apunta al PBR de una partición dedicada, independientemente de la partición activa. En esta partición hay un bootmanager que puede cargar cualquier otra partición.
+
+	4.3 Estructura de Directorios del S.O.
+		Leyenda{
+		** = carpetas
+		}
+
+		(NTLDR, boot.ini, pagefile.sys, Archivos de Programa**, Documents and Settings**[All Users**, Default User**, Asix**[Configuración Local**, Datos de Programa**, Documentos Recientes**, Escritorio**, Menú de inicio**[Programas**[Inicio**(todo lo que se cuelgue de ahí se iniciara al iniciar el equipo)]], Mis Documentos[Mis Imagenes, Mi Música, Mis Videos], NTUSER.dat]...], Windows[System**, System32**{Config**, Drivers**, Spool**, *DLL, CMD.exe, Atrib.exe, ..., Taskmgr.exe}, Fonts**, Help**, Repair**, Tasks**, Temp**, Regedit.exe], Recycler, System Volume Information)
+
+		Windows:
+			System: Contiene librerias y ejecutables para mantener la compatibilidad con 16bits y S.O. obsoletos.
+			System32: Contiene librerias y ejecutables para el sistema operativo y las aplicaciones pensadas para este.
+				Config: Se crean los archivos de registo.
+				Drivers: Almacena los controladores de los dispositivos perifericos.
+				Spool: Se almacenan las colas de impresión.
+			Fonts: Se instalan todas las fuentes que podrán utilizar nuestas aplicaciones.
+			Help: Ficheros de ayuda del sistema operativo.
+			Repair: Copias de seguridad hechas con NTBACKUP.
+			Tasks: Se guardan las tareas programadas.
+			Temp o TMP(carpeta igual a Temp): Almacena archivos temporales.
+			Regedit.exe: Herramienta para edición del registro.
+
+		Recycler: Hay una carpeta particular para cada usuario, para mantener la privacidad de su papelera.
+
+		System Volume Information: Se almacenan los puntos de resturación.
+
+		Asix:
+			Configuración Local: Aspectos de configuracion del S.O. particulares de este usuario.
+			Datos de Programa: Configuración de programa para cada usuario.
+			Documentos Recientes: Tendremos acceso a los ultimos documentos utilizados por ese usuario.
+			Escritorio: Tendremos todos los elementos definidos para que aparezcan en su escritorio.
+			Menú de inicio: Almacena todo lo que aparece en el botón de inicio de ese usuario.
+			Mis Documentos: Ubicación donde los programas almacenarán por defecto los datos de estos.

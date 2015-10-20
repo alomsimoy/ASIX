@@ -1,0 +1,717 @@
+LINUX
+Basado en UNIX
+Multiusuario
+
+TELNET 172.10.0.40
+Login: user18
+Password: user18
+
+salir:
+	logout
+	exit
+	CTRL-D
+
+prompt
+
+histórico de las órdenes previamente introducidas
+
+podemos interrumpir la ejecución de una orden mediante CTRL-C
+
+en una misma línea podemos introducir más de una orden separándolas con ";"
+	$ orden1 ; orden2; ...
+
+Podemos dividir una orden en varias líneas conectando cada línea mediante "\"
+	$ inicio_orden \
+	  sigue_la orden \
+	  final_orden
+
+estrurcura
+	$ orden 	opciones 	argumentos
+
+
+	opción:
+		código consistente en una letra precedida por un guión "-", que modifica el tipo de acción que efectuará la orden
+	argumentos:
+		objetos sobre los que actúa la orden
+
+	$ cp -i fichero1 fichero2
+
+	No todas las órdenes presentan en su sintaxis estas 3 partes.
+	El orden es:
+		Obligatorio en Unix
+		En Linux funciona cualquier combinación
+
+	Cuando se especifican varias opciones, podemos unificarlas en un solo guión o escribirlas por separado
+		$ ls -l -a
+		es lo mismo que
+		$ ls -la
+
+Ordenes
+	passwd
+		Permite modificar la contraseña de acceso al sistema.
+
+	whoami
+		Muestra el nombre del usuario asociado con la cuenta actual.
+
+	who
+		Informa acerca de los usuarios conectados en ese instante.
+		-T 		Permite consultar el estado de un terminal respecto a la capacidad de recepción de mensajes.	
+
+	uname
+		Se utiliza para obtener información acerca de nuestro sistema Unix/Linux.
+
+	date
+		Presenta en pantalla el día y la hora del sistema.
+
+	cal
+		Permite visualizar el calendario correspondiente a un determinado mes de un determinado año.
+
+	clear
+		Limpia la pantalla.
+
+	man orden
+		q 			salir de man y regresar al prompt.
+		/cadena		busca una cadena hacia delante.
+		?cadena		busca una cadena hacia atrás.
+		n 			repite la última búsqueda.
+		f 			avanzar página.
+		b 			retroceder página.
+
+	write
+		permite enviar mensajes en tiempo real a otro usuario, de forma que el mensaje enviado aparecerá inmediatamente en la pantalla del destinatario.
+			$ write usuario
+			bla, bla, ... INTRO
+			bla, bla, ... INTRO
+
+		Para terminar la conexión, se introduce CTRL-D en una línea aparte.
+		En el terminal receptor aparecerá un indicador EOF indicando tal situación.
+
+		Podemos convertir una comunicación write en bidireccional si el usuario del terminal receptor ejecuta:
+			$ write usuario_emisor
+
+		Los mensajes que van y vienen entre uno y otro aparecerán ambas pantallas. Se ha adoptado un convenio basado en el protocolo utilizado en las comunicaciones por radio:
+			-o- / -c- (over / cambio)
+			-oo- / -cc- (over and off / cambio y corto)
+
+		La comunicación se interrumpe cuando se pulsa CTRL-D en ambos terminales.
+
+	talk
+		Permite establecer una comunicación realmente bidireccional entre dos usuario.
+
+		Procedimiento:
+			Usuario emisior
+				$ talk usuario
+			Usuario receptor recibe un mensaje indicando que le estamos llamando junto a nuestro nombre. Si quiere contestar ha de teclear
+				$ talk usuario
+
+		Establecida la conexión, la pantalla queda dividida en dos partes:
+			Parte superior: aparece lo que tecleamos nosotros
+			Parte inferior: aparece lo que teclea el otro
+
+	mesg
+		permite activar y desactivar la recepción de mensajes.
+		Es util cuando deseamos no ser interrumpidos por la aparición repentina de mensajes provocados por write y talk
+			$ mesg [y|n]
+				sin arg. 	Muestra el estado actual de mesg.
+				y			Activa la recepción.
+				n 			Desactiva la recepción.
+
+	pwd
+	    Muestra la ruta de acceso absoluta del directorio actual.
+		(Util porque en principio en el prompt del sistema Unix unicamente aparece $)
+
+    mkdir
+    	mkdir [-opciones] directorio directorio ...
+    	Crear directorios (Puede crear varios a la vez y en distintos puntos del árbol si utilizamos rutas de acceso.)
+
+    cd
+	    Cambia de directorio de trabajo.
+	    cd .  Propio directorio.
+	    cd .. Directorio padre (espacio entre cd y ..)
+	    cd    Sin argumentos cambia al directorio home del usuario que ejecuta ese cd.
+
+    rmdir
+
+1.2 En linux, solo tenemos un árbol de directorios.
+
+    1.2.1Caracteristicas:
+    1.- Barra directorio root y separador de nombres en una rua de acceso:
+    -DOS:     \
+    -Linux:   /
+    2.- Un directorio es u tipo de fichero que contiene una lista de ficheros.
+
+    3.- Al crear un directorio, se inicializa almacenando dos entradas.
+    . Directorio actual
+    .. Directorio padre
+
+    4.- Rutas de acceso:
+    Ruta Absoluta: Es el nombre completo de una rura de acceso, empezando desde el directorio raíz.
+    Ruta Relativa: Ruta de acceso descrita desde el directorio de trabajo.
+
+    5.- Carácter "~"(Alt 126):
+    Representa el nombre de ruta absoluto de nuestro directorio home.
+
+    6.- Nombre de Archivo:
+   
+    a.- Longitud:
+    UNIX: 14 Caracteres.
+    LINUX: 256 Caracteres. En un principio no podian empezar por un nº.
+
+    b.- Caracter ".": Como primer caracter dentro de un nombre:
+    Los archivos cuyo nombre empiece por ".", son "ARCHIVOS OCULTOS".
+
+    c.- Caracter ".": En medio de el nombre:
+    Tiene el mismo valor que cualquier otro caracter.
+
+    d.- Podemos "simular" extensiones para clasificar los archivos por categorías.
+    Así por ejemplo, algunas extensiones adoptadas por convenio ".c" y ".o" para fuentes y compilados C respectivamente.
+
+    e.- Mayúsculas y Minúsculas son distintas.
+
+Sistema de archivos (II)
+	$more fichero1 fichero2
+		+n 		Comienza a mostrar el archivo en la pagina n.
+		espacio		Página siguiente.
+		nf			Salta hacia delante n numero de pantallas.
+					Si no se especifica n equivale a 1f.
+		nb 			Salta hacia atrás n número de pantallas.
+					Si no se especifica n equivale a 1b.
+		d 			Muestra media pantalla.
+		h 			Help de todas las órdenes de more.
+					Hay mas de las aquí citadas.
+		q 			Sale de la utilidad more.
+
+	$ file archivo1 archivo2
+		Indica el tipo de archivo para cada uno de los archivos indicados como argumentos.
+		$ file -f archivo
+			Archivo es un fichero que contiene nombres de archivos (uno por línea).
+			Muestra el tipo de cada uno de los fiicheros relacionados dentro del argumento archivo.
+   	
+   	$ od
+   		Permite examinar el contenido de un archivo byte a byte.
+   		$ od [-opciones] fichero1 fichero2 ...
+   			input: fichero2 fichero2
+   			output: estándar (pantalla)
+   		$ od [-opciones]
+   			input: estándar (teclado)
+   			output: estándar (pantalla)
+   		[-opciones] destacan las referentes al formato de salida (octal, decimal, hex...)
+
+   	$ cp
+   		$ cp [-opciones] origen destino
+   			Copia el archivo especificado en ORIGEN en DESTINO.
+   			Tanto ORIGEN como DESTINO son archivos.
+   		$ cp [-opciones] origen1 origen2 ... directorio
+   			Copia múltiples ficheros ORIGEN en el directorio especificado como último parámetro.
+   		[-opciones]
+   			opciones relacionadas con la  coincidencia de nombres:
+   				-f 	Sobreescribe destinos existentes sin avisar (por defecto)
+   				-i 	Pide confirmación antes de sobreescribir
+   				-u 	Cuando existe coincidencia de nombres, copia únicamente cuando el fichero origen es más reciente que el destino o no existe un destino con el mismo nombre que el origen.
+   				-b 	Si en el destino existe un archivo cuyo nombre coincide con el origen, al hacer la copia, se guardará en el destino una copia de seguridad del archivo que inicialmente existía.
+   				Este archivo de seguridad tendrá el mismo nombre que el original, seguido del sufijo ~
+   				-S 	Permite utilizar como sufijo de backup un carácter o secuencia distinto al habitual (~)
+
+   	$ mv
+   		Mueve archivos/directorios
+   		Presenta las dos sintacis similares a la orden cp.
+   		Las opciones, son algunas menos que en la orden cp, sin embargo las que existen, realizan funciones similares.
+
+   	$ ln
+   		Permite hacer referencia a un archivo usando diferentes nombres para acceder a él desde distintos directorios.
+   		Los nombres adicionales se conocen como vínculos.
+   		$ ln nombre_original nombre_nuevo
+   		Observaciones:
+   			Puede crearse más de un vínculo sobre el mismo archivo, ejecutando varias veces la orden ln sobre el mismo nombre original.
+   				$ ln arch1 arch2
+   				$ ln arch1 arch3
+   			$ ls -l en un directorio con archivos vinculados, podemos intuir cuáles son éstos porque aparecerán con el mismo n de vínculos, tamaño, fecha y hora.
+   				Solo podemos afirmar con certeza si lo son, si coincide el número de su inodo
+   				El número de inodo es un número único que usa el sistema para identificar a un archivo.
+   				$ ls -i arch1 arch2 arch3
+   			Para borrar un archivo es necesario borrar también todos sus vínculos.
+   			Si suprimimos el archivo original, podemos seguir accediendo al contenido de éste si existe todavía algún vínculo.
+   			Estos vínculos se llaman vínculos duros (hard links).
+   			Existe otro tipo: vínculos simbólicos (symbolic links).
+   				Contiene el nombre de la ruta de acceso del archivo con el que se está vinculado.
+   				Se crean con la opción -s de la orden ln.
+   					$ ln -s arch1
+   				Al crear un ln de estos la información del archivo es distinta (fecha, hora...).
+   				Si se elimina el archivo original, los vínculos simbólicos que sigan existiendo no podrán acceder al archivo.
+   				Se pueden crear vínculos simbólicos a directorios. No sucede así con los vínculos duros.
+   				El n de inodo no coincide.
+
+   	$ find
+   		Permite localizar un archivo (s de un cierto tipo) en una lista de directorios.
+   		$ find directorios -opcion criterio [-opcion criterio ...]	
+   		-name patrón
+   			Busca nombres de arvhicos que coincidan con ese patrón.
+   			$ find lista_directorios -name nombre_archivo
+   		-ls
+   			Realiza un ls con detalles de todos los archivos encontrados.
+   		-type tipo_archivo
+   			Busca archivos de un tipo determinado.
+   				tipos:
+   					d 	directorio.
+   					f 	archivo ordinario (normal).
+   					l 	vínculos simbólicos.
+   		-size nc
+   			Acepta un n como argumento
+   			Busca archivos de n tamaño
+   			Por defecto, se mide en bloques, pero con una c detrás se mide en carácteres (bytes).
+   			Se puede utilizar los prefijos +/- para buscar archivos de tamaño superior inferior a n.
+
+   		Búsquedas complejas
+   			Cuando se combinan distintas opciones en una orden find, éstas lo hacen implícitamente mediante una operación AND.
+   			Utilizando paréntesis y operadores podemos construir consultas de búsqueda más complejas.
+   				Operador not: 		!
+   				Operador OR: 		-o
+   				abre paréntesis 	\(
+   				cierra paréntesis	\)
+
+  Shell (o intérprete de comandos)
+    es un programa que está continuamente ejecutándose, desde que comienza una sesión de usuario hasta que termina, y que actúa de interface entre el núcleo del S.O. y el usuario.
+
+    Bourne shell
+      Tiene su origen en el primer shell de Unix, llamado "sh" y escrito por Steve Bourne.
+      Dentro de este grupo destacan:
+        el shell Bourne Again (bash)
+        el shell ksh
+
+    Cshell
+      Escrito por Bill Joy. Está más enfocado a facilitar la utilización al usuario. Destacan:
+        el shell Tcsh
+
+    La mayoría de distribuciones Linux establecen bash como shell por defecto para cualquier usuario que se da de alta en el sistema.
+
+    La capacidad interpretativa del shell posibilita las siguientes características, comunes a todos estos shells:
+      Metacarácteres
+        Carácteres especiales que utilizados dentro de un nombre de archivo, permiten especificar más de un archivo como argumento de una orden.
+          *   Substituye varios carácteres o ninguno
+          ?   Substituye un carácter
+          []  Substituye un carácter por alguno de los contenidos.
+            [13] Carácteres 1 y 3
+            [1-3] Carácteres del 1 al 3
+            [!1-3] Todos aquellos que no estén del 1 al 3
+
+          Estos carácteres pueden ser usados como carácteres dentro de un nombre de archivo.
+          Para que el shell no los interprete como metacarácteres, se pone una \ antes.
+      Redireccionamientos
+        < redireccionamiento de la entrada estándar
+        > redireccionamiento de la salida estándar
+        >> redireccionamiento salida con adición
+        2> redireccionamiento del error estándar
+        2>> redireccionamiento del error estándar con adición
+
+        &n permite hacer referencia a los canales estandar
+          $ cat fich1 fich2 >fich3 2>&1
+
+      Canalizaciones
+        El carácter "|" permite conectar varias órdenes de forma que la salida estándar de la primera orden se convierte en la entrada estándar de la segunda y así succesivamente.
+        tee
+         La orden tee hace una copia de la salida estándar en un fichero. Además de obtener un archivo (el que se especifica en la orden tee) podemos visualizar en pantalla el resultado.
+            $ sort dichero | tee ficherord
+      Filtros
+         sort
+            Escribe en la salida estándar el contenido ordenado de los ficheros especificados (se ordena la mezcla de los ficheros) en la orden; y si no se indican, ordena la entrada estándar.
+               $ sort [-opciones] [fichero1 fichero2 ... ]
+            
+            Como filtro a la salida de otras ordenes
+               $ cat fich1|sort
+
+            Comando de ordenación de bases de datos.
+            Las líneas están organizadas por campos.
+               Existe la posibilidiad de ordenación incluso si se trabaja con campos de longitud variable.
+                  jose perez 15 palma
+                  fernando garcia 12 inca
+               Es posible definir un carácter separador de campos. P.Ej. ":"
+                  pepe:15:palma
+                  fernando garcia:12:inca
+
+         grep
+            Muestra las líneas en las que aparece una determinada cadena de caracteres.
+               $ grep [-opciones] cadena [fichero1 fichero2 ...]
+         
+         tr
+            Traduce caracteres de la entrada estándar por otros en la salida estándar.
+               $ tr conjunto1 [conjunto2]
+
+               $ tr oa 34
+               hola y adios
+               h3l4 y 4di3s
+               CTRL-D
+               $
+
+         cut
+            Muestra por la salida estándar solo ciertas partes de las líneas de los ficheros especificados o de la entrada estándar (si no se especifican ficheros).
+               $ cut [-opciones] [fichero1 fichero2 ...]
+
+               $ cat datos
+               123:456:789
+               111:213:141
+               $
+               $ cut -f1,3 -d: datos
+               123:789
+               111:141
+               $
+
+         wc
+            Muestra el n de líneras, palabras y bytes (caracteres) de la entrada estándar o de los archivos especificados.
+               $ wc [-opciones] [fichero1 ...]
+
+            Si no se especifica ninguna opción, muestra el n de líneas, palabras y bytes. y si se espefifica más de un archivo, además de hacer el recuento individual de cada archivo, muestra el total de cada concepto.
+               $ cat datos
+               hola y adios
+               $ wc datos
+                     1     3     12
+               $
+
+         pg
+            Es una orden de paginación (como el more)
+
+            Es una orden Unix (¡¡¡NO ESTA PRESENTE EN LINUX!!!)
+               MENTIRAA!
+
+      Alias
+         Se usa la orden alias para crear otro nombre (además del original) con el que invocar a una orden dada.
+            $ alias nombre=orden
+         Utilizando apóstrofos, podemos definir una orden con opciones y argumentos.
+            $ alias nombre='orden opciones ...'
+            
+         Consulta de todos los alias definidos.
+            $ alias
+         Suprimir un alias
+            $ unalias
+
+      Variables
+         Definición
+            nomvar=valor
+         Uso
+            $nomvar
+         Ordenes
+            $ unset nomvar
+         Cuando se ejecuta un guión, se crea un shell subordinado al shell que lo ha lanzado.
+            Es decir, contamos con dos shells:
+               Uno de entrada (en el que se inició la sesión)
+               Otro subordinado (generado por el de entrada para el guión)
+            Cuando el guión termina su ejecución, también finaliza su shell, y regresamos al shell desde el que fue ejecutado.
+            Un guión puede a su vez llamar a otro guión, y así sucesivamente.
+            Cada guión que se ejecuta supone un shell subordinado al shell que lo ha lanzado.
+            Es decir, podemos tener varios shel1, cada uno anidado dentro de otro.
+            Las variables que se definen en un shell sólo existen en éste, en el shell que las ha creado.
+            Es decir, podríamos decir que una variable esta oculta dentro de su shell y que ningún otro shell puede hacer referencia a ella.
+            Para ello el shell que genera la variable ha de ejecutar:
+               $ export variable
+
+               El shell subordinado recibe una COPIA de las variables exportadas.
+
+            Existen dos áreas de memoria incorporadas al Shell para almacenar variables:
+               Área local de datos:
+                  Cuando se define una variable se le asigna memoria de esta área. Las variables de esta área son privadas de este Shell.
+               
+               Entorno:
+                  Las variables exportadas pasan del área anteriormente descrita a esta área de entorno, y una copia de éstas es la que recibirá cualquier Shell hijo en su área de entorno.
+
+            Orden set
+               Informa de las variables de las dos áreas mezcladas.
+
+            Orden env
+               Muestra solo las variables del entorno.
+
+            Las variables creadas por el sistema suelen ser en mayusculas
+               HOME, LOGNAME, PATH...
+
+      Histórico de ordenes
+         HISTSIZE
+            Por defecto se configura a 500/1000. Controla el número de sucesos (líneas) que guardará (recordará) el sistema.
+         HISTFILE
+            El histórico de órdenes basa su funcionamiento en la existencia de un archivo ASCII en el que se almacenan los sucesos. Por defecto, es el archivo .bash_history que cada usuario tiene en su directorio home.
+$
+Permisos de archivos
+  Usuarios y grupos
+    Dos categorias de usuario:
+      Usuario root. Es el administrador del sistema. Hay un solo usuario root.
+      Usuarios normales.
+    Los usuarios se organizan ("agrupan") en grupos para facilitar la gestión de éstos.
+    Un usuario puede pertenecer a varios grupos.
+    De todos los grupos a los que pertenece un usuario, en un momento determinado siempre tendremos:
+      Uno de los grupos que estará siendo tratado por el sistema como GRUPO PRIMARIO o ACTIVO.
+      El resto de grupos serán GRUPOS SECUNDARIOS.
+    El grupo ACTIVO es el grupo por defecto para determinadas operaciones de este usuario.
+    Tanto los usuarios como los grupos pueden identificarse por:
+      Nombre: Asignado por el usuario root al crearlos.
+      ID: Normalmente asignado por el sistema.
+        uid: identificador de usuario.
+        gid: identificador de grupo activo.
+
+  Propiedad de un fichero
+    Cuando un usuario crea un fichero, automáticamente el sistema registra:
+      A este usuario como el USUARIO PROPIETARIO del fichero.
+      Al grupo al que pertenece este usuario y que en ese instante está coo grupo activo, como el GRUPO PROPIETARIO del fichero.
+
+  Permisos
+    Cada fichero esta dotado de una serie de atributos que indican lo que pueden hacer los usuarios del sistema con él.
+    Se trata de una secuencia de 9 atributos divididos en tres grupos de tres atributos cada uno. También hay una letra adicional al inicio de esta secuencia indicando si es directorio, vinculo, fichero...
+
+      _ | _ _ _ | _ _ _ | _ _ _
+           user   group   other
+
+      Primera letra 
+        d directorio
+        l link
+        - fichero
+
+      permisos
+        r lectura
+        w escritura
+        x ejecución
+        - sin permiso
+
+      Los permisos no significan lo mismo para ficheros que para directorios:
+        ficheros
+          r (lectura)
+            leer y consultar
+          w (escritura)
+            editar y modificar
+          x (ejecución)
+            ejecutar el fichero
+
+        directorio
+          r (lectura)
+            examinar el contenido (ls)
+          w (escritura)
+            creación y eliminación de ficheros dentro de este directorio (no ese mismo)
+          x (ejecución)
+            el usuario puede pasar por el directorio (cd)
+
+  Ordenes
+    id
+      Permite consultar los datos identificativos de un usuario determinado.
+      $ id
+      uid=1000(alomsimoy) gid=1000(alomsimoy)
+      grupos=1000(alomsimoy),7(lp),10(wheel),108(vboxusers),997(bumblebee),1001(printadmin)
+
+    groups
+      Permite consultar los grupos a los que pertenecen los usuarios especificadoes.
+      $ groups [usuario usuario ...]
+
+    ls -l
+      Muestra datos sobre el USUARIO PROPIETARIO y el GRUPO PROPIETARIO, así como los permisos de lectura y escritura.
+
+    newgrp
+      Cambiar de grupo activo. Crea un shell "hijo" en el cual tenemos como grupo activo, el especificado en la orden.
+      $ newgrp nombregrupo
+      Esto significa que los archivos que creemos a partir de ahora y hasta que abandonemos este shell "hijo" tendrán como GRUPO PROPIETARIO este nuevo grupo activo.
+
+    chown
+      (Change owner) Permite ceder la propiedad (tanto de usuario como de grupo) del fichero.
+      Sólo root.
+
+    chgrp
+      (Change group) Permite cambiar el GRUPO PROPIETARIO de los ficheros especificados.
+      Cualquier usuario propietario del fichero o root.
+
+    chmod
+      (Change mode) Permite modificar los permisos de un determinado fichero.
+      Método simbólico:
+        $ chmod grupo_de_permiso +-=permiso ... fichero ...
+          grupo_de_pemiso: u g o a
+            u user
+            g group
+            o other
+            a all
+          permiso: r w x
+          +-=
+
+        $ chmod go+wx fichero1
+          Se concede permiso de escritura(w) y ejecución (x) al grupo propietario (g) y al resto de usuarios (o) sobre fichero1.
+          Cualquier usuario propietario de lo que quiere modificar.
+
+      Método absoluto
+        r w x | r w x | r w x
+        _ _ _ | _ _ _ | _ _ _
+        1 1 1 | 1 1 1 | 1 1 1
+          7       7       7
+
+        r w x | r - - | - - -
+        _ _ _ | _ _ _ | _ _ _
+        1 1 1 | 1 0 0 | 0 0 0
+          7       4       0
+
+        $ chmod 755 prog
+        $ ls -l prog
+        -rwxr-xr-x    ...etc...
+
+    umask
+      La orden umask establece una máscara de permisos que establece los permisos que adquiere un archivo/directorio al ser creado.
+        666 and not umask = permisos por defecto al crear un archivo
+        777 and not umask = permisos por defecto al crear un directorio
+      Normalmente umask está definida a 022 con lo que 
+        644 (rw-r--r--) permisos por defecto para archivos
+        755 (rwxr-xr-x) permisos por defecto para directorios
+      $ umask      muestra el valor dactual del umask
+      $ umask 025  establece una nueva máscara 025
+      $ umask 000  establece una nueva máscara 000
+
+Run levels
+  Los niveles de ejecución definen cómo se inicia el sistema y qué servicios están disponibles en el sistema cuando éste está en funcionamiento.
+    0   Halt.
+    1   Modo monousuario. Se suele utilizar para realizar labores de mantenimiento o corrección del sistema.
+    2   Modo multiusuario local sin soporte de red.
+    3   Modo multiusuario completo con red.
+    4   No utilizado.
+    5   Modo multiusuario completo con red y entorno gráfico.
+    6   Reboot.
+
+  Existen distintas formas de especificar el nivel de ejecución:
+    En el archivo /etc/inittab, mediante una línea initdefault
+    Una vez ya iniciado el sistema, podemos en cualquier momento cambiar el run level mediante la orden
+      init nivel
+    La orden runlevel (sólo root) permite consultar el runlevel anterior y el runlevel actual.
+
+El programa /sbin/init
+  Es directamente iniciado por el kernel.
+  Es el padre de todos los procesos, de forma que todos los demás programas son arrancados por él o por alguno de sus procesos hijo.
+  El archivo /etc/inittab contiene la configuración de init.
+  En este archivo se definen:
+    El runlevel con el que se iniciará el sistema
+    La definición de qué procesos deben arrancarse para cada runlevel. Todos estos procesos están almacenados en el directorio /etc/init.d
+
+  Directorio /etc/init.d
+    Cuando se cambia de runlevel se ejecuta el guión /etc/init.d/rc, el cual a su vez es el encargado de:
+      1. Ejecutar una serie de scripts que detienen los procesos propios del nivel actual. Se les conoce como stop scripts, y su nombre siempre empieza por K.
+      2. Ejecutar una serie de scripts que activan los procesos propios del nuevo nivel. Se les conoce como start scripts, y su nombre siempre empieza por S.
+    Todos los guiones se encuentran en este directorio.
+    Los start scripts y los stop scripts no son más que
+      una colección de enlaces simbólicos con mombres S* y K*
+      organizados en subdirectorios /etc/init.d/rcX.d para cada run level X que apuntan a guiones del directorio /etc/init.d
+
+Gestión de usuarios
+  Ordenes desde el shell
+      useradd   Creacion de usuarios
+      usermod   Modificación de usuarios
+      userdel   Eliminación de usuarios
+      chfn      Modifica descripción (Full Name, n teléfonos, ...) de un usuario
+      chsh      Permite modificar el shell de entrada de un usuario determinado (por defecto bash)
+      groupadd  Creacion de grupos
+      groupmod  Modificación de grupos
+      groupdel  Eliminación de grupos
+      pwck      (password check) busca en /etc/passwd posibles errores de formato, aśí como posibles inconsistencias (usuarios duplicados, usuarios sin directorio home, ...)
+      grpck     (group check) Busca en /etc/group posibles errores de formato, así como posibles inconsistencias.
+      passwd    Modificación de passwor, bloqueo/desbloqueo de cuentas de usuario, ...
+
+    Archivo /etc/passwd
+      Cualquier operación de gestión de usuarios individuales queda registrada en el archivo /etc/passwd, donde para cada usuario del sistema existe una línea:
+        Username:password:userID:groupID:Comment:Home_directory:login_shell
+          Username Nombre con el que el usuario hace login
+          password Contraseña codificada de la cuenta de usuario. Aparece una x, porque la contraseña encriptada realmente reside en /etc/shadow
+          userID Número único asignado por el sistema
+          groupID 
+          Comment
+          Home_directory
+          login_shell
+
+    Archivo /etc/group
+      Es el archivo eequivalente al anterior, pero aplicado a la gestión de grupos.
+      Para cada grupo, existe una línea en este archivo con la siguiente información:
+        groupname:password:group_id:members
+
+    Archivos /etc/shadow y /etc/gshadow
+      Complementan a /etc/passwd y a /etc/group respectivamente.
+
+      Contienen las contraseñas encriptadas junto a información administrativa de éstas (cuando expiran, cuando fueron modificadas por última vez, ...)
+
+    Directorio /etc/skel
+      Este directorio contiene un conjunto de archivos que son copiados al directorio propio de un usuario cuando el usuario es creado.
+      Desde esta forma proveemos a un nuevo usuario de una mínima configuración inicial.
+      Todos los archivos aquí  contenidos son copiados al home de cualquier usuario que creemos.
+
+  Utilidad YaST (suse)
+  Utilidades desde el entorno gráfico
+  Edición directa de:
+    los ficheros.
+    estructura de archivos y directorios que sustentan la gestión de usuarios y grupos.
+
+  Archivo /usr/sbin/useradd
+    Programa
+  Archivo /etc/default/useradd
+    Configuración por defecto de useradd
+
+  Orden su
+    Permite conmutar el id de presentación temporalmente, sin necesidad de logout.
+    Permite conmutar a cualquier usuario, (por defecto root).
+
+  Orden sudo
+    Se utiliza para poder ejecutar una orden con privilegios de otro usuario, incluido el administrador.
+    El fichero /etc/sudoers permite configurar el funcionamiento de esta orden.
+
+  Comunicación entre administrador y usuarios
+    Además de las órdenes de comunicación entre usuarios ya vistas, tenemos
+      Orden wall (write all)
+        utilidad de administrador que envía simultáneamente e inmediatamente un mensaje a todos los usuarios que estén en ese momento conectados al sistema.
+      Archivo /etc/motd (message of the day)
+        el contenido de este archivo es impreso en pantalla cada vez que un usuario inicia sesión.
+
+Archivos de dispositivo
+  Todos los periféricos son utilizados por Linux, a través de archivos especiales (controladores o archivos de dispositivo).
+  Estos controladores, contienen la información necesaria para que el sistema pueda utilizar un periférico determinado.
+  De esta forma, el sistema operativo es independiente de los detalles específicos de un periférico determinado, ya que estos detalles son manejados por el archivo de dispositivo o controlador. El sistema operativo simplemente indica al periférico que realice una tarea determinada, mientras que el archivo de dispositivo indica cómo ha de hacerla.
+  Características de los archivos de dispositivo:
+    Se localizan en el directorio /dev
+    Se identifican por:
+      El nombre: Los nombres han sido diseñado para que reflejen la tarea de cada periférico.
+        -Las unidades de disco SCSI: empiezan con /dev/sda
+        -Terminales /dev/tty (teletype)
+        -Controladores de las tarjetas ethernet por /dev/eth
+      Dos números:
+        Major number coincide para todos los dispositivos del mismo tipo. (8 para cada /dev/sda*)
+        Minor number permite diferenciar entre los dispositivos del mismo tipo
+    Hay dos tipos de dispositivos:
+      de bloques
+        Transmiten los datos por bloques (p.e.: un disco duro).
+        Tienen una "b" en la primera posición de la "palabra de permisos"
+        Tienen un sistema de archivos montable.
+      de caracteres
+        Transmiten los datos carácter a carácter o como un flujo continuo de datos.
+        Tienen una "c" en la primera posición de la "palabra de permisos"
+        No tienen un sistema de archivos montable: terminales, impresoras, ...
+  Sistema de archivos
+    Es la forma lógica en la que están organizados los archivos sobre los dispositivos físicos, para poder acceder a la información.
+    Sistemas de archivos Linux:
+      ext2, ext3, ext4
+      ReiserFS
+      xfs
+    De cara a la visión final que los usuarios tienen:
+      Cada sistema de archivos tiene su propio árbol de directorios.
+      Además existe un árbol de directorios principal que comienza en el directorio raíz /.
+      Este árbol de directorios principal, es el único al que tienen acceso los usuarios, de forma que si necesitamos acceder a algún archivo perteneciente a otro árbol de directorios, es preciso conectarlo al árbol de directorios principal.
+      Esta operación se conoce como montar
+      El montaje de un sistema de archivos:
+        Sólo puede realizarlo el usuario root.
+        Se realiza con la orden mount:
+          # mount arch_dispositivo pto_montaje
+
+          P.E:
+          # mount /dev/fd0 /floppy
+
+      Incluso el sistema de archivos de la partición del disco duro en la que está instalado el sistema operativo, debe ser montada. Nosotros no lo distinguimos ya que al instalar Linux, el proceso de arranque queda configurado para que este filesystem sea montado automáticamente en el punto de montaje /
+      El archivo /etc/fstab contiene la lista de filesystem que se desean montar de forma automática durante el arranque del sistema.
+      Antes de apagar el sistema, todos los filesystems montados, han de ser desmontados. (El sistema los desmonta automáticamente durante el halt).
+      Para desmontar filesystems disponemos de la orden umount:
+        # umount arch_dispositivo
+
+      Si deseamos cambiar una unidad, debemos desmontar el actual y montar el nuevo
+      Aunque no es obligatorio utilizarlos, muchas distribuciones incluyen en su árbol de directorios principal unos directorios vacíos para que sean utilizados como puntos de montaje de ciertos dispositivos.
+      El punto de montaje ha de estar vacío y no se puede estar usando
+      Orden mkfs (root)
+        Crea (formatea) un sistema de archivos.
+        Recordemos que ya vimos en DOS, que la estructura lógica de un disco se creaba cuando se formateaba el disco.
+          # mkfs /dev/fd0   (formatea un diskette)
+          # mkfs /dev/hda2  (formatea la partición IDE hda2)
+      Orden df (cualquier usuario)
+        Es una orden de consulta:
+          de los filesystems montados
+          del filesystem al que pertenece un directorio
+      Orden fsck (root)
+        Chequea un filesystem.
+        

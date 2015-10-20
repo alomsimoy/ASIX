@@ -1,0 +1,31 @@
+Sistema informático
+   Conjunto de recursos
+      Físicos (HARDWARE)
+      Lógicos (SOFTWARE)
+      Humanos (USERS)
+   Resuelven las necesidades de obtención, proceso, almacenamiento y
+   distrubución de información.
+
+Sistema Operativo (Monousuario y Multiusuario)
+   Definición
+      Conjunto de programas que permiten utilizar, compartir y competir por los
+      recursos físicos y lógicos de un sistema informático.
+
+   Tipos de usuarios
+      Final
+         Utiliza herramientas informáticas para desarroyar su función (no
+         informática) dentro de la empresa.
+            Usa: Herramientas ofimaticas, Programas CAD, contabilidad, diseño
+            gráfico...
+
+      Programador
+         Desaroya de herramientas para el resto de usuarios.
+            Usa: Software de programación, editores, compiladores, generadores
+            de código...
+
+      Administrador
+         Administra el sistema, instala y mantiene los recursos, implementa
+         medidas de seguridad, gestiona la formación de usuarios, la resolución
+         de problemas, y tiene relación con usuarios y proveedores.
+            Usa: Sistemas Operativos, drivers, utilidades de evaluación del
+            sistema...

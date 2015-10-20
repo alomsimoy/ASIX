@@ -1,0 +1,24 @@
+   MBR	   PBR				   PBR
+ _______  __________________  __________________________
+|		||	   	:			||		:					|
+|		||	   	:			||		:    ___ 			|
+|		||	   	:			||		:   |W7 \_______ 	|
+|  IPL	|| PBC 	:  bootmgr	|| PBC	:   |			|	|
+|  TP	|| (W7)	:	BCD		|| (W7)	:   |winload.exe|	|
+|		||	   	:			||		:	|___________|	|
+|		||	   	:			||		:					|
+|_______||______:___________||______:___________________|
+			Partición 100MB
+			Reservada por
+			el sistema
+
+
+ ___				 ___
+|XP \_______________|W7 \_______________________
+|BOOTCFG (boot.ini)	|			|/FIXMBR		|
+|FIXMBR	(mbr)		|	BOOTREC {/FIXBOOT		|
+|FIXBOOT (pbr)		|			|/REBUILDBCD	|
+|DISKPART			|	BOOTSECT (pbr)			|
+|CHKDSK				|	DISKPORT				|
+|					|	CHKDSK					|
+|___________________|___________________________|

@@ -1,0 +1,68 @@
+	•	Addins. Archivos de mando de ActiveX .
+
+	•	AppPatch. Contiene la compatibilidad de aplicación .dlls y paquetes de Appfix.
+
+	•	Config. Contiene la configuración .idf de los archivos usados por el sistema de sonido de MIDI. Dependiendo de la configuración de sistema, esta carpeta podría estar vacía.
+
+	•	Connection Wizard. Archivos usados para establecer conectividad de Internet. Puede ser una carpeta vacía.
+
+	•	CSC. El Client Side Cache es donde el contenido de unidades de disco de red son trazados en un mapa de cache, de modo, que el contenido de estas unidades de disco estén disponible fuera de línea. Por defecto, esta carpeta contiene carpetas vacías.
+
+	•	Cursors. Contiene archivos de cursor estáticos y animados. Puedes usar estos archivos configurando el programa de Ratón.
+
+	•	Debug. Contiene los archivos .log que pueden ser usados para eliminar fallos de la conectividad de red y otras funciones de sistema.
+
+	•	Downloaded Program Files. Contiene mandos de ActiveX y los programas Java que han sido descargados de Internet.
+
+	•	Driver Cache. Contiene un subdirectorio de plataforma y una copia del archivo driver.cab de modo que los nuevos dispositivos fácilmente pueden ser instalados sin necesitar el CD de Windows XP. Podría contener SP1.CAB instalando una copia integrada del sistema operativo.
+
+	•	Fonts. Contiene todas las fuentes instaladas.
+
+	•	Help. Contiene los archivos de ayuda usados por las Windows XP. Ayudan al sistema y todas sus utilidades natales.
+
+	•	Ime. Archivos para apoyar al "Input Method Editor". Proporciona el apoyo de lengua a Windows XP.
+
+	•	Inf. Contiene el .inf (la información de sistema) los archivos solían instalar componentes de software. Esto es una carpeta oculta.
+
+	•	Installer. Ubicación para archivos temporales usados según el programa de Instalador de Windows. Esto es una carpeta oculta.
+
+	•	Java. Estructura de carpeta para archivos Java
+
+	•	Media. Contiene archivos (sonido y vídeo) usado por temas de sonido.
+
+	•	Msagent. Archivos de agente de Microsoft, que son servicios de software que apoyan la utilización de carácteres animados en el interfaz de Windows para ayudar a usuarios en la manipulación del sistema operativo.
+
+	•	Msapps. Contiene archivos para la compatibilidad del "backward" con aplicaciones que usen componentes compartidos.
+
+	•	Mui. MUI (Multilingual-User Interface) Los paquetes dan la flexibilidad de empresas en la fabricación de opciones de lengua disponibles a usuarios.
+
+	•	Offline Web Pages. Cualquier página web designada como fuera de línea accesible es almacenada en esta carpeta, con cualquier imagen y otros archivos que van con ello.
+
+	•	PCHEALTH. Contiene archivos y subcarpetas para apoyar el Servicio de Centro de Ayuda de Microsoft. Estos archivos apoyan todos los Servicios de ayuda de Windows XP, incluyendo rasgos como la Ayuda Remota De escritorio.
+
+	•	Prefetch. Contiene los archivos que XP rastrea para la ejecución de prefetch. "Caching" usa con frecuencia archivos que disminuye el tiempo de arranque para usos y optimiza el funcionamiento XP.
+
+	•	Registration. Contiene archivos que apoyan COM + aplicaciones.
+
+	•	Repair. Contiene las copias de reserva del Registro permanentes. El programa NTBACKUP pone al día este directorio con la opción de Estado de Sistema.
+
+	•	Resources. Contiene archivos para apoyar el interfaz del usuario.
+
+	•	Security. Contiene subcarpetas y archivos relacionados con la seguridad. Incluye los archivos que definen la seguridad aplicada durante el sistema y plantillas para asignar nuevos privilegios de seguridad.
+
+	•	Srchasst.Contiene archivos y subcarpetas para el "Search Companion", la actualizacion búsca asistente incluido con XP. Incluye archivos para apoyar una función de un índice que mejora el funcionamiento de búsqueda.
+
+	•	System. Contiene las versiones de 16 bit de los drivers del modo protegido y real y archivos .dll usados por aplicaciones. Proporcionan estos archivos para la compatibilidad del "backward" con más viejas aplicaciones. Adicionales 16 bits drivers pueden ser almacenados en esta carpeta.
+
+	•	System32. Contiene los archivos de sistema operativo principales y árboles de subcarpeta.
+
+	•	Tasks. Contiene las tareas previstas que corren sin la intervención de operador.
+
+	•	Temp. Contiene cualquier archivo temporal usado por el sistema y apliaciones.
+
+	•	Twain_32. Contiene archivos para apoyar la tecnología Twain, permitiendo a un documento de escáner ser insertado en un archivo.
+
+	•	Web. Contiene archivos y subcarpetas para apoyar la impresión de Internet y el acceso de documento.
+
+	•	WinSxS. Una carpeta para almacenar los componentes compartidos de aplicaciones "side-by-side". Estos pueden ser múltiples versiones del mismo uso o el mismo ensamblaje.
+

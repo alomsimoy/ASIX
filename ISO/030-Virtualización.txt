@@ -1,0 +1,26 @@
+3 Virtualización
+	3.1 Introducción
+		Con el hardware informatico actual, se ha diseñado para ejecutar un solo sistema operativo y una sola aplicación, lo que supone la infrautilización de gran parte de las máquinas. La virtualización permite ejecutar varias máquinas virtuales en una misma máquina física donde cada una de ellas comparte los recursos de ese ordenador físico único entre varios entornos. Las distintas máquinas virtuales permiten ejecutar sistemas operativos diferentes y varias aplicaciones en el mismo ordenador físico. Además de su utilización en entornos productivos, es una herramienta importante para un administrador de sistemas, ya que permite estudiar y analizar el comportamiento de distintos recursos y entornos antes de su implantación real en la empresa.
+
+		Una máquina virtual (VM) es un contenedor de software perfectamente aislado que puede ejecutar sus propios sistemas operativos y aplicaciones como si fuera un ordenador físico. Una máquina virtual se comporta exactamente igual que lo hace un ordenador físico, y contiene sus propios CPU, RAM, HDD y tarjetas de red virtuales (Basados en software). El sistema operativo no puede establecer una diferencia entre una máquina virtual y una máquina física, ni tampoco lo pueden hacer las aplicaciones ni otros ordenadores de una red.
+
+	3.2 Funcionamiento
+		La virtualización inserta una capa ligera de software en el hardware del ordenador o en el sistema operativo host (Anfitrión). Este software contiene un monitor de VM llamado Virtual Machine Monitor (VMM), que también recibe el nombre de hipervisor, que asigna los recursos de hardware de manera dinámica y transparente a cada una de las máquinas virtuales. Podemos distinguir dos tipos de hipervisores:
+			Nativo, unhosted o bare metal (sobre el metal desnudo)
+				El hipervisor está directamente sobre el hardware real, sin un SO, y las VM trabajan sobre el hipervisor.
+			Hosted
+				El hipervisor funciona sobre un SO host, que está sobre el hardware, y sobre el host están las VM.
+
+	3.3 Ventajas
+		En general tenemos 4 características.
+			Compatibilidad
+				Las máquinas virtuales son plenamente compatibles con la totalidad de sistemas operativos, aplicaciones y controladores de dispositivo standard, de modo que se puede utilizar una máquina virtual para para ejecutar el mismo software que se puede ejecutar en un ordenador físico.
+			Aislamiento
+				Aunque las máquinas virtuales comparten los recursos físicos de un único ordenador real, permanecen completamente aisladas unas de otras como si se tratara de máquinas independientes.
+			Encapsulamiento
+				Una máquina virtual es básicamente un contenedor de software que agrupa o encapsula un conjunto completo de recursos físicos virtuales, así como un sistema operativo y todas sus aplicaciones dentro de un paquete de software. Esto hace que las máquinas virtuales sean extraordinariamente portátiles y fáciles de gestionar.
+			Independencia del hardware
+				Las máquinas virtuales son completamente independientes del hardware físico subyacente. Por ejemplo, se puede configurar una VM con componentes virtuales (CPU, Tarjeta de Red, Controladores SCSI) que difiere totalmente de los componentes físicos presentes en el hardware real.
+	3.4 Infraestructura virtual
+		Ver esquema de la pizarra. (Error 404, file not found)
+		

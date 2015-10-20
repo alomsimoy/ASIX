@@ -1,0 +1,195 @@
+PROMPT: Es un elemento indicador para informar al usuario de la disponibilidad del sistema para recibir una orden.
+   p.e: C:\WINDOWS>
+
+DOS y la consola de comandos de Windows utilizan prompt (configurable por usuario).
+
+Cuando aparece, indica la unidad activa y el directorio activo de esta unidad.
+
+Para cambiar la unidad activa, usamos Letra_unidad:
+
+Crear archivos en DOS:
+   COPY CON [letra:][ruta]nombrearchivo
+         ____________
+         ____________
+         ____________
+
+   F6 -> ^Z -> ENTER
+
+Visualizar archivo en DOS:
+
+   TYPE [unidad:][ruta]nombrearchivo
+
+Creación directorio
+   MD [unidad:]ruta
+
+Cambiar directorio activo
+   CD [unidad:][ruta]
+
+      El comando CD sin parámetros nos indica el directorio activo de la unidad activa. Pasando [unidad:] nos indica el directorio activo de la unidad pasada como parámetro.
+      El comando CD NO cambia la unidad activa.
+      El comando "CD C:.." cambiaria el directorio activo de C:, pero no cambiaria la unidad activa.
+
+Visualizar contenido directorio.
+   DIR [unidad:][ruta][nombrearchivo]
+
+Comodines
+   Caracteres especiales que utilizados en un nombre de archivo permiten identificar a más de un archivo.
+   * -> Substituto de varios carácteres
+   ? -> Substituto de un carácter
+
+Borrado de archivos
+   DEL [unidad:][ruta]nombrearchivo
+
+Borrado de directorios
+   RD [unidad:]ruta
+      Solo borrará directorios vacios.
+      RD [unidad:]ruta /S Eliminara el directorio aunque esté lleno.
+
+Copiar archivos
+   COPY origen destino
+      origen [unidad:][ruta]nombrearchivo
+      destino [unidad:][ruta][nombrearchivo]
+
+Mover archivos y directorios
+   MOVE origen destino
+
+Cambiar nombre archivo
+   REN [unidad:][ruta]nomarch nomarch
+
+Visualizar árbol
+   TREE [unidad:][ruta [/F]
+      /F sólo muestra los directorios
+
+            |  Archivo   | Directorio
+------------+------------+------------
+Creación    |  COPY CON  | MD
+Borrado     |  DEL       | RD
+Visualizar  |  TYPE      | DIR
+Renombrar   |  REN       | MOVE
+
+   Mostrar la versión del sistema operativo utilizado
+      VER
+
+   Limpiar la pantalla
+      CLS
+
+   Consultar y actualizar la fecha
+      DATE
+
+   Consultar y actualizar la hora
+      TIME
+
+   Asociar una ruta con una letra de unidad.
+      SUBST [unidad1: [unidad2:]ruta]
+         unidad1: unidad virtual a crear
+         [unidad2:]ruta es la ruta a la que queremos asociarle la letra
+
+      SUBST sin parámetros muestra la lista de unidades virtuales en uso
+      SUBST unidad1: /D deshace la asociación de ruta para esa unidad
+
+Redireccionamientos de la entrada y de la salida estándar
+   La entrada estándar (stdin) es el lugar desde el cual el programa prevé leer su entrada. Por defecto, los procesos leen la stdin desde el teclado.
+
+   La salida estándar (stdout) es el lugar donde el programa graba su salida. Por defecto, los procesos graban la stdout en la pantalla del terminal.
+
+   El error estándar (stderr) es el lugar donde el programa escribe sus mensajes de error. Por defecto, los procesos graban stderr en la pantalla del terminal.
+
+
+   Redireccionamiento de...                        |  Operador
+---------------------------------------------------+------------
+   Entrada estándar (stdin o handle 0)             |  <     0<
+---------------------------------------------------+------------
+   Salida estándar (stdout o handle 1)             |  >     1>       Crea fichero nuevo
+                                                   |  >>    1>>      Añade al fichero
+---------------------------------------------------+------------
+   Salida estándar de errores (stderr o handle 2)  |  2>
+                                                   |  2>>
+
+   Ordena por orden ASCII
+      SORT
+      	 /+n Donde n es un número, ordenar en tal columna.
+      	 /R Reverse, ordena decrecientemente.
+
+   Buscar coincidencias
+      FIND "cadena" lista_archivos
+         /V Que no tengan
+         /C Número de lineas
+
+   Muestra la información paginada
+      MORE
+
+   ENTORNO (environment)
+      Área de memoria que almacena variables con información acerca del sistema operativo, usadas por éste y por otros programas para guardar y leer información necesaria para su funcionamiento.
+
+   VARIABLES de ENTORNO
+      Son cadenas (strings) que contienen información como p.e. letras de unidad, rutas y nombres de ficheros.
+
+      Algunos programas utilizan esta información para determinar donde se colocan los archivos.
+
+   TEMP:
+      Especifica la ubicación en la qie los programas crearán ficheros temporales.
+
+         C:\Documents and settings\asix\Configuración local\temp
+
+   WINDIR:
+      Contiene la ubicación del directorio de instalación de Windows. Los programas pueden consultar el valor de esta variable para determinar la ubicación de los archivos  del sistema operativo Windows.
+
+         C:\Windows
+
+   Podemos distinguir 2 tipos de variables de entorno
+      Variables de entorno de SISTEMA
+         Las define Windows y se aplican a todos los usuarios del equipo.
+
+         Se escriben en el Registro y, por lo general, su creación y modificación requieren que se reinicie el equipo para hacerse efectivas.
+
+         Sólo un usuario administrador puede crearlas o modificarlas.
+
+      Variables de entorno de USUARIO (o LOCALES)
+         Son diferentes para cada usuario
+
+         Algunas son creadas por el S.O., otras por el usuario, otras por los programas.
+
+         Los cambios (de algunas) se escriven en el Registro y, por lo general, entran en vigor inmediatamente. Sin embargo, después de que se realiza un cambio en las variables del entorno de usuario, los programas abiertos deben reiniciarse para forzarlos a leer los nuevos valores del registro.
+
+   SET
+      Permite crear, cambiar, borrar o mostrar variables del entorno.
+
+      SET
+         Para ver todas las variables.
+
+      SET VariableName
+         Para ver una variable.
+
+      SET VariableName=value
+         Para añadir una variable.
+
+      SET VariableName=
+         Para eliminar una variable.
+
+      %VariableName%
+         Para usar una variable.
+
+   Comandos internos
+      Son aquellos cuyas instrucciones están incluidas dentro del fichero CMD.EXE
+
+      DIR, CD, MD, COPY, TYPE, ...
+
+   Comandos externos.
+      Sus instrucciones no están incluidas dentro de CMD.EXE, ni no en ficheros independientes. Uno por cada orden externa. Es decir la ejecución de una orden externa, supone un acceso a disco para cargar en memoria el fichero donde residen sus instrucciones.
+
+      TREE, XCOPY, ...
+
+   PATH [[unidad:]ruta[;...]]
+      Muestra o establece una ruta de búsqueda para los archivos ejecutables.
+
+   PROMPT [texto]
+      $Q signo =
+      $$ signo $
+      $T hora
+      $D fecha
+      $N unidad
+      $P unidad y ruta
+      $G signo >
+      $L signo <
+
+   Cada programa en ejecución (proceso) tiene su propio entorno, formado por variables de estos dos tipos. Esto quiere decir que los cambios realizados sobre una variable por un proceso, no afectan a la misma variable del entorno de otro proceso.

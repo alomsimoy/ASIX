@@ -1,0 +1,23 @@
+1
+	a)	Utiliza la notación inicial (1KB = 2¹⁰ bytes)
+	b)	No. Si utilizara un cluster de 2 sectores (1K) ocuparia 15K en vez de 16K.
+	c)	No. Si utilizara un cluster de 3 sectores (1,5K) ocuparia 15K en vez de 16K.
+	d)	Si. Con 4 sectores (2K) ocuparia 16K, tal y como indica.
+	e)	Si. Con 8 sectores (4K) ocuparia 16K, tal y como indica.
+	f)	No podemos deducir de forma segura que tamaño de cluster usa.
+	g)	En un archivo de tamaño menor a 512bytes se puede saber el cluster usado (Que será el espacio que ocupa dicho archivo en el disco).
+
+2
+	Porqué la tabla FAT tiene un número limitado de entradas, y por tanto de clusteres máximos (2¹⁶ o 2³²) dependiendo de FAT16 o FAT32. Así pues, el tamaño total de una partición FAT será el número máximo de clusters multiplicado por el tamaño de dicho cluster. A mayor tamaño de cluster, mayor tamaño de partición máximo.
+
+3
+	a)	FAT10 -> 2¹⁰ = 1024
+		4KB * 1024 = 4096KB = 4MB
+	b) 	Se necesitaría un cluster de 32KB
+		32KB * 1024 =  32768 = 32MB
+
+4
+	El 2 es el tamaño de cluster usado, y el 3 el número de clusters libres. El 1 es tamaño libre, producto del tamaño de cluster por el número de clusters libres.
+
+5
+	El archivo no ocupara exactamente 1.490.838.528 bytes debido al tamaño del cluster, por tanto, no quedarán exactamente 2.804.128.768 bytes libres, sinó menos.

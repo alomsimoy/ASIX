@@ -1,0 +1,276 @@
+2 Administración de discos
+	2.6 Estructura Física de un disco
+		Se crea cuando se contruye el disco en fabrica, y se divide en 3 partes:
+			Caras
+				Divididas en pistas concentricas.
+			Pistas
+				Divididas en sectores.
+			Sectores
+				512 bytes
+		El cilindro es el conjunto de pistas de todas las caras de todos los discos
+
+		Densidad del disco:
+		Cuantos más sectores tengamos en una pista, mayor densidad tendrá.
+
+		Inicialmente, todas las pistas tenían el mismo número de sectores.
+		El ZBR (Zone Bit Recording), mejoró este sistema, y cuanto mas alejado del centro, mas sectores tiene una pista, con el fin de aprovechar mejor el espacio.
+
+	2.7 Estructura lógica
+		Se crea cuando el usuario prepara el disco para que pueda contener sistemas operativos y/o datos.
+
+		2.7.1 Particiones
+			Una partición es una división lógica que se realiza en un disco duro para poder segmentarlo en varias entidades independientes. La función es doble: Permitir la coexistencia de vários sistemas operativos en el mismo ordenador, y dividir la unidad física en varias unidades lógicas y funcionales.
+
+			Partición activa:
+				Es la partición que toma el control  cuando se enciende el ordenador con el fin de iniciar el sistema operativo instalado en ella. En todo momento solo puede haber una partición activa.
+
+
+			Partición primaria y partición extendida:
+				Minimo una partición primaria. En un principio era el único tipo de partición que puede contener un sistema operativo (el único tipo que puede definirse como activa).
+
+				Las extendidas son opcionales. Sirven para dividir el disco en unidades lógicas de forma que podamos saltarnos el límite de número de particiones impuesto por la tabla de particiones.
+
+			La tabla de particiones es una tabla donde están registradas las particiones de un disco.
+				El límite inicial son 4 particiones.
+
+			Desde MS-DOS hasta Windows Millenium
+				FDISK
+
+			A partir de Windows XP
+				DISKPART
+					Es una utilidad que se inicia y tiene su propio prompt y sus propios comandos.
+				Administrador de Discos
+
+		2.7.2 El número de particiones de un disco viene impuesto por el estilo de tabla de particiones utilizado.
+			Discos MBR
+				Utilizan un estilo de particiones basado en el MBR (Master Boot Record)
+					El Master Boot Record es el primer sector del disco (Primeros 512 Bytes).
+					Contiene la tabla de particiones que permite un máximo de 4 y un programa llamado Master Boot Code, o IPL (Initial Program Loader). Este programa se encarga de leer la tabla de particiones para detectar si hay una partición marcada como activa, y ceder el control a un programa situado en el sector de arranque de esta.
+				Los volúmenes de estas particiones puede ser de hasta 4TB
+			Discos GPT
+				EFI (Extensible Firmware Interface)
+					Es un estándar propuesto por Intel para remplazarar la desfasada BIOS del PC. Este estándar propone entre otras cosas una alternativa a la colocación de la tabla de particiones en un disco duro.
+					Esta forma de colocar las particiones se llama GUID Partition Table (GPT).
+				Permite hasta 128 particiones de hasta 18 exabytes
+
+		2.7.3 Secuencia de arranque en PC's basados en BIOS
+			El proceso de arranque consiste en la ejecución en el orden correcto de unos 4 o 5 programas.
+				1. BIOS
+					Programa almacenado en un chip de la Motherboard que testea el hardware y cede el control a un segundo programa.
+				2. Master Boot Code
+					Programa almacenado en el primer sector del disco (MBR). Mira en la tabla de particiones cual es la activa y le cede el control a un programa llamado Partition Boot Code (PBC) que esta en el primer sector de esta, llamado Partition Boot Record (PBR).
+				3. Partition Boot Code
+					Programa almacenado en el primer sector de la partición (PBR), que depende de el Sistema Operativo instalado. Inicia el programa pertinente dependiendo de este.
+				4.1 Para windows XP:
+					Se inicia el programa ntldr que usa la configuración de boot.ini para iniciar la carga del sistema.
+				4.2 Para windows Vista y superior:
+					Se inicia el programa bootmgr que usa la configuración de BCD para cargar el último paso.
+
+					5. winload.exe
+						Programa que inicia la carga del sistema.
+
+		2.7.4 Sistemas de archivos
+			Es la estructura lógica que se crea en un volumen (Partición primária o unidad lógica de una partición extendida) para poder almacenar ficheros en ella. Esta estructura se crea cuando se formatea el volumen.
+			El sistema de archivos utilizado condiciona el que un sistema operativo pueda utilizar o no ese volumen para acceder a los archivos almacenados en ella.
+
+			2.7.4.1 Definición de cluster (Unidad de asignación)
+				Un cluster son 2^n sectores contiguos del disco. El cluster depende del tamaño del volumen de manera que normalmente a mayor capacidad de volumen, se tendrá mayor tamaño de cluster.
+				Un archivo ocupa como mínimo un cluster aunque no lo llene. Si un archivo ocupa más de un cluster, estos no tienen porqué ser corelativos.
+				El tamaño del cluster afecta a 2 cosas.
+					Utilización adecuada del espacio de disco.
+						Si se utiliza un tamaño de cluster muy grande, cuando trabajemos con archivos muy pequeños, se les asignará el cluster entero, con lo que se desperdiciará gran parte de la capacidad del disco.
+					Tiempo de acceso.
+						Si se utiliza un tamaño de cluster pequeño, para almacenar un fichero harán falta muchos clusters, lo que producirá un retraso en la lectura del archivo al tener que localizar todos los clusters que lo componen.
+					Los tamaños adecuados son de 1/2K, 1K, 2K y 4K.
+
+			2.7.4.2 Sistema de archivos FAT
+				Un volumen formateado con un sistema de archivos FAT queda estructurado en las siguientes partes:
+					Sector de arranque
+					FAT
+						Es una tabla con tantas entradas como clusters tiene el volumen, y sirve para averiguar la secuencia de clusters en la que está almacenado un fichero.
+						Esta tabla puede contener:
+							Marca de cluster libre
+							Marca de fin de fichero
+							Número (dirección del siguiente cluster)
+					Directorio raíz
+						Para cada elemento, archivo o directorio almacenado en la raíz, el arbol de directorios tenemos una entrada en la que se registra nombre, extension, tamaño, fecha y hora, atributos y la dirección del cluster de inicio de dicho elemento.
+						Cualquier otro directorio que no sea raíz no es más que un fichero especial cuyo contenido son entradas con la información correspondiente a los elementos que se almacenan en el.
+					Area de Datos
+						Es el área reservada para almacenar los ficheros del usuario ocupando la práctica totalidad del volumen, y está organizada en clusters.
+
+					FAT16
+						Para cada entrada de la FAT utiliza 16 bits (2¹⁶ clusters)
+
+					VFAT
+						FAT16 mejorado para soportar nombres largos
+
+					FAT32
+						Para cada entrada de la FAT utiliza 32 bits (2³² clusters).
+
+			2.7.4.3 Sistema de archivos NTFS
+				Viene de NT File System.
+
+				Tiene dos tipos de ficheros:
+					Metadata Files
+						Son los ficheros que contienen las estructuras y la información que sustentan el sistema de archivos. El nombre de estos ficheros empieza por el carácter '$'.
+
+					Normal Files
+						Son los ficheros del usuario.
+
+				Estructura:
+					Boot Sector ($BOOT)
+						PBR
+					Master File Table ($MFT)
+						Almacena un conjunto de registros para cada archivo almacenado. Es la tabla a consultar para averiguar la secuencia de clusters en la que está almacenado un fichero.
+						Está registrada como $MFT dentro de si misma.
+
+					MFT Zone
+						Para prevenir que la MFT se fragmente, se crea un buffer, que podemos configurar a un 12,5%, 25%, 37,5% o 50% del espacio total de la unidad, y que no será utilizado para almacenar datos del usuario a menos que todo el espacio restante ya esté ocupado. Este es el motivo de que en el esquema aparezca el espacio libre entre la MFT y el resto de Metadata Files. En principio, mientras podamos almacenar datos en la otra zona de datos, esta zona será unicamente utilizada como buffer de crecimiento de la MFT. Si llegara el momento de tener que utilizar espacio de esta zona, este se iria cogiendo del final para seguir manteniendo la MFT sin fragmentar.
+
+					Metadata Files
+						$MFTMirr
+							Copia exacta de los 4 primeros registros de la MFT, que nos permitirá recuperar el volumen si se daña la MFT.
+						$LogFile
+							Es un registro de las operaciones de escritura de disco pendientes.
+						$
+							Directorio raíz.
+						$Bitmap
+							Se trata de un mapa de bits que contiene un bit por cluster para indicar si un cluster está ocupado (bit a 1) o libre (bit a 0).
+						$BadClus
+							Es una tabla de clusters erroneos.
+
+					Zona para los archivos
+
+					Hide boot sector copy
+						Copia de el sector de arranque (PBR).
+
+				Entradas de la tabla MFT
+					Informacion estandar
+						Permiso de lectura y escritura, fecha y hora de creación, y fecha y hora de modificación.
+
+					Nombre del fichero
+
+					Descriptor de Seguridad
+						Propietario del fichero, que usuarios pueden acceder, y que pueden hacer con el.
+
+					Data
+						Si el fichero tiene un tamaño inferior a 1500 bytes, se guarda el fichero en la misma tabla.
+						Si no, Se subdivide en 3 apartados:
+							Starting VCN
+
+		2.7.5 Formatear un volumen
+			Tipos de formato:
+				Formato Rápido
+					Sólo es aplicable a volúmenes formateados previamente, ya que no se crea una nueva estructura lógica, sinó que se aprovecha la estructura ya creada en el formateo anterior. Lo único que se hace es marcar como libres todos los clusters sin borrar físicamente ningun cluster del disco. Por ese motivo con la herramienta adecuada, todavia es posible recuperar la información.
+
+				Formato Completo o incondicional
+					Destruye todos los datos que pudiera haber en el volumen creando una nueva estructura lógica. Por este motivo tarda más que el rápido, y ya no es posible recuperar de ninguna manera los datos. Es el método que se aconseja en discos que hayan podido presentar en algun momento problemas de lectura o escritura.
+
+			Como formatear:
+				Desde consola
+					FORMAT
+				Desde entorno gráfico
+					La ventanita de formatear de toda la vida.
+
+		2.7.6 Etiqueta de volumen
+			Es una cadena que en sistemas FAT puede tener hasta 11 caracteres donde hay caracteres prohibidos.
+			En NTFS se pueden usar hasta 32 caracteres sin ninguno prohibido.
+			Esta etiqueta la puede crear el usuario y se almacena en la MPB.
+				Desde la consola de comandos, podemos usar VOL para consultar la etiqueta, y LABEL para crear, editar y eliminala.
+				Desde el entorno gráfico se puede definir la etiqueta al formatear, o a posteriori.
+
+	2.8 Discos Básicos y Discos Dinámicos
+		Tanto discos básicos como dinámicos son propios de equipos windows.
+		La mayoria de equipos personales están configurados como discos básicos, que son los más sencillos de utilizar, mientras que usuarios avanzados y profesionales informáticos pueden utilizar discos dinamicos que usan varios discos duros con el fin de obtener un mayor rendimiento y confiabilidad.
+
+		2.8.1 Discos Básicos
+			Es un disco físico que contiene particiones primarias y extendidas con unidades lógicas. Las particiones primarias y las unidades lógicas (extendidas) se conocen como volúmenes básicos.
+			Como ya vimos, el número de particiones depende del estilo de partición utilizado.
+			Podemos ampliar el espacio de los volúmenes básicos con el espacio adyacente continuo y no asignado del mismo disco, siempre que el volumen esté formateado en NTFS.
+			Puede extenderse también una unidad lógica con espacio libre contiguo de la partición extendida a la que pertenece. Si se extiende más allá del espacio libre disponible en la partición extendida, esta crecerá para contener la unidad lógica, siempre que a continuación exista espacio libre no asignado.
+
+
+			Los discos dinámicos ofrecen una funcionalidad de la que carecen los discos básicos, como es la posiblidad de crear volúmenes de espacio no contiguo repartido entre uno o varios discos y de crear volúmenes tolerantes a errores.
+			Todos los volúmenes de los discos dinámicos se llaman volúmenes dinámicos.
+			Hay 5 tipos de volúmenes dinámicos:
+				Simples
+					Está formado por espacio contiguo o no contiguo de un solo disco.
+				Distribuidos
+					Está formado por espacios de dos o más (hasta 32) discos.
+					Un volúmen distribuido no se puede reflejar y no es tolerante a errores.
+				Seccionados (RAID-0)
+					Es aquel cuyos datos se almacenan en 2 o más discos de forma alternativa y equitativa en cada disco. Utiliza el disco entero.
+					Aumenta el rendimiento del sistema de almacenamiento.
+					Si falla uno de los discos, los datos de los discos restantes son inutiles.
+				Reflejados (RAID-1)
+					Es un volúmen tolerante a errores cuyos datos están duplicados en 2 discos físicos. Todos los datos de un volumen se copian a otro disco para proporcionar redundancia de datos. Si se produce un error en uno de los discos se puede seguir teniendo acceso a los datos desde el otro disco. Un volúmen reflejado no se puede distribuir.
+					Es la arquitectura más rápida de tolerancia a errores.
+					Es cara, ya que se emplea el doble de espacio del necesario.
+				RAID-5
+					Es un volúmen tolerante a errores cuyos datos están distribuidos entre 3 o más discos. La paridad (La paridad es un valor calculado que puede utilizarse para reconstruir los datos después de producirse un error) también se distribuye en el conjunto de discos. Si se produce un error en un disco físico, la parte del volumen RAID-5 que estaba en el disco erroneo se puede reconstruir a partir de los datos restantes y la paridad. Los volumenes RAID-5 no se pueden reflejar ni extender.
+			Observaciones:
+				RAID: Redundant Array of Indiferent Disks
+					Es un esquema de discos duros en el que para ofrecer mayor capacidad, mayores niveles de rendimineto y tolerancia a errores se conectan juntos 2 o más discos.
+					Esta conexión puede ser física, lógica o combinación de ambos.
+					Estas configuraciones son habituales en servidores y no tanto en equipos personales.
+					La numeración no indica mayor o menor nivel de tolerancia a errores, sinó maneras distintas de hacer las cosas.
+					Sólo se puede trabajar con discos dinámicos a partir de windows 2000 y XP Professional.
+					Es posible convertir un disco básico en dinámico. Al revés no.
+					Para convertir un disco en dinámico se hace desde el administrador de discos.
+
+	2.9 Operaciones de mantenimiento de discos
+		2.9.1 Verificación de un volumen
+			Verificar la partición o unidad lógica
+				Comprobar que no existan errores en los datos almacenados.
+					Lógicos - Errores en los sistemas de archivos
+						Clusters perdidos
+							Cadenas de clusters marcados como utilizados y que sin embargo no pertenecen a ningún archivo
+						Vinculos cruzados
+							Se trata de clusters incluidos como pertenecientes a dos archivos distintos
+							Se resuelve o bien eliminando ambos archivos, haciendo una copia de los datos del cluster en otro lado, y asignandole un trozo a cada fichero, o no hacer nada.
+					Físicos - Errores sobre la superfície del disco
+						Se detectan intentando leer y escribir sobre cada cluster
+						Ante un error de este tipo, hay que intentar trasladar los datos a otro cluster en buen estado y marcar el cluster defectuoso para evitar que en un futuro el sistema operativo intente escribir sobre el.
+				CHKDSK
+					Realiza la comprobación.
+					Se puede parametrizar pasando un nombre de fichero. En este caso indica el estado de fragmentación de dicho fichero.
+				CHKNTFS
+					Permite configurar la verificación de unidades al inicio del sistema operativo.
+				A partir de Windows Server 2008
+					NTFS Transaccional
+						Permite que las operaciones de archivos en volúmenes NTFS se lleven a cabo de manera transaccional. Esto quiere decir que los programas pueden utilizar transacciones para agrupar conjuntos de operaciones para que todas o ninguna se completen.
+						Mientras una transacción está activa, sus consecuencias no serán visibles. Esto ocurrirá cuando la transacción se complete con éxito. Si la transacción falla, se deshace el trabajo realizado hasta el momento devolviendo el sistema de archivos al estado en que se encontraba antes de iniciar la transacción.
+					Automantenimiento NTFS
+						Anteriormente a esta característica la utilización de CHKDSK para reparar una unidad supone interrumpir la disponiblidad de la unidad hasta que el proceso ha terminado.
+						Con la característica del mantenimiento se intentarán las reparaciones de manera automática sin interrumpir la disponiblidad del volumen. De esta forma el administrador solo necesitará ejecutar CHKDSK cuando el sistema le comunique que no es capaz de solucionar automáticamente algun problema.
+
+		2.9.2 Desfragmentación del volumen
+			Consiste en desfragmentar los archivos de un volumen.
+			Los archivos se guardan en el disco como clusters que no tienen porqué ser secuenciales. Cuando el sistema intente leer un archivo fragmentado, tardará más tiempo de lo que tardaria si el archivo estuviera en clusters secuenciales.
+			El desfragmentador es un programa que hace 3 cosas:
+				Organiza los archivos en clusters consecutivos
+				Elimina espacios en blanco entre ficheros para evitar que se fragmenten los nuevos archivos
+				En algunos desfragmentadores el proceso es más largo porqué además se recompone la unidad de manera que los archivos que componen un programa también queden almacenados de forma consecutiva.
+
+			DEFRAG
+				Utilidad de la consola de comandos que desfragmenta el disco
+
+	2.10 Cuotas de Disco
+		Las cuotas de disco se utilizan para supervisar y limitar el uso de espacio en disco en volumenes NTFS. Los administradores del sistema pueden configurarlas para evitar que se utilicen más espacio de disco y registrar un proceso cuando un usuario sobrepase un límite de espacio especificado.
+
+		FSUTIL
+			Quota
+			Behavior
+
+	2.11 Montar Volumenes
+		Se trata de enlazar una unidad de disco como parte del arbol de directorios de otra unidad
+		Para ello se utiliza una carpeta de montaje en el arbol receptor de forma que accediendo a esta carpeta veremos en su interior un subarbol que no es mas que el arbol de directorios de la unidad montada.
+
+		La unidad receptora ha de ser NTFS. La montada puede tener cualquier formato
+		Es recomendable que la carpeta de montaje esté vacía.
+		Esta técnica funciona tanto en volúmenes básicos como en dinámicos.
+		Tiene una doble utilidad. Liberar letras de unidad si estas se han agotado y puede entenderse como una solución para incrementar el tamaño en una unidad básica sin tener que reparticionar.
+
+		MOUNTVOL
+
+		Se puede montar el mismo arbol várias veces en distintas carpetas.

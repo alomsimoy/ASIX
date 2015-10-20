@@ -1,0 +1,21 @@
+Instalación de sistemas operativos. Práctica 1. (Windows XP)
+
+1.- Crear una máquina virtual sobre un disco virtual de 10 GB con una única partición NTFS, (no hace falta preocuparse de particionar, ya que asignamos todo el espacio del disco) sobre la que instalaremos un sistema operativo Windows XP. (La unidad lógica en la que queda instalado el S.O ha de etiquetarse como WXP_1)
+
+2.- Documentar el proceso de instalación de este sistema operativo.
+
+3.- Explica el proceso de carga (boot) del sistema operativo y localiza los archivos y directorios que intervienen en él. 
+Hasta el ntldr
+
+4.- Comprueba e interpreta en la Herramienta de Administración de Discos, (entorno gráfico), la configuración de discos que tenemos.
+
+5.- Estructuras de archivos y directorios resultantes tras la instalación del sistema operativo. Una vez instalado el S.O. describir la estructura de directorios que sustenta el sistema, indicando la función decada uno de ellos.
+Buscar en google hasta donde llegar (archivos importantes).
+
+6.- Menú de arranque de Windows XP. ¿Qué es? ¿Cómo se activa? Describir las distintas opciones que lo componen. 
+Incluir Consola de recuperación
+
+7.- Listado de las variables de entorno del sistema, con una breve explicación de cada una de ellas.
+
+8.- Consola de recuperación de Windows. ¿Qué es? ¿Cómo se accede? ¿Ordenes disponibles? ... Detecta el conjunto de órdenes relacionadas con los distintos conceptos vistos en clase que intervienen en la secuencia de arranque del S.O.
+Incluir instalación en SO
