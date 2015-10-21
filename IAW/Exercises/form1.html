@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FIXME</title>
+    <meta charset='utf-8'>
+    <!--
+    <link rel="stylesheet" type="text/css" href="FIXME">
+    <script type="text/javascript" src="FIXME"></script>
+    <style type="text/css">
+    </style>
+    -->
+</head>
+<body>
+    <h1>The Starbuzz Bean Machine</h1>
+    <h2>Fill out the form bellow and click submit to order</h2>
+    <form action="http://starbuzzcoffee.com/processorder.php" method="post">
+     <table>
+      <tr>
+        <th>Choose your beans:</th>
+        <th><select name="beans">
+            <option value="House">House Blend</option>
+            <option value="Shade">Shade Grown Bolivia Supremo</option>
+            <option value="Organic">Organic Guatemala</option>
+            <option value="Kenya">Kenya</option>
+        </select></th>
+      </tr>
+      <tr>
+        <th>Type:</th>
+        <th>
+          <input type="radio" name="beantype" value="Whole" />Whole bean</br>
+          <input type="radio" name="beantype" value="Ground" />Ground
+        </th>
+      </tr>
+      <tr>
+        <th>Extras:</th>
+        <th>
+          <input type="checkbox" name="extras[]" value="Gift wrap" />Gift wrap</br>
+          <input type="checkbox" name="extras[]" value="Include catalog with order" />Include catalog with order
+        </th>
+      </tr>
+      <tr>
+        <th>Ship to:</th>
+        <th>
+          <table>
+           <tr>
+            <th>Name:</th>
+            <th>
+             <input type="text" name="name" />
+            </th>
+           </tr>
+           <tr>
+            <th>Address:</th>
+            <th>
+             <input type="text" name="address" />
+            </th>
+           </tr>
+           <tr>
+            <th>City:</th>
+            <th>
+             <input type="text" name="city" />
+            </th>
+           </tr>
+           <tr>
+            <th>State:</th>
+            <th>
+             <input type="text" name="state" />
+            </th>
+           </tr>
+           <tr>
+            <th>Zip:</th>
+            <th>
+             <input type="text" name="zip" />
+            </th>
+           </tr>
+          </table>
+        </th>
+      </tr>
+      <tr>
+        <th>Customer Comments:</th>
+        <th>
+          <textarea name="comments" rows="10" cols="48"></textarea>
+        </th>
+      <tr>
+        <th/>
+        <th>
+          <input type="submit" value="Order Now" />
+        </th>
+      </tr>
+     </table>
+    </form>
+</body>
+</html>
