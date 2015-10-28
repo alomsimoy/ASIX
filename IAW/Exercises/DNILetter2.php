@@ -7,11 +7,10 @@
     <body>
 <?php
 
-$DNI=$_POST[number];
-$letter=$_POST[letter];
+$DNI=$_POST["number"];
+$letter=$_POST["letter"];
 
-echo $DNI;
-echo $letter;
+echo preg_match("/\d{8}/", "132432678");
 // checkDNI($DNI, $letter);
 
 // checkDNI returns 1 if correct, 0 if not, -1 if number is not a number
@@ -19,12 +18,12 @@ echo $letter;
 // single letter
 function checkDNI($number, $letter) {
     $error=false;
-    echo $number.$letter;
-    if (!preg_match(\d(8), $number)) {
+    echo $number;  
+    if (!preg_match("\d{8}", $number)) {
         printMessage(2);
         $error=true;
     } 
-    if (!preg_match([a-zA-Z], $letter)) {
+    if (!preg_match("[a-zA-Z]", $letter)) {
         printMessage(3);
         $error=true;
     }
