@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>FIXME</title>
+    <title>Tartaglia Pyramid</title>
     <meta charset='utf-8'>
     <!--
     <link rel="stylesheet" type="text/css" href="FIXME">
@@ -13,7 +13,7 @@
 <body>
 <?php
 
-$n = 5;
+$n = 8;
 drawPyramid(createPyramid($n));
 
 function createPyramid($n) {
@@ -30,15 +30,17 @@ function createPyramid($n) {
 
 function drawPyramid($pyramid){
     $lenght = count(end($pyramid));
+    echo "<code>";
     for ($i = 0; $i < $lenght; $i++){
         for ($j = 0; $j < $lenght - $i; $j++){
-            echo "&nbsp;";
+            echo "&nbsp;&nbsp;";
         }
         for ($k = 0; $k < count($pyramid[$i]); $k++) {
-            echo $pyramid[$i][$k]." ";
+            echo $pyramid[$i][$k]."&nbsp;&nbsp;&nbsp;";
         }
         echo "</br>";
     }
+    echo "</code>";
 }
 
 ?>
