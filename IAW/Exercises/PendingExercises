@@ -1,5 +1,3 @@
-- Función a la que le pasas un strng con una URL y devuelve el nombre de archivo (index.php)
-
 - Crear un site con header y un menu común usando include(). Debe tener almenos 3 páginas.
 
 - En el ejercicio anterior, conseguir resaltar en el menú la página en la que estamos.
