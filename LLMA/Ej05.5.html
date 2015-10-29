@@ -1,0 +1,26 @@
+<script type="text/javascript">
+	
+	var alum = new Array("Andres", "Angela", "Bernat", "Carol", "Maria", "Joan");
+	var notas = new Array(6);
+
+	for (var x = 0; x < 6; x++)
+		notas[x] = 5;
+
+	document.write("<h2>Notas de la asignatura</h2>");
+
+	v_dato = window.prompt("Dime el número del alumno (0-5)", "0");
+	valor = parseInt(v_dato);
+	document.write("<br><br> La nota de " + alum[valor] + " al iniciar es " + notas[valor]);
+
+	datonota = window.prompt("Introduce su nueva nota", "0");
+	numnota = parseInt(datonota);
+
+	notas[valor] = numnota;
+
+	document.write("<br><br><h2>Las notas finales son</h2>");
+
+	for (var i = 0; i < 5; i++){
+		document.write( i + "-" + alum[i] + " ");
+		document.write(notas[i] + "<br>");
+	}
+</script>

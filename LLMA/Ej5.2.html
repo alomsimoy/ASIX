@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title>Ejercicio2</title>
+	<meta charset='UTF-8'>
+	<script type="text/javascript">
+
+		var color = "negro";
+
+		function cambiarColor() {
+			var objTitulo = document.getElementById('titulo');
+			if (color == "negro") {
+				objTitulo.style.color = '#00CCCC';
+				color = "azul";
+			} else if (color == "azul") {
+				objTitulo.style.color = '#000000';
+				color = "negro";
+			}
+		}
+
+		function cambiarTamanoFuente() {
+			var objTitulo = document.getElementById('titulo');
+			objTitulo.style.fontSize = 28;
+		}
+	</script>
+</head>
+<body>
+
+<h1 id="titulo">Pulsa para cambiar este título dinámico</h1>
+<input type="button" value="Cambiar Color" onclick="cambiarColor()">
+<input type="button" value="Cambiar Tamaño" onclick="cambiarTamanoFuente()">
+
+</body>
+</html>

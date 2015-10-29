@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title>Ejercicio1</title>
+	<meta charset='UTF-8'>
+	<script type="text/javascript">
+
+		function cambiarColor()
+		{
+			var objTitulo = document.getElementById('Titulo');
+			objTitulo.style.color = '#00CCCC';
+		}
+
+		function cambiarTamanoFuente()
+		{
+			var objTitulo = document.getElementById('Titulo');
+			objTitulo.style.fontSize = 28;
+		}
+	</script>
+</head>
+<body>
+
+<h1 id="Titulo">Pulsa para cambiar este título dinámico</h1>
+<input type="button" value="Cambiar Color" onClick="cambiarColor()">
+<input type="button" value="Cambiar Tamaño" onClick="cambiarTamanoFuente()">
+
+</body>
+</html>

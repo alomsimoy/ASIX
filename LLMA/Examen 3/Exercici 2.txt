@@ -1,0 +1,11 @@
+Las librerias usadas por Matias Singer son:
+	Node.js 
+	money.js
+	datamaps.js
+	D3.js 
+	tinycolor.js
+
+cheerio es una implementacion del nucleo de jquery especialmente diseñada para servidores.
+Se usa para obtener datos (parsear) de una página web de manera rápida.
+Es una alternativa a JSDOM para muchos casos.
+Los principales contribuidores han sido Matt Mueller, Matthew Mueller, Mike Pennisi y David Chambers, aunque ha habido muchisimos otros.

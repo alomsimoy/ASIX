@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Calculadora segundo grado</title>
+	<script type="text/javascript">
+
+function calcular(A, B, C)
+{ 
+	var Xpos;
+	var Xneg;
+
+	Xpos = (-1 * B + Math.sqrt( B * B - 4 * A * C)) / (2 * A);
+	Xneg = (-1 * B - Math.sqrt( B * B - 4 * A * C)) / (2 * A);
+	alert("Los resultados son " + Xpos + " y " + Xneg);
+}
+
+function getRaices() {
+	var txt = document.getElementById("numA");
+	var A = parseInt(txt.value);
+	var txt = document.getElementById("numB");
+	var B = parseInt(txt.value);
+	var txt = document.getElementById("numC");
+	var C = parseInt(txt.value);
+
+	if  ((B * B - 4 * A * C) >= 0) {
+		calcular(A, B, C);
+	} else {
+		alert("No existen resultados reales");
+	}
+}
+</script>
+</head>
+<body>
+	<h2>Calculadora de ecuaciones de 2º grado</h2>
+        <input type="text" name="A" id="numA">
+        <input type="text" name="B" id="numB">
+        <input type="text" name="C" id="numC">
+		<input type="button" value="Obtener raices" onClick="getRaices()">
+</body>
+</html> 

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 3.1</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+
+	function pesoideal(){
+
+		var dato, peso, altura, sexo, edad;
+		dato = window.prompt("Dígame su altura en cm");
+		altura = parseInt(dato);
+
+		dato = window.prompt("Dígame su edad en años");
+		edad = parseInt(dato);
+
+		sexo = window.prompt("Dígame su sexo, hombre = h o mujer = m");
+
+		peso = 50 + ((altura -150) / 4) * 3 + (edad - 20) / 4;
+
+		if (sexo == "m") peso *= 0.9;
+
+		alert("Su peso ideal es " + peso + " Kg");
+	}
+
+	</script>
+</head>
+<body>
+<p>
+<input id="pesoideal" type="button" value="peso ideal" onclick="pesoideal()"/>
+</p>
+</body>
+</html>

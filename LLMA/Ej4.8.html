@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 4.8</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	table, th, td {
+	    border: 1px solid black;
+	    border-collapse: collapse;
+	}
+	</style>
+	<script type="text/javascript">
+
+	function IntroducirNumeros(){
+		var numeros = [200];
+		numeros[0] = parseInt(document.calculadora.valor1.value);
+		numeros[1] = parseInt(document.calculadora.valor2.value);
+		if ((numeros[0] < 1 || numeros[1] < 1) || (numeros[0] > 10 || numeros[1] > 10)) {
+			alert("Debes introducir un número del 1 al 10");
+		} else {
+			return numeros;
+		}
+	}
+
+	function Calcular(){
+		var x = "<table id='tablademultiplicar'>";
+		numeros = IntroducirNumeros();
+		for (var i = 1; i <= numeros[1]; i++){
+			x = x + "<tr><td> " + numeros[0] + " x " + i + "</td>" + "<td> = </td>" + "<td> " + numeros[0] * i + "</td></tr>";
+		}
+
+		x = x + "</table>"
+		document.getElementById("resultado").innerHTML = x;
+	}
+	</script>
+
+</head>
+<body>
+
+<form name="calculadora">
+Tabla del: <input type="text" name="valor1"><br>
+Hasta el número: <input type="text" name="valor2"><br>
+
+<button type="button" onclick="Calcular()">Sacar Tabla</button>
+
+<br>
+<p id="resultado"></p>
+
+</form>
+</body>
+</html>

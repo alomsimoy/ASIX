@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Conversor de bases numéricas</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	</style>
+	<script type="text/javascript">
+
+	function getText(input) {
+		var temp = document.getElementById(input).value;
+		return temp;
+	}
+
+	function setText(output, text) {
+		document.getElementById(output).value = text;
+	}
+
+	function fromDecimal() {
+		var decimal = getText("decimal");
+		var binary = DecimalToBinary(decimal);
+		var hexadecimal = BinaryToHexadecimal(binary);
+
+		setText("binary", binary);
+		setText("hexadecimal", hexadecimal);
+	}
+	
+	function fromHexadecimal() {
+		var hexadecimal = getText("hexadecimal");
+		var decimal = HexadecimalToDecimal(hexadecimal);
+		var binary = DecimalToBinary(decimal);
+
+		setText("decimal", decimal);
+		setText("binary", binary);
+	}
+	
+	function fromBinary() {
+		var binary = getText("binary");
+		var hexadecimal = BinaryToHexadecimal(binary);
+		var decimal = HexadecimalToDecimal(hexadecimal);
+
+		setText("hexadecimal", hexadecimal);
+		setText("decimal", decimal);
+	}
+
+	function DecimalToBinary(decimal) {
+		decimal = parseInt(decimal);
+		var binary = 0;
+		var i = 1;
+		while (decimal >= 1) {
+			binary += i * (decimal % 2);
+			decimal = (decimal - (decimal % 2)) / 2;
+			i *= 10;
+		}
+		return binary.toString();
+	}
+
+	function BinaryToHexadecimal(binary) {
+		var hexadecimal = '';
+		var length = binary.length;
+		if (length % 4 != 0) {
+			if (length % 4 == 1) {
+				binary = '000' + binary;
+				length += 3;
+			} else if (length % 4 == 2) {
+				binary = '00' + binary;
+				length += 2;
+			} else if (length % 4 == 3) {
+				binary = '0' + binary;
+				length++;
+			} 
+		}
+		for (var i = length - 1; i >= 0; i -= 4) {
+			var value = binary[i-3] + binary[i-2] + binary[i-1] + binary[i];
+			if (value == '0000'){
+				hexadecimal = '0' + hexadecimal;
+			} else if (value == '0001'){
+				hexadecimal = '1' + hexadecimal;
+			} else if (value == '0010'){
+				hexadecimal = '2' + hexadecimal;
+			} else if (value == '0011'){
+				hexadecimal = '3' + hexadecimal;
+			} else if (value == '0100'){
+				hexadecimal = '4' + hexadecimal;
+			} else if (value == '0101'){
+				hexadecimal = '5' + hexadecimal;
+			} else if (value == '0110'){
+				hexadecimal = '6' + hexadecimal;
+			} else if (value == '0111'){
+				hexadecimal = '7' + hexadecimal;
+			} else if (value == '1000'){
+				hexadecimal = '8' + hexadecimal;
+			} else if (value == '1001'){
+				hexadecimal = '9' + hexadecimal;
+			} else if (value == '1010'){
+				hexadecimal = 'A' + hexadecimal;
+			} else if (value == '1011'){
+				hexadecimal = 'B' + hexadecimal;
+			} else if (value == '1100'){
+				hexadecimal = 'C' + hexadecimal;
+			} else if (value == '1101'){
+				hexadecimal = 'D' + hexadecimal;
+			} else if (value == '1110'){
+				hexadecimal = 'E' + hexadecimal;
+			} else if (value == '1111'){
+				hexadecimal = 'F' + hexadecimal;
+			}
+		}
+		return hexadecimal;
+
+	}
+
+	function HexadecimalToDecimal(hexadecimal) {
+		var decimal = 0;
+		var number;
+		var length = hexadecimal.length;
+		for (var i = length -1; i >= 0; i--){
+			if ((parseInt(hexadecimal[i]) >= 0) && (parseInt(hexadecimal[i]) <= 9)){
+				number = parseInt(hexadecimal[i])
+			} else {
+				if (hexadecimal[i] == 'A' || hexadecimal[i] == 'a') {
+					number = 10;
+				} else if (hexadecimal[i] == 'B' || hexadecimal[i] == 'b') {
+					number = 11;
+				} else if (hexadecimal[i] == 'C' || hexadecimal[i] == 'c') {
+					number = 12;
+				} else if (hexadecimal[i] == 'D' || hexadecimal[i] == 'd') {
+					number = 13;
+				} else if (hexadecimal[i] == 'E' || hexadecimal[i] == 'e') {
+					number = 14;
+				} else if (hexadecimal[i] == 'F' || hexadecimal[i] == 'f') {
+					number = 15;
+				}
+			}
+			decimal += number * Math.pow(16,length -i -1);
+		}
+		return decimal.toString();
+	}
+	</script>
+
+</head>
+<body>
+<h1>Conversor de bases numéricas</h1>
+<table>
+<tr><td>Decimal</td><td><input type="text" id="decimal" onkeyup="fromDecimal()"></td></tr>
+<tr><td>Hexadecimal</td><td><input type="text" id="hexadecimal" onkeyup="fromHexadecimal()"></td></tr>
+<tr><td>Binario</td><td><input type="text" id="binary" onkeyup="fromBinary()"></td></tr>
+
+</table>
+</body>
+</html>

@@ -1,0 +1,17 @@
+Instruccions per treure per pantalla 10 números.
+
+inicio
+i = 0
+repite hasta que i >= 10
+   print i
+   i = i + 1
+fin
+
+Instruccions per treure per pantalla els numeros parells entre 20 i 40
+
+inicio
+i = 20
+repite hasta que i >= 40
+   print i
+   i = i + 2
+fin

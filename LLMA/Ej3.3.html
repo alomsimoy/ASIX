@@ -1,0 +1,44 @@
+<!DOCTYPE html> 
+<html>
+<head>
+   	<title>Ejercicio 3.3</title>
+   	<meta charset='UTF-8'>
+   	<script type="text/javascript">
+
+   	function potencia() {
+	   var v, i, p;
+	   v = window.prompt("Introduce el voltaje","0");
+	   i = window.prompt("Introduce la intensidad","0");
+	   p = (v * i);
+	   document.write("La potencia es: ", p, "W");
+   	}
+
+
+    function voltaje() {
+	   var v, i, p;
+	   i = window.prompt("Introduce la intensidad","0");
+	   p = window.prompt("Introduce la potencia","0");
+	   v = (p / i);
+	   document.write("El voltaje es: ", v, "V");
+   	}
+
+   	function intensidad() {
+	   var v, i, p;
+	   v = window.prompt("Introduce el voltaje","0");
+	   p = window.prompt("Introduce la potencia","0");
+	   i = (p / v);
+	   document.write("La intensidad es: ", i, "A");
+   	}
+
+
+   </script>
+</head>
+</head>
+<body>
+
+<input id="pot" type="button" value="Calcular potencia" onclick="potencia()"/>
+<input id="vol" type="button" value="Calcular voltaje" onclick="voltaje()"/>
+<input id="int" type="button" value="Calcular intensidad" onclick="intensidad()"/>
+
+</body>
+</html>

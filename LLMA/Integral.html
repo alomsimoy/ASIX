@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Calculadora integrales definidas</title>
+	<script type="text/javascript">
+
+function y(A, B, C, X)
+{ 
+	var y = (A * X * X + B * X + C);
+	return y;
+}
+
+function area(A, B, C, X1, X2)
+{
+	var Y1, Y2, area;
+	Y1 = y(A, B, C, X1);
+	Y2 = y(A, B, C, X2);
+	if (Y1 > Y2) {
+		Y2 = Y1;
+	}
+	area = (Y2 * (X1 - X2));
+	return area;
+}
+
+function integral(A, B, C, min, max)
+{	
+	var incremento = 0.000001;
+	var X = min;
+	var resultado = 0;
+	while (X < max) {
+		resultado = resultado - area(A, B, C, X, X + incremento);
+		X += incremento;
+	}
+	alert(resultado);
+}
+
+function getValores() {
+	var txt = document.getElementById("numA");
+	var A = parseInt(txt.value);
+	var txt = document.getElementById("numB");
+	var B = parseInt(txt.value);
+	var txt = document.getElementById("numC");
+	var C = parseInt(txt.value);
+	var txt = document.getElementById("min");
+	var min = parseInt(txt.value);
+	var txt = document.getElementById("max");
+	var max = parseInt(txt.value);
+	integral(A, B, C, min, max);
+}
+</script>
+</head>
+<body>
+	<h2>Calculadora de Integrales definidas</h2>
+        <input type="text" name="A" id="numA">
+        <input type="text" name="B" id="numB">
+        <input type="text" name="C" id="numC">
+        <input type="text" name="min" id="min">
+        <input type="text" name="max" id="max">
+		<input type="button" value="Obtener raices" onClick="getValores()">
+</body>
+</html> 

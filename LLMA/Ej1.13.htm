@@ -1,0 +1,42 @@
+<!DOCTYPE html> 
+<html>
+<head>
+   <title>Ejercicio 13</title>
+   <meta charset='UTF-8'>
+</head>
+
+<body>
+   <script type="text/javascript">
+      var num1 = 0;
+      var num2 = 0;
+      resultado = "null";2
+
+      num1 = window.prompt("Introduce el primer número", "0");
+      num2 = window.prompt("Introduce ep segundo número", "0");
+
+      if (num1 == num2) 
+      {
+         resultado = "igual";
+      }
+      else if (num1 < num2)
+      {
+         resultado = "menor";
+      }
+      else if (num1 > num2)
+      {
+         resultado = "mayor";
+      }
+      else
+      {
+         document.write("Alguno de los números introducidos no es válido.");
+      }
+
+      if (resultado != "null")
+      {
+         document.write("El número " + num1 + " es " + resultado + " que " + num2);        
+      }      
+
+
+   </script>
+</body>
+</html>

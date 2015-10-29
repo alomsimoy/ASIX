@@ -1,0 +1,40 @@
+<!DOCTYPE html> 
+<html>
+<head>
+   <title>Ejercicio 12</title>
+   <meta charset='UTF-8'>
+</head>
+
+<body>
+   <script type="text/javascript">
+      var referencia = 100;
+      var numero = 0;
+      resultado = "null";
+      numero = window.prompt("Introduce un número", "0");
+
+      if (numero == referencia) 
+      {
+         resultado = "igual";
+      }
+      else if (numero < referencia)
+      {
+         resultado = "menor";
+      }
+      else if (numero > referencia)
+      {
+         resultado = "mayor";
+      }
+      else
+      {
+         document.write("Eso no es un número válido.");
+      }
+
+      if (resultado != "null")
+      {
+         document.write("El número " + numero + " es " + resultado + " que " + referencia);        
+      }      
+
+
+   </script>
+</body>
+</html>

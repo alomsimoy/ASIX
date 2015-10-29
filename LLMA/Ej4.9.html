@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 4.9</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+
+	function lanzarDado(){
+		var randomnumber=Math.floor(Math.random()*6)
+		var resto = randomnumber % 1;
+		return randomnumber - resto + 1;
+	}
+
+	function getText(input) {
+		var temp = document.getElementById(input).innerHTML;
+		return temp;
+	}
+
+	function getInputText(input) {
+		var temp = document.getElementById(input).value;
+		return temp;
+	}
+
+	function setText(output, text) {
+		document.getElementById(output).innerHTML = text;
+	}
+
+
+	function jugar() {
+		var dinero = parseInt(getText("dinero"));
+		var apuesta = parseInt(getInputText("apuesta"));
+		var numero = parseInt(getInputText("numero"));	
+		var dado = lanzarDado();	
+		if (apuesta > dinero) {
+			alert("No puedes apostar más de lo que tienes.");
+		} else {
+			if (dado == numero) {
+				dinero += apuesta;
+			} else {
+				dinero -= apuesta;
+			}
+
+			setText("dinero", dinero);
+			setText("dado", dado);
+
+			if (dinero >= 500) {
+				alert("¡Has llegado a 500€!");
+			} else if (dinero <= 0){
+				alert("Has perdido todo tu dinero...");
+			}
+		}
+	}
+
+
+	</script>
+</head>
+<body>
+<h1>Apuesta y gana!</h1>
+<table>
+<tr><td>Cuanto apuestas?</td><td><input type="text" id="apuesta"></td></tr>
+<tr><td>A que número?</td><td><input type="text" id="numero"></td></tr>
+<tr><td><span id="dinero">100</span>€</td><td><input type="button" value="Tira el dado!" onClick="jugar()"> -><span id="dado"></span></td></tr>
+</table>
+</body>
+</html>

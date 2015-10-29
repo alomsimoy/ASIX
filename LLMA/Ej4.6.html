@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 4.6</title>
+	<meta charset="utf-8">
+	
+</head>
+<body>
+<p>Pulsa el boton y se crean HTML tags de la 1 a la 6</p>
+<button onclick="funcion1()">Pulsa aqui</button>
+<div id="central"></div>
+
+<script type="text/javascript">
+	function funcion1() {
+		var result="";
+		var i;
+		for (i=1; i<=6; i++){
+			result = result + "<h" + i + ">Titulo " + i + "</h" + i + ">";
+		}
+		document.getElementById("central").innerHTML= result;
+	}
+
+</script>
+</body>
+</html>

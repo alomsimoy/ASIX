@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Programa 5</title>
+	<script type="text/javascript">
+//Programa 5 a)
+function obtenerTotal(vPalabra) {
+
+	resultado = vPalabra.length;
+	return resultado;
+}
+
+var strPalabra = "murcielago";
+Final = obtenerTotal(strPalabra);
+document.write(Final);
+
+//Programa 5 b)
+function obtenerTotalA(vPalabra) {
+	var contador = 0;
+	for (i in vPalabra) {
+		if (vPalabra[i] == 'a') {
+			contador++;
+		}
+	}
+	return contador;
+}
+Final = obtenerTotalA(strPalabra);
+document.write("</br>" + Final);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

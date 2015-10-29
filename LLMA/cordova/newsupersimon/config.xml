@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.alomsimoy.supersimon" version="1.1.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Super Simon</name>
+    <description>
+        Clásico Simon dice con una nueva interfaz.
+    </description>
+    <author email="alomsimoy@gmail.com" href="http://piqueras.me">
+        Alomsimoy Group
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="Fullscreen" value="true" />
+    <icon src="www/media/icon.png" />
+</widget>

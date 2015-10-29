@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 4.5</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	body {
+		font-family: monospace;
+	}
+	</style>
+	<script type="text/javascript">
+
+	var fila;
+	var columna = parseInt(window.prompt("Introduce el tamaño: ","0"));
+	var reverse = false;
+
+	for (fila = 1; fila >= 0; fila++) {
+
+		for (espacios = columna - fila; espacios > 0; espacios--)
+			document.write("&nbsp");
+
+		for (conta = 1; conta < (2 * fila); conta++)
+			document.write("*");
+
+		document.writeln("</br>");
+
+		if (fila >= columna) {
+			reverse = true;
+		}
+		if (reverse){
+			fila -= 2;
+		}
+	}
+	
+</script>
+</head>
+<body>
+</body>
+</html>

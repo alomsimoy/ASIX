@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 3.5</title>
+	<meta charset="utf-8">
+	
+	<script type="text/javascript">
+
+	function IntroducirNumeros(){
+		var numeros = [0, 0];
+		numeros[0] = parseInt(prompt("Introduce el primer número","0"));
+		numeros[1] = parseInt(prompt("Introduce el segundo número","0"));
+		return numeros
+	}
+
+	function Sumar(){
+		numeros = IntroducirNumeros();
+		Mostrar(numeros[0] + numeros[1]);
+	}
+
+	function Multiplicar(){
+		numeros = IntroducirNumeros();
+		Mostrar(numeros[0] * numeros[1]);
+	}
+
+	function Mostrar(resultado){
+		document.write("El resultado de la operación es: ", resultado);
+	}
+
+	</script>
+
+</head>
+<body>
+
+
+<button type="button" onclick="Sumar()">Sumar dos números</button>
+<button type="button" onclick="Multiplicar()">Multiplicar dos números</button>
+</body>
+</html>

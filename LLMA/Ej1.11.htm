@@ -1,0 +1,34 @@
+<!DOCTYPE html> 
+<html>
+<head>
+   <title>Ejercicio 11</title>
+   <meta charset='UTF-8'>
+</head>
+
+<body>
+   <script type="text/javascript">
+      var positivos = 0;
+      var conta = 0;
+      var numero = 0;
+
+      numero = window.prompt("Introduce un número", "0");
+
+      while (numero != 999)
+      {
+         conta = conta +1;
+         if (numero > 0)
+         {
+            positivos = positivos + 1;
+         }
+         numero = window.prompt("Introduce otro número", "0");
+      }   
+
+      document.write("Has introducido un total de " + conta + " números. ");
+      document.write("Son positivos " + positivos + ".")
+         
+      
+
+
+   </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<html>
+<head>
+	<title>Cambios varios</title>
+	<meta charset='utf-8'>
+	<script type="text/javascript">
+
+	function cambiarColorFondo() {
+		var objseleccion = document.getElementById('colorfondo');
+		var objrecuadro = document.getElementById('recuadro');
+		objrecuadro.style.backgroundColor = objseleccion.value;
+	}
+
+	function cambiarColorFuente() {
+		var objseleccion = document.getElementById('colorfuente');
+		var objrecuadro = document.getElementById('recuadro');
+		objrecuadro.style.color = objseleccion.value;
+	}
+	</script>
+
+	<style type="text/css">
+		#recuadro {
+			background-color: #ffff00;
+			border: 1px solid #000000;
+			font-size: 16px;
+		}
+	</style>
+</head>
+<body>
+
+<p id="recuadro">¿Qué lenguaje de programación dinámico es este?</p>
+
+Color de fondo:
+<select onchange="cambiarColorFondo()" id="colorfondo">
+<option value="#000000">Negro</option>
+<option value="#ff0000">Rojo</option>
+<option value="#00ff00">Verde</option>
+<option value="#0000ff">Azul</option>
+</select>
+<br>
+
+Color de fuente:
+<select onchange="cambiarColorFuente()" id="colorfuente">
+<option value="#000000">Negro</option>
+<option value="#ff0000">Rojo</option>
+<option value="#00ff00">Verde</option>
+<option value="#0000ff">Azul</option>
+</select>
+</body>
+</html>

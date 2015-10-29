@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 4.3</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<p id="central"></p>
+<script type="text/javascript">
+
+	var i, j;
+	var x = "<table>";
+
+	for (i = 1; i <= 10; i++) {
+		x = x + "<tr>";
+
+		for (j = 1; j <= i; j++) {
+			x = x + "<td> El numero es " + i + "<td />";
+		}
+		x = x + "</tr>";
+	}
+	x = x + "</table>";
+	document.getElementById("central").innerHTML = x;
+
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Examen 1 LLMA, Ex 1</title>
+	<script type="text/javascript">
+
+function getText() {
+	var txt = document.getElementById("temp");
+	var temp = parseInt(txt.value);
+	return temp;
+}
+
+function setText(output, text) {
+	document.getElementById(output).innerHTML = text;
+}
+
+function toFahrenheit() {
+	var temp = getText();
+	temp = ((1.8) * temp + 32);
+	setText('output1', temp + " ºF");
+	toThermalFeel(temp);
+	setText('output3', "Temperatura gràfica (ºF) -> " + thermometer(temp));
+}
+
+function toCelsius() {
+	var temp = getText();
+	var temp2 = ((temp - 32) / 1.8);
+	setText('output1', temp2 + " ºC");
+	toThermalFeel(temp);
+	setText('output3', "Temperatura gràfica (ºC) -> " + thermometer(temp2));
+}
+
+function toThermalFeel(pepito) {
+	var text;
+	if ((pepito >= 14) && (pepito < 32)) {
+		text = "Temperatura baixa";
+	} else if ((pepito >= 32) && (pepito < 68)) {
+		text = "Temperatura adequada";
+	} else if ((pepito >= 68) && (pepito <= 96)) {
+		text = "Temperatura alta";
+	} else {
+		text = "Temperatura desconeguda";
+	}
+
+	setText('output2', text);
+}
+
+function thermometer(temp) {
+	var total, residu;
+	var text = '';
+	var i = 0;
+	residu = temp % 10;
+	total = (temp - residu) / 10;
+	while (i < total) {
+		text += '*';
+		i += 1;
+	}
+	return text;
+}
+</script>
+</head>
+<body>
+	<h2>Conversor de temperatures</h2>
+        <input type="text" name="temp" id="temp">
+		<input type="button" value="Pasar a Fahrenheit" onClick="toFahrenheit()">
+		<input type="button" value="Pasar a Celsius" onClick="toCelsius()">
+
+	<form name="ThermalFeel">
+	<br>
+
+	<div id="output1"></div>
+	<div id="output2"></div>
+	<div id="output3"></div>
+		
+	</form>
+</body>
+</html> 

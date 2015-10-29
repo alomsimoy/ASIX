@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 3.6</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+
+	function IntroducirNumeros(){
+		var numeros = [200];
+		numeros[0] = parseInt(document.calculadora.valor1.value);
+		numeros[1] = parseInt(document.calculadora.valor2.value);
+		return numeros
+	}
+
+	function Sumar(){
+		numeros = IntroducirNumeros();
+		Mostrar(numeros[0] + numeros[1]);
+	}
+
+	function Restar(){
+		numeros = IntroducirNumeros();
+		Mostrar(numeros[0] - numeros[1]);
+	}
+
+
+	function Multiplicar(){
+		numeros = IntroducirNumeros();
+		Mostrar(numeros[0] * numeros[1]);
+	}
+
+	function Dividir(){
+		numeros = IntroducirNumeros();
+		Mostrar(numeros[0] / numeros[1]);
+	}
+
+	function Mostrar(resultado){
+		document.calculadora.resultado.value = resultado;
+	}
+
+	</script>
+
+</head>
+<body>
+
+<form name="calculadora">
+Primer número: <input type="text" name="valor1"><br>
+Segundo número: <input type="text" name="valor2"><br>
+
+<button type="button" onclick="Sumar()">Sumar</button>
+<button type="button" onclick="Restar()">Restar</button>
+<button type="button" onclick="Multiplicar()">Multiplicar</button>
+<button type="button" onclick="Dividir()">Dividir</button>
+
+<br>
+Resultado: <input type="text" name="resultado">
+
+</form>
+</body>
+</html>

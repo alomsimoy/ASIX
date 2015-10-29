@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Programa 7</title>
+	<meta charset='utf-8'>
+	<script type="text/javascript">
+
+var Alumnos = ["joan", "ana", "juana", "mario"];
+
+
+Array.prototype.pasarMayusculas=function()
+{
+	for (i=0;i<this.length;i++)
+	{
+		this[i]=this[i].toUpperCase();
+	}
+}
+
+Array.prototype.pasarMinusculas=function()
+{
+	for (i=0;i<this.length;i++)
+	{
+		this[i]=this[i].toLowerCase();
+	}
+}
+
+function Transformar(como)
+// Utilizamos la "nueva" propiedad pasarMayusculas
+{
+	if (como == "aMayusculas") {
+		Alumnos.pasarMayusculas();
+	} else if (como == "aMinusculas") {
+		Alumnos.pasarMinusculas();
+	}
+}
+
+function Mostrar()
+{
+	var objVer=document.getElementById("iniciar");
+	objVer.innerHTML=Alumnos;
+
+}
+	</script>
+</head>
+<body>
+<p id="iniciar">Primero puedes Ver, luego pasar a mayúsculas y volver a Ver</p>
+<br/><br/>
+<button onclick="Mostrar()">Ver Alumnos</button>
+<button onclick="Transformar('aMayusculas')">Pasar a mayúsculas</button>
+<button onclick="Transformar('aMinusculas')">Pasar a minúsculas</button>
+
+</body>
+</html>

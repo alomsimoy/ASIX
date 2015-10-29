@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 2.11</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+
+	function Suma()	{
+		var dato1, dato2, n1, n2;
+
+		dato1 = window.prompt("Primer entero", "0");
+		dato2 = window.prompt("Segundo entero", "0");
+
+
+		n1 = parseInt(dato1);
+		n2 = parseInt(dato2);
+
+		return n1 + n2;
+	}
+
+	</script>
+</head>
+<body>
+
+<p>
+	<input type="button" onclick="window.alert('Resultado: ' + Suma())" value="Suma dos enteros" />
+</p>
+
+<p><br/>La función utiliza la sentencia <b>return</b> para devolver un valor.</p>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Ahorcado</title>
+	<style type="text/css"> 
+		div.muneco{
+			padding: 0;
+			margin: 0;
+			margin-bottom: -22px;
+		}
+		div#palo{
+			margin-left: 2pt;
+		}
+		div#muneco1{
+			margin-left: 30pt;
+			margin-top: 2pt;
+		}
+		div#muneco2{
+			margin-left: 27pt;
+			margin-top: 2pt;
+		}
+		div#muneco3{
+			margin-left: 26pt;
+			margin-top: 0pt;
+		}
+		div#muneco4{
+			margin-left: 28pt;
+			margin-top: 1pt;
+		}
+	</style>
+	<script type="text/javascript">
+
+var partida = {} //Inicializa el objeto partida
+
+function nuevapartida(numjugadores){ //Inicializa una nueva partida
+	if (numjugadores == 1) { //Está preparado para partidas a 2 jugadores
+		partida.palabra = diccionario(); //Crea el array de la palabra
+	} else {
+		partida.palabra = pedirpalabra();
+	}
+	partida.errores = []; //Crea los arrays errores e intentos
+	partida.intento = [];
+	for (var i in partida.palabra){
+		partida.intento.push("_"); //El array intentos será igual que la palabra pero 
+	}								//con todos los caracteres substituidos por '_'
+	dibujar(); 		//Dibuja en la pantalla el muñeco y las palabras
+}
+
+function finpartida(victoria){
+	if (victoria == 1){ 	//Si has ganado, muestra el mensaje de victoria.
+		window.alert("Has ganado!");
+	} else {		//Sinó, pues el otro.
+	window.alert("Has perdido...");
+	}
+}
+
+function comprobar(letra){  //Esta función comprueba si la letra está en el array
+	var acierto = false;
+	for (var i = 0; i < partida.palabra.length; i++ ){
+		if (partida.palabra[i] == letra){
+			partida.intento[i] = letra; //Si la letra está, esta se añade en la debida posición
+			acierto = true;				//de intento.
+		}
+	}
+	if (acierto == false){ //Si no estaba, la letra se añade a la lista de errores.
+		partida.errores.push(letra);
+	}
+	dibujar(); //Se actualiza la pantalla
+	if (sonIguales(partida.palabra, partida.intento)){ //Comprueba si se ha adivinado la palabra
+		finpartida(1);
+	}
+	if (partida.errores.length >= 7){ //Comprueba si te has pasado de fallos
+		finpartida(0);
+	}
+}
+
+function sonIguales(x, y) { //Función para comprobar si dos arrays son iguales.
+   var sonIguales = true; 		//Se asume que es cierto
+   for(var i in x) {
+      if(x[i] !== y[i]) { 		//Si alguna es diferente, el estado cambia a falso.
+         sonIguales = false;
+         break;
+      }
+   }
+   return sonIguales;
+}
+
+function diccionario(){ //Elige aleatoriamente entre una palabra del listado y la transforma en array.
+	var listado = new Array ("ARBOL", "CASA", "PETARDO", "MAPA", "ORDENADOR", "INFORMATICO", "GAFAS", "TUNEL", "QUESO", "JAMON", "JUGADOR");
+
+	var aleatorio = Math.floor(Math.random()*(listado.length));
+	var seleccion = listado[aleatorio]
+	array = seleccion.split("");
+	return array;
+
+ }
+
+function dibujar(){ //Dibuja todo el conjunto
+
+	if (partida.errores.length == 0){		//Cada 'if' dibuja un estado del muñeco.
+		document.getElementById('muneco1').innerHTML = "&nbsp";
+		document.getElementById('muneco2').innerHTML = "&nbsp";
+		document.getElementById('muneco3').innerHTML = "&nbsp";
+		document.getElementById('muneco4').innerHTML = "&nbsp";
+	} else if (partida.errores.length == 1){
+		document.getElementById('muneco1').innerHTML = "|";
+		document.getElementById('muneco2').innerHTML = "&nbsp";
+		document.getElementById('muneco3').innerHTML = "&nbsp";
+		document.getElementById('muneco4').innerHTML = "&nbsp";		
+	} else if (partida.errores.length == 2){
+		document.getElementById('muneco1').innerHTML = "|";
+		document.getElementById('muneco2').innerHTML = "O";
+		document.getElementById('muneco3').innerHTML = "&nbsp";
+		document.getElementById('muneco4').innerHTML = "&nbsp";		
+	} else if (partida.errores.length == 3){
+		document.getElementById('muneco1').innerHTML = "|";
+		document.getElementById('muneco2').innerHTML = "O";
+		document.getElementById('muneco3').innerHTML = "&nbsp|";
+		document.getElementById('muneco4').innerHTML = "&nbsp";		
+	} else if (partida.errores.length == 4){
+		document.getElementById('muneco1').innerHTML = "|";
+		document.getElementById('muneco2').innerHTML = "O";
+		document.getElementById('muneco3').innerHTML = "/|";
+		document.getElementById('muneco4').innerHTML = "&nbsp";		
+	} else if (partida.errores.length == 5){
+		document.getElementById('muneco1').innerHTML = "|";
+		document.getElementById('muneco2').innerHTML = "O";
+		document.getElementById('muneco3').innerHTML = "/|&#92";
+		document.getElementById('muneco4').innerHTML = "&nbsp";		
+	} else if (partida.errores.length == 6){
+		document.getElementById('muneco1').innerHTML = "|";
+		document.getElementById('muneco2').innerHTML = "O";
+		document.getElementById('muneco3').innerHTML = "/|&#92";
+		document.getElementById('muneco4').innerHTML = "/";		
+	} else {
+		document.getElementById('muneco1').innerHTML = "|";
+		document.getElementById('muneco2').innerHTML = "O";
+		document.getElementById('muneco3').innerHTML = "/|&#92";
+		document.getElementById('muneco4').innerHTML = "/&#92";		
+	}
+	document.getElementById('palabra').innerHTML = partida.intento; //Palabra que intentamos adivinar
+	document.getElementById('errores').innerHTML = partida.errores;	//Letras falladas
+}
+</script>
+</head>
+<body>
+	<div id="palo" class="muneco">_____</div><br/>
+	<div class="muneco">|/&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div><div id="muneco1" class="muneco">|</div><br/>
+	<div class="muneco">|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div><div id="muneco2" class="muneco">O</div><br/>
+	<div class="muneco">|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div><div id="muneco3" class="muneco">/|\</div><br/>
+	<div class="muneco">|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div><div id="muneco4" class="muneco">/\</div><br/> <br/>
+<div id="palabra"></div><br/>
+<div id="errores"></div><br/>
+		<input type="button" value="Nueva Partida" onClick="nuevapartida(1)"><br/>
+		<input type="button" value="A" onClick="comprobar('A')">
+		<input type="button" value="B" onClick="comprobar('B')">
+		<input type="button" value="C" onClick="comprobar('C')">
+		<input type="button" value="D" onClick="comprobar('D')">
+		<input type="button" value="E" onClick="comprobar('E')">
+		<input type="button" value="F" onClick="comprobar('F')"><br/>
+		<input type="button" value="G" onClick="comprobar('G')">
+		<input type="button" value="H" onClick="comprobar('H')">
+		<input type="button" value="I" onClick="comprobar('I')">
+		<input type="button" value="J" onClick="comprobar('J')">
+		<input type="button" value="K" onClick="comprobar('K')">
+		<input type="button" value="L" onClick="comprobar('L')"><br/>
+		<input type="button" value="M" onClick="comprobar('M')">
+		<input type="button" value="N" onClick="comprobar('N')">
+		<input type="button" value="Ñ" onClick="comprobar('Ñ')">
+		<input type="button" value="O" onClick="comprobar('O')">
+		<input type="button" value="P" onClick="comprobar('P')"><br/>
+		<input type="button" value="Q" onClick="comprobar('Q')">
+		<input type="button" value="R" onClick="comprobar('R')">
+		<input type="button" value="S" onClick="comprobar('S')">
+		<input type="button" value="T" onClick="comprobar('T')">
+		<input type="button" value="U" onClick="comprobar('U')"><br/>
+		<input type="button" value="V" onClick="comprobar('V')">
+		<input type="button" value="W" onClick="comprobar('W')">
+		<input type="button" value="X" onClick="comprobar('X')">
+		<input type="button" value="Y" onClick="comprobar('Y')">
+		<input type="button" value="Z" onClick="comprobar('Z')">
+		
+</body>
+</html> 

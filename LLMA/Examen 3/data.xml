@@ -1,0 +1,32 @@
+<jugadors>
+	<jugador>
+		<nom>Michael Jordan</nom>
+		<edat>52</edat>
+		<altura>192</altura>
+		<descripcio>Michael Jeffrey Jordan (Brooklyn, 17 de febrero de 1963), conocido como Michael Jordan y apodado «His Airness» («Su Aireza») y «Air Jordan», es un exjugador de baloncesto estadounidense. En la actualidad, es el propietario de los Charlotte Hornets, franquicia de la NBA.2 Está considerado por la mayoría de aficionados y especialistas como el mejor jugador de baloncesto de todos los tiempos.3 Se retiró definitivamente en 2003, tras haberlo hecho en dos ocasiones anteriores, en 1993 y 1999.</descripcio>
+	</jugador>
+	<jugador>
+		<nom>Kareem Abdul-Jabaar</nom>
+		<edat>68</edat>
+		<altura>218</altura>
+		<descripcio>Kareem Abdul-Jabbar, en idioma árabe كريم عبدالجبر (nacido con el nombre de Ferdinand Lewis Alcindor, Jr., Harlem, Nueva York, 16 de abril de 1947) es un exbaloncestista estadounidense que militó en Milwaukee Bucks y Los Angeles Lakers de la NBA desde 1969 hasta 1989. Sus dos primera temporadas era conocido como Lew Alcindor antes de que cambiara su nombre a finales de 1971, varios años después de convertirse al islam, al que llegó después de leer una autobiografía de Malcolm X.1</descripcio>
+	</jugador>
+	<jugador>
+		<nom>Wilt Chamberlain</nom>
+		<edat>63</edat>
+		<altura>216</altura>
+		<descripcio>Wilton Norman "Wilt" Chamberlain (* Filadelfia, Pensilvania; 21 de agosto de 1936 – † Los Ángeles, California; 12 de octubre de 1999); jugador legendario de origen estadounidense de baloncesto que militó en Philadelphia/San Francisco Warriors, Philadelphia 76ers y Los Angeles Lakers</descripcio>
+	</jugador>
+	<jugador>
+		<nom>Magic Johnson</nom>
+		<edat>55</edat>
+		<altura>206</altura>
+		<descripcio>Earvin "Magic" Johnson, Jr. (Lansing, Míchigan, 14 de agosto de 1959) es un exjugador de baloncesto estadounidense, considerado uno de los mejores de la historia.1 Militó en Los Angeles Lakers de la NBA desde 1979 hasta 1991, y por un breve período en 1996.</descripcio>
+	</jugador>
+	<jugador>
+		<nom>Larry Bird</nom>
+		<edat>56</edat>
+		<altura>206</altura>
+		<descripcio>Lawrence Joe Bird (West Baden, Indiana, 7 de diciembre de 1956) es un exjugador y exentrenador de baloncesto estadounidense que disputó 13 temporadas en la NBA, todas ellas con los Boston Celtics, con los que consiguió 3 campeonatos, en 1981, 1984 y 1986. Es considerado por muchos como el mejor alero en la historia de la NBA1 2 3 y una de las más grandes figuras del baloncesto mundial.4 5</descripcio>
+	</jugador>
+</jugadors>

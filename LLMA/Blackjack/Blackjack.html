@@ -1,0 +1,423 @@
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Blackjack</title>
+	<style type="text/css"> 
+		body {
+			background-color: green;
+		}
+		#a {
+			padding-left: 0;
+			padding-right: 0;
+			margin-left: auto;
+			margin-right: auto;
+			display: block;
+			position: relative;
+		}
+
+	</style>
+	<script type="text/javascript">
+
+var cardsFront = new Image();
+cardsFront.src = "images/cards.png";
+var cardsBack = new Image();
+cardsBack.src = "images/card_back.png"
+cardsWidth = 72;
+cardsHeight = 96;
+inGame = false;
+dinero = 100;
+apuesta = 10;
+apostado = 0;
+help = false;
+
+function Mesa() {
+
+	this.dibujarCarta = function(carta, posicion){
+		var palo;
+		var numero;
+		var imagen = cardsFront;
+		switch (carta[0]){
+			case 'T':
+				palo = 0;
+				break;
+			case 'S':
+				palo = 1;
+				break;
+			case 'H':
+				palo = 2;
+				break;
+			case 'B': //Back. Cambia la imágen por la parte de atrás.
+				imagen = cardsBack;
+				palo = 0;
+				break;
+			default:
+				palo = 3
+				break;
+		}
+		switch (carta[1]){
+			case 'A':
+				numero = 0;
+				break;
+			case '0':
+				numero = 9;
+				break;
+			case 'J':
+				numero = 10;
+				break;
+			case 'Q':
+				numero = 11;
+				break;
+			case 'K':
+				numero = 12;
+				break;
+			case 'B': //Blue. Se usa cuando queremos mostrar la parte de atras de la carta.
+				numero = 0;
+				break;
+			case 'R': //Red. Idem.
+				numero = 1;
+				break;
+			default:
+				numero = parseInt(carta[1]) - 1;
+		}
+
+		var context = canvas.getContext("2d");
+		context.drawImage(
+			imagen,
+			cardsWidth * numero,
+			cardsHeight * palo,
+			cardsWidth,
+			cardsHeight,
+			10 + (cardsWidth + 10) * posicion[1],
+			10 + (cardsHeight + 10) * posicion[0],
+			cardsWidth,
+			cardsHeight);
+	}
+
+	this.borrarCarta = function(posicion){
+		var context = canvas.getContext("2d");
+		context.clearRect(
+			10 + (cardsWidth + 10) * posicion[1],
+			10 + (cardsHeight + 10) * posicion[0],
+			cardsWidth,
+			cardsHeight);
+	}
+
+	this.dibujarTodo = function(cartas, lado){
+		if (lado == 'up'){
+			for (var i in cartas){
+				var posicion = '0' + i.toString();
+				this.dibujarCarta(cartas[i], posicion);
+			};
+		} else {
+			for (var i in cartas){
+				var posicion = '4' + (8 - i).toString();
+				this.dibujarCarta(cartas[i], posicion);
+			}
+		}
+	}
+
+	this.vaciarTodo = function(){
+		for (var i = 7; i > 0; i--){
+			var posicion = '0' + i.toString();
+			this.borrarCarta(posicion);
+		};
+		for (var i = 0; i < 7; i++){
+			var posicion = '4' + (8 - i).toString();
+			this.borrarCarta(posicion);
+		}
+	}
+
+	this.mensaje = function(mensaje){
+		var context = canvas.getContext("2d");
+		context.fillStyle = "yellow";
+  		context.font = "bold 20px Arial";
+  		context.textAlign = 'center';
+  		context.clearRect(0, 550, 748, 50);
+  		context.fillText(mensaje, 374, 575);
+	}
+
+	this.dinero = function(cantidad){
+		var context = canvas.getContext("2d");
+		context.fillStyle = "yellow";
+		context.font = "bold 26px Arial";
+		context.textAlign = 'left';
+		context.clearRect(0, 475, 200, 50);
+		context.fillText(cantidad + "€", 50, 500);
+	}
+
+	this.apuestas = function(cantidad){
+		if ((cantidad + apuesta >= 0) && (cantidad + apuesta <= dinero) ){
+			apuesta += cantidad;
+		}
+		var context = canvas.getContext("2d");
+		context.fillStyle = "yellow";
+		context.font = "bold 24px Arial";
+  		context.textAlign = 'center';
+  		context.clearRect(650, 125, 200, 100);
+  		context.beginPath();
+
+  		//Triangulo superior
+   		context.moveTo(700,125);
+    	context.lineTo(675,150);
+    	context.lineTo(725,150);
+    	context.fill();
+
+    	//Triangulo inferior
+    	context.moveTo(700,225);
+    	context.lineTo(675,200);
+    	context.lineTo(725,200);
+    	context.fill();
+
+    	context.fillText(apuesta + "€", 700, 183);
+	}
+
+	this.helpButton = function(){
+		var context = canvas.getContext("2d");
+		context.fillStyle = "yellow";
+		context.moveTo(700, 50);
+		context.arc(700, 50, 25, 0, Math.PI*2, true);
+		context.fill();
+		context.fillStyle = "green";
+		context.textAlign ='center';
+		context.font = "bold 35px Arial";
+		context.fillText("i", 699, 62)
+	}
+
+	this.help = function(){
+		var context = canvas.getContext("2d");
+		context.fillStyle = "orange";
+		context.textAlign ='left';
+		context.font = "bold 20px Arial";
+		if (!help) {
+			help = true;
+			context.font = "bold 20px Arial";
+			context.fillText("Arriba juega el dealer", 10, 150);
+			context.fillText("Abajo juegas tú", 560, 400);
+			context.font = "bold 16px Arial";
+			context.fillText("Empieza una nueva partida o pide", 10, 265);
+			context.fillText("carta pulsando sobre la baraja", 10, 285);
+			context.fillText("Este es tu dinero", 10, 450);
+			context.fillText("Aquí cambia tu apuesta", 420, 175);
+			context.fillText("Pulsa tus cartas para plantarte", 450, 420);
+		} else {
+			help = false;
+			context.clearRect(10, 135, 250, 20);
+			context.clearRect(560, 384, 250, 20);
+			context.clearRect(10, 250, 320, 40);
+			context.clearRect(10, 435, 170, 20);
+			context.clearRect(420, 160, 220, 20);
+			context.clearRect(450, 405, 300, 20);
+		}
+
+	}
+}
+
+function Baraja() {
+	this.cartas = [];
+	this.numeros = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'J', 'Q', 'K']; 
+	this.palos = ['S', 'T', 'H', 'D'];
+
+	this.nuevaBaraja = function() { //Crea una nueva baraja
+		this.cartas = [];
+		for (x in this.palos) {
+			for (y in this.numeros) {
+				this.cartas.push(this.palos[x] + this.numeros[y]);
+			}
+		}
+	};
+
+	this.sacarCarta = function() { //Saca una carta de la baraja
+		return this.cartas.pop();
+	};
+
+	this.mezclar = function() { //Baraja las cartas
+		this.cartas = shuffle(this.cartas);
+	}
+
+	function shuffle(o){ //Cortesia de stackoverflow
+    	for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    	return o;
+	};
+
+	this.mostrarCartas = function() { //Muestra la baraja en el estado actual
+		return this.cartas;
+	}
+}
+
+function Mano(mesa, baraja, side) {
+	this.cartas = [];
+	this.side = side
+	this.vaciarMano = function() { //Vacia la mano
+		this.cartas = [];
+		mesa.vaciarTodo();
+	}
+
+	this.cogerCarta = function() { //Añade la carta pasada a la mano
+		var carta = baraja.sacarCarta()
+		this.cartas.push(carta);
+		mesa.dibujarTodo(this.cartas, side);
+	}
+
+	this.mostrarCartas = function() { //Muestra la mano en el estado actual
+		return this.cartas;
+	}
+
+	this.mostrarValor = function() { //Devuelve el valor de la mano
+		var valor = 0;
+		var as = false;
+		for (i in this.cartas) {
+			if (parseInt(this.cartas[i][1]) >= 2 && parseInt(this.cartas[i][1]) < 10) { // entre 2 y 10
+				valor += parseInt(this.cartas[i][1]);
+			} else if (parseInt(this.cartas[i][1] == 0)) {
+				valor += 10;
+			} else if (this.cartas[i][1] == 'A') { //El primer as vale 11 o 1. El resto 1
+				if (as == true) {
+					valor += 1;
+				}
+				as = true;
+			} else { //El resto de cartas son las figuras, que valen 10
+				valor += 10;
+			};
+		};
+
+		if (as == true) { //Si ha habido un as, se calcula si vale 11 o 1 dependiendo del resto de cartas
+			if (valor <= 10) {
+				valor += 11;
+			} else {
+				valor ++;
+			};
+		};
+
+		return valor;
+	}
+}
+
+function nuevaPartida(){ //Inicializa una nueva partida
+	baraja = new Baraja();
+	mesa = new Mesa();
+	mesa.dibujarCarta('BB', '24'); //Dibuja la baraja central
+	dealer = new Mano(mesa, baraja, 'up');
+	jugador = new Mano(mesa, baraja, 'down');
+	mesa.mensaje("Bienvenido al Blackjack");
+	mesa.dinero(dinero);
+	mesa.apuestas(0);
+	mesa.helpButton();
+}
+
+function cartaCentral(){
+	if (inGame) {
+		pedir();
+	} else {
+		repartir();
+	}
+}
+
+function plantarse(){
+	if (inGame){
+		while (dealer.mostrarValor() < 17) {
+			dealer.cogerCarta();
+		}
+		inGame = false;
+		if (dealer.mostrarValor() <= 21){
+			if (dealer.mostrarValor() >= jugador.mostrarValor()){
+				mesa.mensaje("Dealer gana");
+			} else {
+				mesa.mensaje("Has ganado");
+				dinero += 2 * apostado;
+				mesa.dinero(dinero);
+			} 
+		} else {
+			mesa.mensaje("El dealer se ha pasado. Has ganado");
+			dinero += 2 * apostado;
+			mesa.dinero(dinero);
+		}
+	}
+	mesa.dibujarCarta(dealer.mostrarCartas()[0], '00');
+	
+}
+function repartir(){
+	baraja.nuevaBaraja();
+	baraja.mezclar();
+	dealer.vaciarMano();
+	jugador.vaciarMano();
+	dealer.cogerCarta();
+	dealer.cogerCarta();
+	jugador.cogerCarta();
+	jugador.cogerCarta();
+	mesa.dibujarCarta('BB', '00'); //Esta carta tapa la primera del dealer
+	inGame = true;
+	mesa.mensaje("Pide carta o plántate");
+	dinero -= apuesta;
+	apostado = apuesta;
+	if (apuesta > dinero){
+		apuesta = dinero;
+	}
+	mesa.apuestas(0);
+	mesa.dinero(dinero);
+}
+
+function pedir(){
+	jugador.cogerCarta();
+	mesa.dibujarCarta('BB', '00');	
+	if (jugador.mostrarValor() > 21) {
+		inGame = false;
+		mesa.mensaje("Te has pasado, dealer gana");
+		plantarse();
+	}
+}
+
+function getCoordenadas(x, y){
+	startX = ((x + 1) * 10) + (x * cardsWidth);
+	endX = startX + cardsWidth;
+	startY = ((y + 1) * 10) + (y * cardsHeight);
+	endY = startY + cardsHeight;
+	return [startX, startY, endX, endY];
+}
+
+</script>
+</head>
+<body>
+	<canvas id="a" width="748" height="600"></canvas>
+	<script type="text/javascript">
+		canvas = document.getElementById("a");
+		nuevaPartida();
+		canvas.onclick = function (e) {
+			var mouseX, mouseY;
+			if(e.offsetX) {
+				mouseX = e.offsetX;
+				mouseY = e.offsetY;
+			}
+			else if(e.layerX) {
+				mouseX = e.layerX;
+				mouseY = e.layerY;
+			}
+			if (mouseY >= getCoordenadas(4, 2)[1] && mouseY <= getCoordenadas(4, 2)[3]){
+				if (mouseX >= getCoordenadas(4, 2)[0] && mouseX <= getCoordenadas(4, 2)[2]){
+					cartaCentral();
+				}
+			}
+			if (mouseX >= 675 && mouseX <= 725){
+				if (mouseY >= 125 && mouseY <= 150){
+					mesa.apuestas(10);
+				} else if (mouseY >= 200 && mouseY <= 225){
+					mesa.apuestas(-10);
+				} else if (mouseY >= 25 && mouseY <= 75)
+					mesa.help();
+			}
+
+			if (typeof jugador !== 'undefined'){
+				for (var i in jugador.mostrarCartas()){
+					i = 8 - i;
+					if (mouseY >= getCoordenadas(i, 4)[1] && mouseY <= getCoordenadas(i, 4)[3]){
+						if (mouseX >= getCoordenadas(i, 4)[0] && mouseX <= getCoordenadas(i, 4)[2]){
+							plantarse();
+						}
+					}
+				}
+			}
+		}
+
+
+	</script>
+</body>
+</html> 

@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>Super Simon</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/style.css" type="text/css" >
+
+</head>
+<body>
+	<div class="tiles" id="tile0" onclick="clickHandler(this.id)"></div>
+	<div class="tiles" id="tile1" onclick="clickHandler(this.id)"></div>
+	<div class="tiles" id="tile2" onclick="clickHandler(this.id)"></div>
+	<div class="tiles" id="tile3" onclick="clickHandler(this.id)"></div>
+	<div class="tiles" id="tile4" onclick="clickHandler(this.id)"></div>
+
+	<div id="dialog"><h1 id="text" >Super Simon!</h1><br/>
+	<input id="botoncillo" type="button" value="Empezar juego" onclick="nuevoJuego()"/>
+	<script src="js/script.js" type="text/javascript"></script>
+	<audio id="do">
+  		<source src="media/Do.ogg" type='audio/ogg' />
+  		<source src="media/Do.mp3" type='audio/mpeg' />
+	</audio>
+	<audio id="re">
+  		<source src="media/Re.ogg" type='audio/ogg' />
+  		<source src="media/Re.mp3" type='audio/mpeg' />
+	</audio>
+	<audio id="mi">
+  		<source src="media/Mi.ogg" type='audio/ogg' />
+  		<source src="media/Mi.mp3" type='audio/mpeg' />
+	</audio>
+	<audio id="fa">
+  		<source src="media/Fa.ogg" type='audio/ogg' />
+  		<source src="media/Fa.mp3" type='audio/mpeg' />
+	</audio>
+	<audio id="sol">
+  		<source src="media/Sol.ogg" type='audio/ogg' />
+  		<source src="media/Sol.mp3" type='audio/mpeg' />
+	</audio>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Programa 6</title>
+	<script type="text/javascript">
+
+ValorInicials = ['a', 'l', 'd', 'o', 'r', 'k', 'e', 'p', 'v', 'm'];
+ValorsFinals = new Array(10);
+
+for (i in ValorInicials) {
+	switch (ValorInicials[i]){
+		case 'a':
+		case 'e':
+		case 'i':
+		case 'o':
+		case 'u':
+			break;
+		default:
+			ValorsFinals[i] = ValorInicials[i];
+	}
+}
+
+function Muestra(Array1, Array2) {
+	document.write(Array1 + "</br>" + Array2);
+}
+
+
+Muestra(ValorInicials, ValorsFinals);
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

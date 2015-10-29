@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 3.6v2</title>
+	<meta charset="utf-8">
+
+	<script type="text/javascript">
+
+	function Operar(operando){
+		num0 = parseInt(document.calculadora.valor1.value);
+		num1 = parseInt(document.calculadora.valor2.value);
+		
+		switch (operando){
+			case "suma":
+				res = num0 + num1;
+				break;
+
+			case "rest":
+				res = num0 - num1;
+				break;
+
+			case "mult":
+				res = num0 * num1;
+				break;
+
+			case "divi":
+				res = num0 / num1;
+				break;
+
+			default:
+				window.alert("Error pasando el operando");
+		}
+
+		document.calculadora.resultado.value = res;
+	}
+
+	</script>
+
+</head>
+<body>
+
+<form name="calculadora">
+Primer número: <input type="text" name="valor1"><br>
+Segundo número: <input type="text" name="valor2"><br>
+
+<button type="button" onclick="Operar('suma')">Sumar</button>
+<button type="button" onclick="Operar('rest')">Restar</button>
+<button type="button" onclick="Operar('mult')">Multiplicar</button>
+<button type="button" onclick="Operar('divi')">Dividir</button>
+
+<br>
+Resultado: <input type="text" name="resultado">
+
+</form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html> 
+<html>
+<head>
+   <title>Ejercicio 13</title>
+   <meta charset='UTF-8'>
+</head>
+
+<body>
+   <script type="text/javascript">
+      var celsius = 0;
+      var fahrenheit = 0;
+      resultado = "null";
+
+      celsius = window.prompt("Introduce el primer número", "0");
+      celsiusint = parseInt(celsius);
+      
+      if (celsiusint < 0 && celsiusint >= 0) 
+      {
+         document.write("No es un número válido.")
+      }
+      else
+      {
+         fahrenheit = (celsius * 9 / 5) + 32
+         document.write(celsius + " ºC son " + fahrenheit + " ºF.")
+      }
+      
+
+
+
+   </script>
+</body>
+</html>

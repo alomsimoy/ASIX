@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title>New Super Simon</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/style.css" type="text/css" >
+
+</head>
+<body>
+	<div class="tiles" id="tile0" onclick="clickHandler(this.id)"></div>
+	<div class="tiles" id="tile1" onclick="clickHandler(this.id)"></div>
+	<div class="tiles" id="tile2" onclick="clickHandler(this.id)"></div>
+	<div class="tiles" id="tile3" onclick="clickHandler(this.id)"></div>
+	<div class="tiles" id="tile4" onclick="clickHandler(this.id)"></div>
+
+	<div id="dialog"><h1>New Super Simon!</h1><br/>
+	<input id="botoncillo" type="button" value="Empezar juego" onclick="nuevoJuego()"/>
+	<script src="js/script.js" type="text/javascript"></script>
+</body>
+</html>

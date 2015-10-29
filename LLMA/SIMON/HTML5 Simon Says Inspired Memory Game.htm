@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>HTML5 Simon Says Inspired Memory Game</title>
+	<meta name="description" content="Simon says simulator. Enjoy a free memory game in your browser.">
+	<meta name="keywords" content="game, color, memory, sound">
+
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0">
+  	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<link rel="stylesheet" href="HTML5%20Simon%20Says%20Inspired%20Memory%20Game_files/style.css" type="text/css" media="screen">
+
+	<!--[if IE 9]>
+		<link rel="stylesheet" type="text/css" href="http://local.colrd/inc/css/ie9.css?v=1327094253" media="screen">
+	<![endif]-->
+
+	<link rel="shortcut icon" href="http://local.colrd/inc/css/images/media/favicon.png">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<style>.loader { color: #fff; position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 100000; opacity: 0; display: none; }.loader span.message { font-family: monospace; font-size: 14px; margin: auto; opacity: 1; display: none; border-radius: 10px; padding: 0px; width: 300px; text-align: center; position: absolute; z-index: 10000; left: 0; right: 0; }.loader span.message div { border-bottom: 1px solid #222; padding: 5px 10px; clear: both; text-align: left; opacity: 1; }.loader span.message div:last-child { border-bottom: none; }</style><script src="HTML5%20Simon%20Says%20Inspired%20Memory%20Game_files/acoustic_grand_piano-ogg.js" type="text/javascript"></script></head>
+<body data-twttr-rendered="true">
+
+	<div id="followBar">
+		<a href="http://uxmonk.com/">« Back To UX Monk</a>
+		<iframe style="width: 119px; height: 20px;" data-twttr-rendered="true" title="Twitter Follow Button" class="twitter-follow-button twitter-follow-button" src="HTML5%20Simon%20Says%20Inspired%20Memory%20Game_files/follow_button.htm" allowtransparency="true" scrolling="no" id="twitter-widget-0" frameborder="0"></iframe>
+		<script src="HTML5%20Simon%20Says%20Inspired%20Memory%20Game_files/widgets.js" id="twitter-wjs"></script><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	</div>
+
+	<div class="active" id="intro">
+		<h1>Simon Says</h1>
+		<div class="bodyContent">
+			<p>I'll play a melody, and you play it back. Ready?</p>
+			<a href="#" id="start" class="button">Start!</a>
+			<p class="info visible-desktop">Controls: touch, click, or numeric keys 1 – 5.</p>
+		</div>
+
+	</div>
+
+	<div id="content">
+		<a id="col1"></a>
+		<a id="col2"></a>
+		<a id="col3"></a>
+		<a id="col4"></a>
+		<a id="col5"></a>
+	</div>
+
+	<div id="endScreen">
+		<div class="content">
+			<h2>GREAT WORK!</h2>
+			Final score: <span id="finalScore">0</span>
+			<a href="#" id="reset" class="button">Play Again!</a>
+		</div>
+	</div>
+
+	<div id="ctrl">
+		<div id="score"><span class="title">Score:</span> <span id="scoreNumber">0</span></div>
+	</div>
+
+	<script src="HTML5%20Simon%20Says%20Inspired%20Memory%20Game_files/Loader.js" type="text/javascript"></script>
+	<script src="HTML5%20Simon%20Says%20Inspired%20Memory%20Game_files/AudioDetect.js" type="text/javascript"></script>
+	<script src="HTML5%20Simon%20Says%20Inspired%20Memory%20Game_files/LoadPlugin.js" type="text/javascript"></script>
+	<script src="HTML5%20Simon%20Says%20Inspired%20Memory%20Game_files/Plugin.js" type="text/javascript"></script>
+	<script src="HTML5%20Simon%20Says%20Inspired%20Memory%20Game_files/Player.js" type="text/javascript"></script>
+	<script src="HTML5%20Simon%20Says%20Inspired%20Memory%20Game_files/DOMLoader.js" type="text/javascript"></script>
+	<script src="HTML5%20Simon%20Says%20Inspired%20Memory%20Game_files/Event.js" type="text/javascript"></script>
+	<script src="HTML5%20Simon%20Says%20Inspired%20Memory%20Game_files/DOMLoader_002.js" type="text/javascript"></script>
+	<!-- extras -->
+	<script src="HTML5%20Simon%20Says%20Inspired%20Memory%20Game_files/WebMIDIAPI.js" type="text/javascript"></script>
+	<script src="HTML5%20Simon%20Says%20Inspired%20Memory%20Game_files/Base64.js" type="text/javascript"></script>
+	<script src="HTML5%20Simon%20Says%20Inspired%20Memory%20Game_files/base64binary.js" type="text/javascript"></script>
+
+
+	<script type="text/javascript" src="HTML5%20Simon%20Says%20Inspired%20Memory%20Game_files/simon_says.js"></script><audio src="data:audio/ogg;base64,T2dnUwACAAAAAAAAAADqnjMlAAAAAOyyzPIBHgF2b3JiaXMAAAAAAUAfAABAHwAAQB8AAEAfAACZAU9nZ1MAAAAAAAAAAAAA6p4zJQEAAAANJGeqCj3//////////5ADdm9yYmlzLQAAAFhpcGguT3JnIGxpYlZvcmJpcyBJIDIwMTAxMTAxIChTY2hhdWZlbnVnZ2V0KQAAAAABBXZvcmJpcw9CQ1YBAAABAAxSFCElGVNKYwiVUlIpBR1jUFtHHWPUOUYhZBBTiEkZpXtPKpVYSsgRUlgpRR1TTFNJlVKWKUUdYxRTSCFT1jFloXMUS4ZJCSVsTa50FkvomWOWMUYdY85aSp1j1jFFHWNSUkmhcxg6ZiVkFDpGxehifDA6laJCKL7H3lLpLYWKW4q91xpT6y2EGEtpwQhhc+211dxKasUYY4wxxsXiUyiC0JBVAAABAABABAFCQ1YBAAoAAMJQDEVRgNCQVQBABgCAABRFcRTHcRxHkiTLAkJDVgEAQAAAAgAAKI7hKJIjSZJkWZZlWZameZaouaov+64u667t6roOhIasBACAAAAYRqF1TCqDEEPKQ4QUY9AzoxBDDEzGHGNONKQMMogzxZAyiFssLqgQBKEhKwKAKAAAwBjEGGIMOeekZFIi55iUTkoDnaPUUcoolRRLjBmlEluJMYLOUeooZZRCjKXFjFKJscRUAABAgAMAQICFUGjIigAgCgCAMAYphZRCjCnmFHOIMeUcgwwxxiBkzinoGJNOSuWck85JiRhjzjEHlXNOSuekctBJyaQTAAAQ4AAAEGAhFBqyIgCIEwAwSJKmWZomipamiaJniqrqiaKqWp5nmp5pqqpnmqpqqqrrmqrqypbnmaZnmqrqmaaqiqbquqaquq6nqrZsuqoum65q267s+rZru77uqapsm6or66bqyrrqyrbuurbtS56nqqKquq5nqq6ruq5uq65r25pqyq6purJtuq4tu7Js664s67pmqq5suqotm64s667s2rYqy7ovuq5uq7Ks+6os+75s67ru2rrwi65r66os674qy74x27bwy7ouHJMnqqqnqq7rmarrqq5r26rr2rqmmq5suq4tm6or26os67Yry7aumaosm64r26bryrIqy77vyrJui67r66Ys67oqy8Lu6roxzLat+6Lr6roqy7qvyrKuu7ru+7JuC7umqrpuyrKvm7Ks+7auC8us27oxuq7vq7It/KosC7+u+8Iy6z5jdF1fV21ZGFbZ9n3d95Vj1nVhWW1b+V1bZ7y+bgy7bvzKrQvLstq2scy6rSyvrxvDLux8W/iVmqratum6um7Ksq/Lui60dd1XRtf1fdW2fV+VZd+3hV9pG8OwjK6r+6os68Jry8ov67qw7MIvLKttK7+r68ow27qw3L6wLL/uC8uq277v6rrStXVluX2fsSu38QsAABhwAAAIMKEMFBqyIgCIEwBAEHIOKQahYgpCCKGkEEIqFWNSMuakZM5JKaWUFEpJrWJMSuaclMwxKaGUlkopqYRSWiqlxBRKaS2l1mJKqcVQSmulpNZKSa2llGJMrcUYMSYlc05K5pyUklJrJZXWMucoZQ5K6iCklEoqraTUYuacpA46Kx2E1EoqMZWUYgupxFZKaq2kFGMrMdXUWo4hpRhLSrGVlFptMdXWWqs1YkxK5pyUzDkqJaXWSiqtZc5J6iC01DkoqaTUYiopxco5SR2ElDLIqJSUWiupxBJSia20FGMpqcXUYq4pxRZDSS2WlFosqcTWYoy1tVRTJ6XFklKMJZUYW6y5ttZqDKXEVkqLsaSUW2sx1xZjjqGkFksrsZWUWmy15dhayzW1VGNKrdYWY40x5ZRrrT2n1mJNMdXaWqy51ZZbzLXnTkprpZQWS0oxttZijTHmHEppraQUWykpxtZara3FXEMpsZXSWiypxNhirLXFVmNqrcYWW62ltVprrb3GVlsurdXcYqw9tZRrrLXmWFNtBQAADDgAAASYUAYKDVkJAEQBAADGMMYYhEYpx5yT0ijlnHNSKucghJBS5hyEEFLKnINQSkuZcxBKSSmUklJqrYVSUmqttQIAAAocAAACbNCUWByg0JCVAEAqAIDBcTRNFFXVdX1fsSxRVFXXlW3jVyxNFFVVdm1b+DVRVFXXtW3bFn5NFFVVdmXZtoWiqrqybduybgvDqKqua9uybeuorqvbuq3bui9UXVmWbVu3dR3XtnXd9nVd+Bmzbeu2buu+8CMMR9/4IeTj+3RCCAAAT3AAACqwYXWEk6KxwEJDVgIAGQAAgDFKGYUYM0gxphhjTDHGmAAAgAEHAIAAE8pAoSErAoAoAADAOeecc84555xzzjnnnHPOOeecc44xxhhjjDHGGGOMMcYYY4wxxhhjjDHGGGOMMcYYY0wAwE6EA8BOhIVQaMhKACAcAABACCEpKaWUUkoRU85BSSmllFKqFIOMSkoppZRSpBR1lFJKKaWUIqWgpJJSSimllElJKaWUUkoppYw6SimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaVUSimllFJKKaWUUkoppRQAYPLgAACVYOMMK0lnhaPBhYasBAByAwAAhRiDEEJpraRUUkolVc5BKCWUlEpKKZWUUqqYgxBKKqmlklJKKbXSQSihlFBKKSWUUkooJYQQSgmhlFRCK6mEUkoHoYQSQimhhFRKKSWUzkEoIYUOQkmllNRCSB10VFIpIZVSSiklpZQ6CKGUklJLLZVSWkqpdBJSKamV1FJqqbWSUgmhpFZKSSWl0lpJJbUSSkklpZRSSymFVFJJJYSSUioltZZaSqm11lJIqZWUUkqppdRSSiWlkEpKqZSSUmollZRSaiGVlEpJKaTUSimlpFRCSamlUlpKLbWUSkmptFRSSaWUlEpJKaVSSksppRJKSqmllFpJKYWSUkoplZJSSyW1VEoKJaWUUkmptJRSSymVklIBAEAHDgAAAUZUWoidZlx5BI4oZJiAAgAAQABAgAkgMEBQMApBgDACAQAAAADAAAAfAABHARAR0ZzBAUKCwgJDg8MDAAAAAAAAAAAAAACAT2dnUwAEAAAAAAAAAADqnjMlAgAAADzQPmcBAQA=" audiobuffer="true" id="audio" preload="auto"></audio><audio src="data:audio/mpeg;base64,/+MYxAAAAANIAUAAAASEEB/jwOFM/0MM/90b/+RhST//w4NFwOjf///PZu////9lns5GFDv//l9GlUIEEIAAAgIg8Ir/JGq3/+MYxDsLIj5QMYcoAP0dv9HIjUcH//yYSg+CIbkGP//8w0bLVjUP///3Z0x5QCAv/yLjwtGKTEFNRTMuOTeqqqqqqqqqqqqq/+MYxEkNmdJkUYc4AKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq" audiobuffer="true" id="audio" preload="auto"></audio>
+<div style="transition-property: opacity; transition-duration: 400ms; opacity: 0; display: block; pointer-events: none;" class="loader"><span style="background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.65); display: block; top: 277px;" class="message"></span><canvas height="180" width="180" style="opacity: 1; position: absolute; z-index: 10000; left: 593px; top: 107px; width: 180px; height: 180px;" id="loader"></canvas></div></body></html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simon Dice</title>
+	<meta charset="utf-8"> 
+
+
+		<link rel="stylesheet" href="Estilo.css" type="text/css" >
+
+
+	<script>
+
+	function restart(){
+		document.getElementById('negro').innerHTML="";
+		setTimeout(function(){location.reload();},400);
+		
+	}
+
+	function start(){
+		document.getElementById('boton').style.display ='none';
+
+		iteraciones = 1;
+		arraySimon = new Array();
+		timer=0;
+		turnoJugador = 0;
+		seleccion=0;
+	}
+
+
+	function simon(){
+		
+		if(turnoJugador==0){
+			document.getElementById("nivel").innerHTML = "Nivel: " +iteraciones;
+			document.getElementById('negro').innerHTML="Turno de Simon";
+			turnoJugador=2;
+			timer=0;
+			arraySimon.push(Math.floor(Math.random() * (4)));
+			simonTurn(arraySimon[timer],timer);
+			iteraciones++;
+		}
+	}
+
+
+	function simonTurn(color, i){
+		if(turnoJugador==2){
+			setTimeout(function(){
+				switch(arraySimon[timer]){
+						case 0:
+							document.getElementById('rojo').style.backgroundColor = "#FF0000";
+							setTimeout(function(){document.getElementById('rojo').style.backgroundColor = "#8A0808";},660);	
+						break;
+
+						case 1:
+							document.getElementById('azul').style.backgroundColor = "#0000FF";
+							setTimeout(function(){document.getElementById('azul').style.backgroundColor = "#0B0B61";},660);
+						break;
+
+						case 2:
+							document.getElementById('verde').style.backgroundColor = "#00FF00";
+							setTimeout(function(){document.getElementById('verde').style.backgroundColor = "#0B610B";},660);	
+						break;
+
+						case 3:
+							document.getElementById('amarillo').style.backgroundColor = "#FFFF00";
+							setTimeout(function(){document.getElementById('amarillo').style.backgroundColor = "#868A08";},660);	
+						break;
+
+				}
+				if(timer<iteraciones){
+					timer++;
+					simonTurn(arraySimon[timer],timer);
+				}else{
+					turnoJugador=1;
+					document.getElementById('negro').innerHTML="Turno del jugador";
+				}
+			},710);
+		}
+	}	
+		
+	function jugador(id){
+		
+		if(turnoJugador==1){
+			
+			switch(id){
+				case 'rojo':
+						document.getElementById('rojo').style.backgroundColor = "#FF0000";
+						setTimeout(function(){document.getElementById('rojo').style.backgroundColor = "#8A0808";},150);	
+					id=0;
+				break;
+				case 'azul':
+					id=1;
+					document.getElementById('azul').style.backgroundColor = "#0000FF";
+					setTimeout(function(){document.getElementById('azul').style.backgroundColor = "#0B0B61";},150);
+				break;
+				case 'verde':
+					document.getElementById('verde').style.backgroundColor = "#00FF00";
+						setTimeout(function(){document.getElementById('verde').style.backgroundColor = "#0B610B";},150);
+					id=2;
+				break;
+				case 'amarillo':
+					id=3;
+					document.getElementById('amarillo').style.backgroundColor = "#FFFF00";
+						setTimeout(function(){document.getElementById('amarillo').style.backgroundColor = "#868A08";},150);	
+				break;
+			}
+			if(id==arraySimon[seleccion]){
+				
+				seleccion++;			
+				if(seleccion>=arraySimon.length){
+					document.getElementById('negro').innerHTML="Correcto!";
+					turnoJugador=0;
+					seleccion=0;
+					setTimeout(function(){document.getElementById('negro').innerHTML="Turno de Simon";simon();},950);
+					
+				}
+			}else{
+				alert('Juego Terminado!');
+				setTimeout(restart(),800);
+			}
+			
+		}
+		
+	}
+
+	</script>
+	</head>
+<body>
+	<p id="nivel"></p><br><br><br><br>
+	<div id="rojo" onclick="jugador(this.id)">
+		
+	</div><br><br><br><br><br>
+
+	<div id="azul" onclick="jugador(this.id)">
+		
+	</div>
+ 	
+ 	<div id="negro" onclick="simon()"> 
+	<button  id="boton" onclick="start();"> START! </button>
+ 	</div> 
+	<div id="verde" onclick="jugador(this.id)">
+		
+	</div>
+<br><br><br><br><br>
+	
+	<div id="amarillo" onclick="jugador(this.id)">
+		
+	</div>
+	
+</body>
+</html>

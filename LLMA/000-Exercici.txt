@@ -1,0 +1,10 @@
+1 - Seleccionar olla
+2 - Introducir agua
+3 - Encender fuego
+4 - Colocar olla en el fuego
+5 - Esperar a que la olla hierva
+6 - Apagar fuego
+7 - Introducir hierbas
+8 - Esperar tiempo indicado en el envase de las hierbas
+9 - Extraer hierbas
+10 - Servir infusión
