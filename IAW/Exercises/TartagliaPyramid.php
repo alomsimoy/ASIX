@@ -13,7 +13,7 @@
 <body>
 <?php
 
-$n = 8;
+$n = 20;
 drawPyramid(createPyramid($n));
 
 function createPyramid($n) {
@@ -30,15 +30,19 @@ function createPyramid($n) {
 
 function drawPyramid($pyramid){
     $lenght = count(end($pyramid));
-    echo "<code>";
+    echo "<table border='1px' style='text-align: center'>";
     for ($i = 0; $i < $lenght; $i++){
+        echo "<tr>";
+        $col=0;
         for ($j = 0; $j < $lenght - $i; $j++){
-            echo "&nbsp;&nbsp;";
+            $col++;
         }
+        echo "<td colspan='".$col."'/>";
         for ($k = 0; $k < count($pyramid[$i]); $k++) {
-            echo $pyramid[$i][$k]."&nbsp;&nbsp;&nbsp;";
+            echo "<td colspan='2'>".$pyramid[$i][$k]."</td>";
         }
-        echo "</br>";
+        echo "<td colspan='".$col."'/>";
+        echo "</tr>";
     }
     echo "</code>";
 }
