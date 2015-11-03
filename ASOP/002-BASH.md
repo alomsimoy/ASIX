@@ -88,3 +88,116 @@ Programacion del shell bash
 | Actibar el permiso de ejecución para el archivo guión| $chmod u+x guion | Si|
 | Ejecutarlo como cualquier otro programa | $ guion | Si |
 | Carácter "." | $ . guion | NO |
+
+##Comentarios
+Un comentario es una línea precedida del caracter #
+Shebang (hash-bang o sharpbang)
+Orden echo
+Permite la salida de datos desde un archivo guión. Envía datos a la salida estándar.
+    echo cadena
+La opción -n hace que el echo no salte de línea.
+
+Orden read
+    Permite que el usuario pueda introducir interactivamente el valor de una variable.
+Para ello, lee la siguiente línea que haya en la entrada estándar y se la asigna a la variable indicada en la orden read.
+    read variable.
+
+ejemplo
+    # archivo ~/saludo
+    # n.miro 12/12/10
+    
+    echo -n "Introduzca su nombre: "
+    read invitado
+    echo "Hola $invitado"
+
+Operador <<
+Permite que una orden incluida en un guión tome sus datos leyéndolos dentro del propio guión.
+    comando <<cadena
+    ...
+    ...
+    cadena
+Las líneas incluidas entre cadena y  cadena son consideradas como los datos para comando.
+
+ejemplo
+    # archivo ~/creap
+    # n.miro 12/12/10
+
+    cat > prueba <<final
+    Esto es un archivo de prueba
+    para comprobar el funcionamiento
+    final
+    echo "Archivo creado"
+
+ejemplo
+    # archivo ~/sus
+    # n.miro 12/12/10
+
+    vi prueba << kk
+    :1,$ s/archivo/fichero/g
+    :wq
+    kk
+    echo "operación de sustitución finalizada"
+
+Parámetros de un guión
+Un guión del shell puede ser ejecutado acompañado de argumentos.
+        $0      $1      $2      $3
+    $   guión   arg1    arg2    arg3
+
+ejemplo
+    # archivo ~/sus
+    # n.miro 12/12/10
+
+    vi $1 << kk
+    :1,$ s/$2/$3/g
+    :wq
+    kk
+    echo "Operación finalizada. Se han reemplazado todas las apariciones de la cadena $2 por $3 en el fichero $1"
+
+$# Indica el num de argumentos de la línea de comandos (cuenta incluso si hay +9)
+
+$* Representa todos los argumentos de la línea de comandos (todos incluso si hay +9)*
+
+Símbolo $$
+Devuelve un número que se corresponde con el num de proceso que se está ejecutando (PID)
+Puede servirnos para crear un fichero temporal con nombre único.
+
+shift [n]
+    permite desplazar n posiciones a la derecha la numeración de los argumentos
+
+Orden let: operaciones aritméticas y lógicas de enteros
+    Permite efectuar cálculos aritméticos y lógicos con valores enteros con la posibilidad de asignar el resultado a una variable.
+operaciones aritméticas
+    $ let [variable=]valor1operandovalor2
+operaciones aritméticas y lógicas
+    $ let "[variable=] valor1 operando valor2"
+
+ejemplo
+    $ let rdo=2*7
+    $ echo $rdo
+    14
+    $
+
+Como operando puede utilizarse:
+    enteros
+    variables que contengan enteros
+    ejemplo
+        cont=0
+        let cont=cont+1
+
+El resultado de una operación relacional será
+    0 (falso)
+    1 (verdadero)
+
+Orden expr
+Evalúa ezpresiones donde los operandos pueden ser números o cadenas.
+Mismos operadores que la oren let para las operaciones con núnmeros.
+
+match cadena expresión
+    Comprobaciones de cadenas.
+substr cadena posición longitud
+    Devuelve la subcaena de cadena comenzando en posición con longitud máxima longitud.
+
+index cadena caracter
+    Devuelve la primera posición de cadena donde encuentra el primer carácter caracter
+length cadena
+    Devuelve la longitud de cadena.
