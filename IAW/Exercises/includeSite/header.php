@@ -2,7 +2,8 @@
 <html>
     <head>
         <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
-        <title></title>
+        <title>Lorem ipsum site</title>
+        <meta charset='utf-8'/>
     </head>
     <body>
         <div id="header">
