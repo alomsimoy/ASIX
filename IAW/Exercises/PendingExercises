@@ -1,3 +1,15 @@
-- Crear un site con header y un menu común usando include(). Debe tener almenos 3 páginas.
-
-- En el ejercicio anterior, conseguir resaltar en el menú la página en la que estamos.
+Crear un formulari de registre sticky.
+    NAME
+    SURNAME
+    ADDRESS
+    PHONE
+    GENDER (radio button)
+        MALE
+        FEMALE
+    EMAIL
+    INTERESTS (checkboxes)
+        TECHNOLOGY
+        MUSIC
+        CINEMA
+        SPORTS
+    COMMENTS
